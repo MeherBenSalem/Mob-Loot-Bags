@@ -1,0 +1,14 @@
+["Loot Tables Rarity Config"]
+	common_lt_name = "mob_loot_bags:lootbags/common"
+	uncommon_lt_name = "mob_loot_bags:un_common"
+	rare_lt_name = "mob_loot_bags:lootbags/rare"
+	epic_lt_name = "mob_loot_bags:lootbags/epic"
+	legendary_lt_name = "minecraft:chests/end_city_treasure"
+
+["Loot Bags Drop Rate Config"]
+	common_drop_rate = 60.0
+	uncommon_drop_rate = 20.0
+	rare_drop_rate = 15.0
+	epic_drop_rate = 4.0
+	legendary_drop_rate = 1.0
+	drop_chance_overall = 80.0

@@ -1,0 +1,8 @@
+/give Dev mob_loot_bags:commonlootbag 64
+/give Dev mob_loot_bags:uncommonlootbag 15
+/give Dev mob_loot_bags:rarelootbag 64
+/give Dev mob_loot_bags:legendarylootbag 64
+/give Dev mob_loot_bags:epiclootbag 46
+/clear
+/gamemode creative
+/gamemode survival

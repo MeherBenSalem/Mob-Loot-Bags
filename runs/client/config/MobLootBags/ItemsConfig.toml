@@ -1,0 +1,4 @@
+[Valuable]
+	max_amount_rare = 5.0
+	valuable_items = ["gold_ingot", "emerald", "diamond", "smithing_template"]
+	max_amount_commun = 20.0

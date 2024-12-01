@@ -1,0 +1,71 @@
+{
+  "_fv": 66,
+  "_type": "config",
+  "definition": {
+    "pools": [
+      {
+        "category": "Valuable",
+        "entries": [
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 5.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "max_amount_rare",
+            "varname": "max_amount_rare",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 5,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 0.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "valuable_items",
+            "varname": "valuable_items",
+            "enablecomment": false,
+            "stringlist": [
+              "gold_ingot",
+              "emerald",
+              "diamond",
+              "smithing_template"
+            ]
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 20.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "max_amount_commun",
+            "varname": "max_amount_commun",
+            "enablecomment": false,
+            "stringlist": []
+          }
+        ]
+      }
+    ],
+    "file": "MobLootBags/ItemsConfig",
+    "configType": 0
+  }
+}
