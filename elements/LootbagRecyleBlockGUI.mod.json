@@ -591,17 +591,47 @@
         }
       },
       {
-        "type": "tooltip",
+        "type": "label",
         "data": {
-          "name": "tooltip_currentvalue_3000xp",
+          "name": "label_proc_return_current_block_stored",
           "text": {
-            "fixedValue": "CurrentValue 3000xp",
+            "fixedValue": "",
             "name": "ReturnCurrentBlockStoredXp"
           },
-          "width": 17,
-          "height": 18,
-          "x": 205,
-          "y": 101
+          "color": {
+            "value": -16777216,
+            "falpha": 0.0
+          },
+          "x": 150,
+          "y": 105
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_xp",
+          "text": {
+            "fixedValue": "XP:"
+          },
+          "color": {
+            "value": -16777216,
+            "falpha": 0.0
+          },
+          "x": 134,
+          "y": 105
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_take_out_the_xp",
+          "text": {
+            "fixedValue": "Take out the xp stored"
+          },
+          "width": 16,
+          "height": 16,
+          "x": 207,
+          "y": 102
         }
       }
     ],

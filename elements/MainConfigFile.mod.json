@@ -98,7 +98,7 @@
             "varname": "legendary_lt_name",
             "enablecomment": false,
             "stringlist": [
-              "minecraft:chests/end_city_treasure"
+              "mob_loot_bags:legendary_loot_table"
             ]
           },
           {
@@ -112,10 +112,10 @@
             "logicField": 0,
             "numberField": 0.0,
             "textDefault": "minecraft:chests/end_city_treasure",
-            "comment": "",
-            "vardisplay": "custom_lt_name",
-            "varname": "custom_lt_name",
-            "enablecomment": false,
+            "comment": "if you didn't setup any loot table this is the default one",
+            "vardisplay": "default_lt_name",
+            "varname": "default_lt_name",
+            "enablecomment": true,
             "stringlist": []
           }
         ]
@@ -149,7 +149,7 @@
               "value": ""
             },
             "logicField": 0,
-            "numberField": 20.0,
+            "numberField": 25.0,
             "textDefault": "",
             "comment": "",
             "vardisplay": "uncommon_drop_rate",
@@ -166,7 +166,7 @@
               "value": ""
             },
             "logicField": 0,
-            "numberField": 15.0,
+            "numberField": 10.0,
             "textDefault": "",
             "comment": "",
             "vardisplay": "rare_drop_rate",

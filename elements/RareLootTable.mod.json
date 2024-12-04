@@ -6,7 +6,7 @@
     "pools": [
       {
         "minrolls": 1,
-        "maxrolls": 1,
+        "maxrolls": 2,
         "minbonusrolls": 1,
         "maxbonusrolls": 1,
         "hasbonusrolls": false,
@@ -16,30 +16,35 @@
             "item": {
               "value": "Items.DIAMOND"
             },
-            "weight": 1,
+            "weight": 20,
             "minCount": 1,
-            "maxCount": 1,
+            "maxCount": 3,
             "minEnchantmentLevel": 0,
             "maxEnchantmentLevel": 0,
             "affectedByFortune": false,
             "explosionDecay": false,
             "silkTouchMode": 0
-          }
-        ]
-      },
-      {
-        "minrolls": 1,
-        "maxrolls": 1,
-        "minbonusrolls": 1,
-        "maxbonusrolls": 1,
-        "hasbonusrolls": false,
-        "entries": [
+          },
           {
             "type": "item",
             "item": {
-              "value": "Items.DIAMOND_SWORD"
+              "value": "Items.ENDER_PEARL"
             },
-            "weight": 1,
+            "weight": 15,
+            "minCount": 1,
+            "maxCount": 3,
+            "minEnchantmentLevel": 0,
+            "maxEnchantmentLevel": 0,
+            "affectedByFortune": false,
+            "explosionDecay": false,
+            "silkTouchMode": 0
+          },
+          {
+            "type": "item",
+            "item": {
+              "value": "Items.TOTEM_OF_UNDYING"
+            },
+            "weight": 8,
             "minCount": 1,
             "maxCount": 1,
             "minEnchantmentLevel": 0,
@@ -47,24 +52,15 @@
             "affectedByFortune": false,
             "explosionDecay": false,
             "silkTouchMode": 0
-          }
-        ]
-      },
-      {
-        "minrolls": 1,
-        "maxrolls": 1,
-        "minbonusrolls": 1,
-        "maxbonusrolls": 1,
-        "hasbonusrolls": false,
-        "entries": [
+          },
           {
             "type": "item",
             "item": {
               "value": "Items.EMERALD"
             },
-            "weight": 1,
-            "minCount": 1,
-            "maxCount": 1,
+            "weight": 20,
+            "minCount": 2,
+            "maxCount": 5,
             "minEnchantmentLevel": 0,
             "maxEnchantmentLevel": 0,
             "affectedByFortune": false,
@@ -74,30 +70,7 @@
         ]
       },
       {
-        "minrolls": 1,
-        "maxrolls": 1,
-        "minbonusrolls": 1,
-        "maxbonusrolls": 1,
-        "hasbonusrolls": false,
-        "entries": [
-          {
-            "type": "item",
-            "item": {
-              "value": "Items.NAME_TAG"
-            },
-            "weight": 1,
-            "minCount": 1,
-            "maxCount": 1,
-            "minEnchantmentLevel": 0,
-            "maxEnchantmentLevel": 0,
-            "affectedByFortune": false,
-            "explosionDecay": false,
-            "silkTouchMode": 0
-          }
-        ]
-      },
-      {
-        "minrolls": 1,
+        "minrolls": 0,
         "maxrolls": 1,
         "minbonusrolls": 1,
         "maxbonusrolls": 1,
@@ -108,7 +81,7 @@
             "item": {
               "value": "Items.DIAMOND_AXE"
             },
-            "weight": 1,
+            "weight": 10,
             "minCount": 1,
             "maxCount": 1,
             "minEnchantmentLevel": 0,
@@ -116,22 +89,13 @@
             "affectedByFortune": false,
             "explosionDecay": false,
             "silkTouchMode": 0
-          }
-        ]
-      },
-      {
-        "minrolls": 1,
-        "maxrolls": 1,
-        "minbonusrolls": 1,
-        "maxbonusrolls": 1,
-        "hasbonusrolls": false,
-        "entries": [
+          },
           {
             "type": "item",
             "item": {
               "value": "Items.DIAMOND_HELMET"
             },
-            "weight": 1,
+            "weight": 4,
             "minCount": 1,
             "maxCount": 1,
             "minEnchantmentLevel": 0,
@@ -139,22 +103,13 @@
             "affectedByFortune": false,
             "explosionDecay": false,
             "silkTouchMode": 0
-          }
-        ]
-      },
-      {
-        "minrolls": 1,
-        "maxrolls": 1,
-        "minbonusrolls": 1,
-        "maxbonusrolls": 1,
-        "hasbonusrolls": false,
-        "entries": [
+          },
           {
             "type": "item",
             "item": {
               "value": "Items.DIAMOND_CHESTPLATE"
             },
-            "weight": 1,
+            "weight": 4,
             "minCount": 1,
             "maxCount": 1,
             "minEnchantmentLevel": 0,
@@ -162,22 +117,27 @@
             "affectedByFortune": false,
             "explosionDecay": false,
             "silkTouchMode": 0
-          }
-        ]
-      },
-      {
-        "minrolls": 1,
-        "maxrolls": 1,
-        "minbonusrolls": 1,
-        "maxbonusrolls": 1,
-        "hasbonusrolls": false,
-        "entries": [
+          },
           {
             "type": "item",
             "item": {
               "value": "Items.DIAMOND_LEGGINGS"
             },
-            "weight": 1,
+            "weight": 4,
+            "minCount": 1,
+            "maxCount": 1,
+            "minEnchantmentLevel": 0,
+            "maxEnchantmentLevel": 0,
+            "affectedByFortune": false,
+            "explosionDecay": false,
+            "silkTouchMode": 0
+          },
+          {
+            "type": "item",
+            "item": {
+              "value": "Items.DIAMOND_BOOTS"
+            },
+            "weight": 4,
             "minCount": 1,
             "maxCount": 1,
             "minEnchantmentLevel": 0,
@@ -189,7 +149,7 @@
         ]
       },
       {
-        "minrolls": 1,
+        "minrolls": 0,
         "maxrolls": 1,
         "minbonusrolls": 1,
         "maxbonusrolls": 1,
@@ -198,11 +158,25 @@
           {
             "type": "item",
             "item": {
-              "value": "Items.DIAMOND_BOOTS"
+              "value": "Items.DIAMOND_PICKAXE"
             },
-            "weight": 1,
+            "weight": 6,
             "minCount": 1,
             "maxCount": 1,
+            "minEnchantmentLevel": 1,
+            "maxEnchantmentLevel": 2,
+            "affectedByFortune": false,
+            "explosionDecay": false,
+            "silkTouchMode": 0
+          },
+          {
+            "type": "item",
+            "item": {
+              "value": "Items.GOLDEN_APPLE#0"
+            },
+            "weight": 5,
+            "minCount": 1,
+            "maxCount": 3,
             "minEnchantmentLevel": 0,
             "maxEnchantmentLevel": 0,
             "affectedByFortune": false,

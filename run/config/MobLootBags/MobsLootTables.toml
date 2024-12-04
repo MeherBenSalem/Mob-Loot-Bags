@@ -1,9 +1,10 @@
 
 ["Loot Tables Rarity Config"]
 	epic_lt_name = ["mob_loot_bags:lootbags/epic"]
-	custom_lt_name = "minecraft:chests/end_city_treasure"
 	common_lt_name = ["mob_loot_bags:lootbags/common"]
-	legendary_lt_name = ["minecraft:chests/end_city_treasure"]
+	legendary_lt_name = ["mob_loot_bags:legendary_loot_table"]
+	#if you didn't setup any loot table this is the default one
+	default_lt_name = "minecraft:chests/end_city_treasure"
 	uncommon_lt_name = ["mob_loot_bags:un_common"]
 	rare_lt_name = ["mob_loot_bags:lootbags/rare"]
 

@@ -15,7 +15,7 @@ public class GiveFilledSlotNumberInBlockProcedure {
 		double FilledSlot = 0;
 		FilledSlot = 99;
 		itterator = 0;
-		while (itterator <= 8) {
+		while (itterator <= 23) {
 			if (new Object() {
 				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicInteger _retval = new AtomicInteger(0);

@@ -16,7 +16,6 @@ import net.mcreator.moblootbags.item.UncommonlootbagItem;
 import net.mcreator.moblootbags.item.RarelootbagItem;
 import net.mcreator.moblootbags.item.LegendarylootbagItem;
 import net.mcreator.moblootbags.item.EpiclootbagItem;
-import net.mcreator.moblootbags.item.CustomLootBagItem;
 import net.mcreator.moblootbags.item.CommonlootbagItem;
 import net.mcreator.moblootbags.MobLootBagsMod;
 
@@ -29,7 +28,6 @@ public class MobLootBagsModItems {
 	public static final RegistryObject<Item> LEGENDARYLOOTBAG = REGISTRY.register("legendarylootbag", () -> new LegendarylootbagItem());
 	public static final RegistryObject<Item> LOOT_BAG_RECYCLE_BLOCK = block(MobLootBagsModBlocks.LOOT_BAG_RECYCLE_BLOCK);
 	public static final RegistryObject<Item> LOOT_BAG_OPENER_BLOCK = block(MobLootBagsModBlocks.LOOT_BAG_OPENER_BLOCK);
-	public static final RegistryObject<Item> CUSTOM_LOOT_BAG = REGISTRY.register("custom_loot_bag", () -> new CustomLootBagItem());
 
 	// Start of user code block custom items
 	// End of user code block custom items

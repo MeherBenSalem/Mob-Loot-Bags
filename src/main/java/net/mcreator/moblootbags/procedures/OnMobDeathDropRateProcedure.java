@@ -39,20 +39,12 @@ public class OnMobDeathDropRateProcedure {
 		double itemDroped = 0;
 		if (sourceentity instanceof Player || sourceentity instanceof ServerPlayer) {
 			if (Mth.nextInt(RandomSource.create(), 0, 100) <= (double) MainConfigFileConfiguration.DROP_CHANCE_OVERALL.get()) {
-				itemDroped = Mth.nextInt(RandomSource.create(), 0, 100);
+				itemDroped = Mth.nextDouble(RandomSource.create(), 1, 100);
 				if (itemDroped <= (double) MainConfigFileConfiguration.LEGENDARY_DROP_RATE.get()) {
-					if (Math.random() <= 0) {
-						if (world instanceof ServerLevel _level) {
-							ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(MobLootBagsModItems.CUSTOM_LOOT_BAG.get()));
-							entityToSpawn.setPickUpDelay(10);
-							_level.addFreshEntity(entityToSpawn);
-						}
-					} else {
-						if (world instanceof ServerLevel _level) {
-							ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(MobLootBagsModItems.LEGENDARYLOOTBAG.get()));
-							entityToSpawn.setPickUpDelay(10);
-							_level.addFreshEntity(entityToSpawn);
-						}
+					if (world instanceof ServerLevel _level) {
+						ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(MobLootBagsModItems.LEGENDARYLOOTBAG.get()));
+						entityToSpawn.setPickUpDelay(10);
+						_level.addFreshEntity(entityToSpawn);
 					}
 				} else if (itemDroped <= (double) MainConfigFileConfiguration.EPIC_DROP_RATE.get()) {
 					if (world instanceof ServerLevel _level) {

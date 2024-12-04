@@ -13,6 +13,8 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
@@ -26,14 +28,22 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.moblootbags.world.inventory.LootbagOpenBlockGUIMenu;
-import net.mcreator.moblootbags.procedures.LootBagOpenerProcedureProcedure;
+import net.mcreator.moblootbags.procedures.LootBagOpenerGiveToBlockProcedure;
 import net.mcreator.moblootbags.block.entity.LootBagOpenerBlockBlockEntity;
+
+import java.util.List;
 
 import io.netty.buffer.Unpooled;
 
 public class LootBagOpenerBlockBlock extends Block implements EntityBlock {
 	public LootBagOpenerBlockBlock() {
 		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.METAL).strength(1f, 10f));
+	}
+
+	@Override
+	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, level, list, flag);
+		list.add(Component.literal("\u00A7fUses \u00A74Redstone \u00A7fsignal to open \u00A79loot bags"));
 	}
 
 	@Override
@@ -45,7 +55,7 @@ public class LootBagOpenerBlockBlock extends Block implements EntityBlock {
 	public void neighborChanged(BlockState blockstate, Level world, BlockPos pos, Block neighborBlock, BlockPos fromPos, boolean moving) {
 		super.neighborChanged(blockstate, world, pos, neighborBlock, fromPos, moving);
 		if (world.getBestNeighborSignal(pos) > 0) {
-			LootBagOpenerProcedureProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+			LootBagOpenerGiveToBlockProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 		}
 	}
 
@@ -96,19 +106,5 @@ public class LootBagOpenerBlockBlock extends Block implements EntityBlock {
 			}
 			super.onRemove(state, world, pos, newState, isMoving);
 		}
-	}
-
-	@Override
-	public boolean hasAnalogOutputSignal(BlockState state) {
-		return true;
-	}
-
-	@Override
-	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
-		BlockEntity tileentity = world.getBlockEntity(pos);
-		if (tileentity instanceof LootBagOpenerBlockBlockEntity be)
-			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);
-		else
-			return 0;
 	}
 }

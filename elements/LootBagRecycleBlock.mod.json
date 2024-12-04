@@ -35,7 +35,9 @@
     ],
     "name": "Loot Bag Recycler",
     "specialInformation": {
-      "fixedValue": []
+      "fixedValue": [
+        "§fRecycle unwanted §9loot bags §finto §aexperience"
+      ]
     },
     "hardness": 1.0,
     "resistance": 10.0,

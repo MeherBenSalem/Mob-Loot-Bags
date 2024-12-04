@@ -42,7 +42,7 @@ public class LootbagOpenBlockGUIMenu extends AbstractContainerMenu implements Su
 		super(MobLootBagsModMenus.LOOTBAG_OPEN_BLOCK_GUI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level();
-		this.internal = new ItemStackHandler(18);
+		this.internal = new ItemStackHandler(24);
 		BlockPos pos = null;
 		if (extraData != null) {
 			pos = extraData.readBlockPos();
@@ -77,104 +77,77 @@ public class LootbagOpenBlockGUIMenu extends AbstractContainerMenu implements Su
 					});
 			}
 		}
-		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 26, 11) {
+		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 17, 17) {
 			private final int slot = 0;
 		}));
-		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 44, 11) {
+		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 35, 17) {
 			private final int slot = 1;
 		}));
-		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 62, 11) {
+		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 53, 17) {
 			private final int slot = 2;
 		}));
-		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 26, 29) {
+		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 17, 35) {
 			private final int slot = 3;
 		}));
-		this.customSlots.put(4, this.addSlot(new SlotItemHandler(internal, 4, 44, 29) {
+		this.customSlots.put(4, this.addSlot(new SlotItemHandler(internal, 4, 35, 35) {
 			private final int slot = 4;
 		}));
-		this.customSlots.put(5, this.addSlot(new SlotItemHandler(internal, 5, 62, 29) {
+		this.customSlots.put(5, this.addSlot(new SlotItemHandler(internal, 5, 53, 35) {
 			private final int slot = 5;
 		}));
-		this.customSlots.put(6, this.addSlot(new SlotItemHandler(internal, 6, 26, 47) {
+		this.customSlots.put(6, this.addSlot(new SlotItemHandler(internal, 6, 17, 53) {
 			private final int slot = 6;
 		}));
-		this.customSlots.put(7, this.addSlot(new SlotItemHandler(internal, 7, 44, 47) {
+		this.customSlots.put(7, this.addSlot(new SlotItemHandler(internal, 7, 35, 53) {
 			private final int slot = 7;
 		}));
-		this.customSlots.put(8, this.addSlot(new SlotItemHandler(internal, 8, 62, 47) {
+		this.customSlots.put(8, this.addSlot(new SlotItemHandler(internal, 8, 53, 53) {
 			private final int slot = 8;
 		}));
-		this.customSlots.put(9, this.addSlot(new SlotItemHandler(internal, 9, 98, 11) {
+		this.customSlots.put(9, this.addSlot(new SlotItemHandler(internal, 9, 71, 17) {
 			private final int slot = 9;
-
-			@Override
-			public boolean mayPlace(ItemStack stack) {
-				return false;
-			}
 		}));
-		this.customSlots.put(10, this.addSlot(new SlotItemHandler(internal, 10, 116, 11) {
+		this.customSlots.put(10, this.addSlot(new SlotItemHandler(internal, 10, 71, 35) {
 			private final int slot = 10;
-
-			@Override
-			public boolean mayPlace(ItemStack stack) {
-				return false;
-			}
 		}));
-		this.customSlots.put(11, this.addSlot(new SlotItemHandler(internal, 11, 134, 11) {
+		this.customSlots.put(11, this.addSlot(new SlotItemHandler(internal, 11, 71, 53) {
 			private final int slot = 11;
-
-			@Override
-			public boolean mayPlace(ItemStack stack) {
-				return false;
-			}
 		}));
-		this.customSlots.put(12, this.addSlot(new SlotItemHandler(internal, 12, 98, 29) {
+		this.customSlots.put(12, this.addSlot(new SlotItemHandler(internal, 12, 89, 17) {
 			private final int slot = 12;
-
-			@Override
-			public boolean mayPlace(ItemStack stack) {
-				return false;
-			}
 		}));
-		this.customSlots.put(13, this.addSlot(new SlotItemHandler(internal, 13, 116, 29) {
+		this.customSlots.put(13, this.addSlot(new SlotItemHandler(internal, 13, 89, 35) {
 			private final int slot = 13;
-
-			@Override
-			public boolean mayPlace(ItemStack stack) {
-				return false;
-			}
 		}));
-		this.customSlots.put(14, this.addSlot(new SlotItemHandler(internal, 14, 134, 29) {
+		this.customSlots.put(14, this.addSlot(new SlotItemHandler(internal, 14, 89, 53) {
 			private final int slot = 14;
-
-			@Override
-			public boolean mayPlace(ItemStack stack) {
-				return false;
-			}
 		}));
-		this.customSlots.put(15, this.addSlot(new SlotItemHandler(internal, 15, 98, 47) {
+		this.customSlots.put(15, this.addSlot(new SlotItemHandler(internal, 15, 107, 17) {
 			private final int slot = 15;
-
-			@Override
-			public boolean mayPlace(ItemStack stack) {
-				return false;
-			}
 		}));
-		this.customSlots.put(16, this.addSlot(new SlotItemHandler(internal, 16, 116, 47) {
+		this.customSlots.put(16, this.addSlot(new SlotItemHandler(internal, 16, 107, 35) {
 			private final int slot = 16;
-
-			@Override
-			public boolean mayPlace(ItemStack stack) {
-				return false;
-			}
 		}));
-		this.customSlots.put(17, this.addSlot(new SlotItemHandler(internal, 17, 134, 47) {
+		this.customSlots.put(17, this.addSlot(new SlotItemHandler(internal, 17, 107, 53) {
 			private final int slot = 17;
-
-			@Override
-			public boolean mayPlace(ItemStack stack) {
-				return false;
-			}
+		}));
+		this.customSlots.put(18, this.addSlot(new SlotItemHandler(internal, 18, 125, 17) {
+			private final int slot = 18;
+		}));
+		this.customSlots.put(19, this.addSlot(new SlotItemHandler(internal, 19, 125, 35) {
+			private final int slot = 19;
+		}));
+		this.customSlots.put(20, this.addSlot(new SlotItemHandler(internal, 20, 125, 53) {
+			private final int slot = 20;
+		}));
+		this.customSlots.put(21, this.addSlot(new SlotItemHandler(internal, 21, 143, 17) {
+			private final int slot = 21;
+		}));
+		this.customSlots.put(22, this.addSlot(new SlotItemHandler(internal, 22, 143, 35) {
+			private final int slot = 22;
+		}));
+		this.customSlots.put(23, this.addSlot(new SlotItemHandler(internal, 23, 143, 53) {
+			private final int slot = 23;
 		}));
 		for (int si = 0; si < 3; ++si)
 			for (int sj = 0; sj < 9; ++sj)
@@ -203,16 +176,16 @@ public class LootbagOpenBlockGUIMenu extends AbstractContainerMenu implements Su
 		if (slot != null && slot.hasItem()) {
 			ItemStack itemstack1 = slot.getItem();
 			itemstack = itemstack1.copy();
-			if (index < 18) {
-				if (!this.moveItemStackTo(itemstack1, 18, this.slots.size(), true))
+			if (index < 24) {
+				if (!this.moveItemStackTo(itemstack1, 24, this.slots.size(), true))
 					return ItemStack.EMPTY;
 				slot.onQuickCraft(itemstack1, itemstack);
-			} else if (!this.moveItemStackTo(itemstack1, 0, 18, false)) {
-				if (index < 18 + 27) {
-					if (!this.moveItemStackTo(itemstack1, 18 + 27, this.slots.size(), true))
+			} else if (!this.moveItemStackTo(itemstack1, 0, 24, false)) {
+				if (index < 24 + 27) {
+					if (!this.moveItemStackTo(itemstack1, 24 + 27, this.slots.size(), true))
 						return ItemStack.EMPTY;
 				} else {
-					if (!this.moveItemStackTo(itemstack1, 18, 18 + 27, false))
+					if (!this.moveItemStackTo(itemstack1, 24, 24 + 27, false))
 						return ItemStack.EMPTY;
 				}
 				return ItemStack.EMPTY;
@@ -328,24 +301,6 @@ public class LootbagOpenBlockGUIMenu extends AbstractContainerMenu implements Su
 						continue;
 					if (j == 8)
 						continue;
-					if (j == 9)
-						continue;
-					if (j == 10)
-						continue;
-					if (j == 11)
-						continue;
-					if (j == 12)
-						continue;
-					if (j == 13)
-						continue;
-					if (j == 14)
-						continue;
-					if (j == 15)
-						continue;
-					if (j == 16)
-						continue;
-					if (j == 17)
-						continue;
 					playerIn.drop(internal.extractItem(j, internal.getStackInSlot(j).getCount(), false), false);
 				}
 			} else {
@@ -367,24 +322,6 @@ public class LootbagOpenBlockGUIMenu extends AbstractContainerMenu implements Su
 					if (i == 7)
 						continue;
 					if (i == 8)
-						continue;
-					if (i == 9)
-						continue;
-					if (i == 10)
-						continue;
-					if (i == 11)
-						continue;
-					if (i == 12)
-						continue;
-					if (i == 13)
-						continue;
-					if (i == 14)
-						continue;
-					if (i == 15)
-						continue;
-					if (i == 16)
-						continue;
-					if (i == 17)
 						continue;
 					playerIn.getInventory().placeItemBackInInventory(internal.extractItem(i, internal.getStackInSlot(i).getCount(), false));
 				}

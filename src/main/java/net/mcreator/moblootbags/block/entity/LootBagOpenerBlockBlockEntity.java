@@ -31,7 +31,7 @@ import java.util.stream.IntStream;
 import io.netty.buffer.Unpooled;
 
 public class LootBagOpenerBlockBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(18, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(24, ItemStack.EMPTY);
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 
 	public LootBagOpenerBlockBlockEntity(BlockPos position, BlockState state) {
@@ -109,24 +109,6 @@ public class LootBagOpenerBlockBlockEntity extends RandomizableContainerBlockEnt
 
 	@Override
 	public boolean canPlaceItem(int index, ItemStack stack) {
-		if (index == 9)
-			return false;
-		if (index == 10)
-			return false;
-		if (index == 11)
-			return false;
-		if (index == 12)
-			return false;
-		if (index == 13)
-			return false;
-		if (index == 14)
-			return false;
-		if (index == 15)
-			return false;
-		if (index == 16)
-			return false;
-		if (index == 17)
-			return false;
 		return true;
 	}
 
@@ -159,6 +141,36 @@ public class LootBagOpenerBlockBlockEntity extends RandomizableContainerBlockEnt
 		if (index == 7)
 			return false;
 		if (index == 8)
+			return false;
+		if (index == 9)
+			return false;
+		if (index == 10)
+			return false;
+		if (index == 11)
+			return false;
+		if (index == 12)
+			return false;
+		if (index == 13)
+			return false;
+		if (index == 14)
+			return false;
+		if (index == 15)
+			return false;
+		if (index == 16)
+			return false;
+		if (index == 17)
+			return false;
+		if (index == 18)
+			return false;
+		if (index == 19)
+			return false;
+		if (index == 20)
+			return false;
+		if (index == 21)
+			return false;
+		if (index == 22)
+			return false;
+		if (index == 23)
 			return false;
 		return true;
 	}

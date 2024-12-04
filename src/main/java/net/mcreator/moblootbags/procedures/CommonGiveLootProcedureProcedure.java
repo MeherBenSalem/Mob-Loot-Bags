@@ -1,9 +1,7 @@
 package net.mcreator.moblootbags.procedures;
 
-import net.minecraftforge.items.ItemHandlerHelper;
-
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
@@ -11,100 +9,79 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.CommandSource;
 
 import net.mcreator.moblootbags.init.MobLootBagsModItems;
 import net.mcreator.moblootbags.configuration.MainConfigFileConfiguration;
 
 public class CommonGiveLootProcedureProcedure {
-	public static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
 		if (entity == null)
 			return;
 		String loot_table_name = "";
-		boolean itemGiven = false;
+		double lootTableChosen = 0;
+		double counter = 0;
+		lootTableChosen = 0;
+		counter = 1;
 		if (itemstack.getItem() == MobLootBagsModItems.COMMONLOOTBAG.get()) {
+			lootTableChosen = Mth.nextInt(RandomSource.create(), 1, (int) ReturnLengthOfCommunBagsProcedure.execute());
 			for (String stringiterator : MainConfigFileConfiguration.COMMON_LT_NAME.get()) {
-				if (Mth.nextInt(RandomSource.create(), 1, 10) <= 5) {
+				if (counter == lootTableChosen) {
 					loot_table_name = stringiterator;
 					break;
+				} else {
+					counter = counter + 1;
 				}
 			}
 		} else if (itemstack.getItem() == MobLootBagsModItems.UNCOMMONLOOTBAG.get()) {
+			lootTableChosen = Mth.nextInt(RandomSource.create(), 1, (int) ReturnLengthOfUnCommunProcedure.execute());
 			for (String stringiterator : MainConfigFileConfiguration.UNCOMMON_LT_NAME.get()) {
-				if (Mth.nextInt(RandomSource.create(), 1, 10) <= 5) {
+				if (counter == lootTableChosen) {
 					loot_table_name = stringiterator;
 					break;
+				} else {
+					counter = counter + 1;
 				}
 			}
 		} else if (itemstack.getItem() == MobLootBagsModItems.RARELOOTBAG.get()) {
+			lootTableChosen = Mth.nextInt(RandomSource.create(), 1, (int) ReturnLengthOfRareProcedure.execute());
 			for (String stringiterator : MainConfigFileConfiguration.RARE_LT_NAME.get()) {
-				if (Mth.nextInt(RandomSource.create(), 1, 10) <= 5) {
+				if (counter == lootTableChosen) {
 					loot_table_name = stringiterator;
 					break;
+				} else {
+					counter = counter + 1;
 				}
 			}
 		} else if (itemstack.getItem() == MobLootBagsModItems.EPICLOOTBAG.get()) {
+			lootTableChosen = Mth.nextInt(RandomSource.create(), 1, (int) ReturnLengthOfEpicProcedure.execute());
 			for (String stringiterator : MainConfigFileConfiguration.EPIC_LT_NAME.get()) {
-				if (Mth.nextInt(RandomSource.create(), 1, 10) <= 5) {
+				if (counter == lootTableChosen) {
 					loot_table_name = stringiterator;
 					break;
+				} else {
+					counter = counter + 1;
 				}
 			}
 		} else if (itemstack.getItem() == MobLootBagsModItems.LEGENDARYLOOTBAG.get()) {
+			lootTableChosen = Mth.nextInt(RandomSource.create(), 1, (int) ReturnLengthOfLegendaryProcedure.execute());
 			for (String stringiterator : MainConfigFileConfiguration.LEGENDARY_LT_NAME.get()) {
-				if (Mth.nextInt(RandomSource.create(), 1, 10) <= 5) {
+				if (counter == lootTableChosen) {
 					loot_table_name = stringiterator;
 					break;
+				} else {
+					counter = counter + 1;
 				}
 			}
 		}
 		if ((loot_table_name).equals("")) {
-			loot_table_name = SecurityProcedureProcedure.execute(itemstack);
+			loot_table_name = MainConfigFileConfiguration.DEFAULT_LT_NAME.get();
 		}
-		itemGiven = false;
-		if (!world.isClientSide() && world.getServer() != null) {
-			for (ItemStack itemstackiterator : world.getServer().getLootData().getLootTable(new ResourceLocation((loot_table_name).toLowerCase(java.util.Locale.ENGLISH)))
-					.getRandomItems(new LootParams.Builder((ServerLevel) world).create(LootContextParamSets.EMPTY))) {
-				if (Mth.nextDouble(RandomSource.create(), 0, 100) <= 20) {
-					if (itemstackiterator.isStackable()) {
-						if (entity instanceof Player _player) {
-							ItemStack _setstack = itemstackiterator.copy();
-							_setstack.setCount(Mth.nextInt(RandomSource.create(), 1, (int) IsItemValuableProcedure.execute(itemstackiterator)));
-							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
-						}
-					} else {
-						if (entity instanceof Player _player) {
-							ItemStack _setstack = itemstackiterator.copy();
-							_setstack.setCount(1);
-							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
-						}
-					}
-					itemGiven = true;
-					break;
-				}
-			}
-		}
-		if (!itemGiven) {
-			if (!world.isClientSide() && world.getServer() != null) {
-				for (ItemStack itemstackiterator : world.getServer().getLootData().getLootTable(new ResourceLocation((loot_table_name).toLowerCase(java.util.Locale.ENGLISH)))
-						.getRandomItems(new LootParams.Builder((ServerLevel) world).create(LootContextParamSets.EMPTY))) {
-					if (itemstackiterator.isStackable()) {
-						if (entity instanceof Player _player) {
-							ItemStack _setstack = itemstackiterator.copy();
-							_setstack.setCount(Mth.nextInt(RandomSource.create(), 1, (int) IsItemValuableProcedure.execute(itemstackiterator)));
-							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
-						}
-					} else {
-						if (entity instanceof Player _player) {
-							ItemStack _setstack = itemstackiterator.copy();
-							_setstack.setCount(1);
-							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
-						}
-					}
-					break;
-				}
-			}
-		}
+		if (world instanceof ServerLevel _level)
+			_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+					("loot spawn ~ ~ ~ loot " + loot_table_name));
 		if (entity instanceof Player _player) {
 			ItemStack _stktoremove = itemstack;
 			_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());

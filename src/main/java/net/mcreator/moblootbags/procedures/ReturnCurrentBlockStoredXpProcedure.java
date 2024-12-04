@@ -6,7 +6,7 @@ import net.minecraft.core.BlockPos;
 
 public class ReturnCurrentBlockStoredXpProcedure {
 	public static String execute(LevelAccessor world, double x, double y, double z) {
-		return "Stored xp : " + new java.text.DecimalFormat("##.##").format(new Object() {
+		return new java.text.DecimalFormat("##").format(new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)

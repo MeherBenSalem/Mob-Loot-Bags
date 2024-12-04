@@ -2,16 +2,13 @@
   "item.mob_loot_bags.rarelootbag": "§1Rare loot bag",
   "block.mob_loot_bags.loot_bag_opener_block": "Loot Bag Opener Block",
   "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_currentvalue_3000xp": "CurrentValue 3000xp",
-  "gui.mob_loot_bags.choose_reward_gui.button_select1": "Select",
-  "gui.mob_loot_bags.choose_reward_gui.button_select2": "Select",
   "item.mob_loot_bags.commonlootbag": "Common loot bag",
   "item.mob_loot_bags.epiclootbag": "§uEpic loot bag",
+  "gui.mob_loot_bags.lootbag_recyle_block_gui.label_xp": "XP:",
   "item.mob_loot_bags.legendarylootbag": "§6Legendary loot bag",
-  "gui.mob_loot_bags.choose_reward_gui.button_select": "Select",
   "item.mob_loot_bags.uncommonlootbag": "§2Uncommon loot bag",
   "block.mob_loot_bags.loot_bag_recycle_block": "Loot Bag Recycler",
   "itemGroup.tab_loot_bags_creative_tab": "Loot Bags",
-  "item.mob_loot_bags.custom_loot_bag": "§6Selectable Loot Bag",
   "item_group.mob_loot_bags.loot_bags_creative_tab": "Loot Bags",
-  "gui.mob_loot_bags.choose_reward_gui.label_chooose_your_reward": "Choose Your Reward"
+  "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_take_out_the_xp": "Take out the xp stored"
 }

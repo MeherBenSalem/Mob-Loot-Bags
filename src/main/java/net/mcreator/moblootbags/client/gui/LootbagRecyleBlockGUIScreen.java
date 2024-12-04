@@ -43,8 +43,8 @@ public class LootbagRecyleBlockGUIScreen extends AbstractContainerScreen<Lootbag
 		this.renderBackground(guiGraphics);
 		super.render(guiGraphics, mouseX, mouseY, partialTicks);
 		this.renderTooltip(guiGraphics, mouseX, mouseY);
-		if (mouseX > leftPos + 79 && mouseX < leftPos + 96 && mouseY > topPos + 64 && mouseY < topPos + 82)
-			guiGraphics.renderTooltip(font, Component.literal(ReturnCurrentBlockStoredXpProcedure.execute(world, x, y, z)), mouseX, mouseY);
+		if (mouseX > leftPos + 81 && mouseX < leftPos + 97 && mouseY > topPos + 65 && mouseY < topPos + 81)
+			guiGraphics.renderTooltip(font, Component.translatable("gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_take_out_the_xp"), mouseX, mouseY);
 	}
 
 	@Override
@@ -67,6 +67,10 @@ public class LootbagRecyleBlockGUIScreen extends AbstractContainerScreen<Lootbag
 
 	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+		guiGraphics.drawString(this.font,
+
+				ReturnCurrentBlockStoredXpProcedure.execute(world, x, y, z), 24, 68, -16777216, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.mob_loot_bags.lootbag_recyle_block_gui.label_xp"), 8, 68, -16777216, false);
 	}
 
 	@Override

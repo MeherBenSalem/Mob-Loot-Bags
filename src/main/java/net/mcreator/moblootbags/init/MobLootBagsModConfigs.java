@@ -7,7 +7,6 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import net.mcreator.moblootbags.configuration.MainConfigFileConfiguration;
-import net.mcreator.moblootbags.configuration.ItemsConfigConfiguration;
 import net.mcreator.moblootbags.MobLootBagsMod;
 
 @Mod.EventBusSubscriber(modid = MobLootBagsMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -16,7 +15,6 @@ public class MobLootBagsModConfigs {
 	public static void register(FMLConstructModEvent event) {
 		event.enqueueWork(() -> {
 			ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MainConfigFileConfiguration.SPEC, "MobLootBags/MobsLootTables.toml");
-			ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ItemsConfigConfiguration.SPEC, "MobLootBags/ItemsConfig.toml");
 		});
 	}
 }

@@ -13,7 +13,6 @@ import net.minecraft.client.gui.screens.MenuScreens;
 
 import net.mcreator.moblootbags.client.gui.LootbagRecyleBlockGUIScreen;
 import net.mcreator.moblootbags.client.gui.LootbagOpenBlockGUIScreen;
-import net.mcreator.moblootbags.client.gui.ChooseRewardGuiScreen;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class MobLootBagsModScreens {
@@ -22,7 +21,6 @@ public class MobLootBagsModScreens {
 		event.enqueueWork(() -> {
 			MenuScreens.register(MobLootBagsModMenus.LOOTBAG_OPEN_BLOCK_GUI.get(), LootbagOpenBlockGUIScreen::new);
 			MenuScreens.register(MobLootBagsModMenus.LOOTBAG_RECYLE_BLOCK_GUI.get(), LootbagRecyleBlockGUIScreen::new);
-			MenuScreens.register(MobLootBagsModMenus.CHOOSE_REWARD_GUI.get(), ChooseRewardGuiScreen::new);
 		});
 	}
 }

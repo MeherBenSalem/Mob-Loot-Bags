@@ -13,6 +13,8 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
@@ -28,11 +30,19 @@ import net.minecraft.core.BlockPos;
 import net.mcreator.moblootbags.world.inventory.LootbagRecyleBlockGUIMenu;
 import net.mcreator.moblootbags.block.entity.LootBagRecycleBlockBlockEntity;
 
+import java.util.List;
+
 import io.netty.buffer.Unpooled;
 
 public class LootBagRecycleBlockBlock extends Block implements EntityBlock {
 	public LootBagRecycleBlockBlock() {
 		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.METAL).strength(1f, 10f));
+	}
+
+	@Override
+	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, level, list, flag);
+		list.add(Component.literal("\u00A7fRecycle unwanted \u00A79loot bags \u00A7finto \u00A7aexperience"));
 	}
 
 	@Override
