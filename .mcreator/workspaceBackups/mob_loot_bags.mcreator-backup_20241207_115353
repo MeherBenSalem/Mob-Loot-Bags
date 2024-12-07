@@ -665,7 +665,7 @@
   "workspaceSettings": {
     "modid": "mob_loot_bags",
     "modName": "Mob Loot Bags",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "description": "With each mob you defeat, you have a chance to receive a loot bag containing valuable rewards",
     "author": "NAIZO",
     "websiteURL": "https://meherbensalem.github.io",
