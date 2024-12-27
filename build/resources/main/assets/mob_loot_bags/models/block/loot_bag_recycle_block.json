@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "mob_loot_bags:block/loot_reycle_block",
-    "particle": "mob_loot_bags:block/loot_reycle_block"
-  },
-  "render_type": "solid"
-}

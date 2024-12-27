@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "mob_loot_bags:item/uncommon_lb_new"
-  }
-}
