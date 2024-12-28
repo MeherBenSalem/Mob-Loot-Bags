@@ -25,6 +25,9 @@ public class MobLootBagsModTabs {
 				tabData.accept(MobLootBagsModItems.LEGENDARYLOOTBAG.get());
 				tabData.accept(MobLootBagsModBlocks.LOOT_BAG_RECYCLE_BLOCK.get().asItem());
 				tabData.accept(MobLootBagsModBlocks.LOOT_BAG_OPENER_BLOCK.get().asItem());
+				tabData.accept(MobLootBagsModItems.RARE_GIFT.get());
+				tabData.accept(MobLootBagsModItems.EPIC_GIFT.get());
+				tabData.accept(MobLootBagsModItems.UNCOMMON_GIFT.get());
 			})
 
 					.build());

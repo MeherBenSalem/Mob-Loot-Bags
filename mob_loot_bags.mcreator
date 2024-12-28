@@ -12,7 +12,7 @@
           "src/main/java/net/mcreator/moblootbags/item/CommonlootbagItem.java"
         ]
       },
-      "path": "~/Items"
+      "path": "~/Items/LootBags"
     },
     {
       "name": "Uncommonlootbag",
@@ -26,7 +26,7 @@
           "src/main/java/net/mcreator/moblootbags/item/UncommonlootbagItem.java"
         ]
       },
-      "path": "~/Items"
+      "path": "~/Items/LootBags"
     },
     {
       "name": "Rarelootbag",
@@ -40,7 +40,7 @@
           "src/main/java/net/mcreator/moblootbags/item/RarelootbagItem.java"
         ]
       },
-      "path": "~/Items"
+      "path": "~/Items/LootBags"
     },
     {
       "name": "Epiclootbag",
@@ -54,7 +54,7 @@
           "src/main/resources/assets/mob_loot_bags/models/item/epiclootbag.json"
         ]
       },
-      "path": "~/Items"
+      "path": "~/Items/LootBags"
     },
     {
       "name": "Legendarylootbag",
@@ -68,7 +68,7 @@
           "src/main/resources/assets/mob_loot_bags/models/item/legendarylootbag.json"
         ]
       },
-      "path": "~/Items"
+      "path": "~/Items/LootBags"
     },
     {
       "name": "MainConfigFile",
@@ -564,6 +564,139 @@
         ]
       },
       "path": "~/Loot Tables"
+    },
+    {
+      "name": "UncommonLootBagRecipe",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "uncommon_loot_bag_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mob_loot_bags/recipes/uncommon_loot_bag_recipe.json"
+        ]
+      },
+      "path": "~/Recipes"
+    },
+    {
+      "name": "EpicLootBagRecipe",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "epic_loot_bag_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mob_loot_bags/recipes/epic_loot_bag_recipe.json"
+        ]
+      },
+      "path": "~/Recipes"
+    },
+    {
+      "name": "RareLootBagRecipe",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rare_loot_bag_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mob_loot_bags/recipes/rare_loot_bag_recipe.json"
+        ]
+      },
+      "path": "~/Recipes"
+    },
+    {
+      "name": "LegendaryLootBagRecipe",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "legendary_loot_bag_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mob_loot_bags/recipes/legendary_loot_bag_recipe.json"
+        ]
+      },
+      "path": "~/Recipes"
+    },
+    {
+      "name": "RareGift",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rare_gift",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/moblootbags/item/RareGiftItem.java",
+          "src/main/resources/assets/mob_loot_bags/models/item/rare_gift.json"
+        ]
+      },
+      "path": "~/Items/Gifts"
+    },
+    {
+      "name": "EpicGift",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "epic_gift",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/mob_loot_bags/models/item/epic_gift.json",
+          "src/main/java/net/mcreator/moblootbags/item/EpicGiftItem.java"
+        ]
+      },
+      "path": "~/Items/Gifts"
+    },
+    {
+      "name": "CommonGiftLootTable",
+      "type": "loottable",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "common_gift_loot_table",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mob_loot_bags/loot_tables/common_gift_loot_table.json"
+        ]
+      },
+      "path": "~/Loot Tables"
+    },
+    {
+      "name": "RareGiftLootTable",
+      "type": "loottable",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rare_gift_loot_table",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mob_loot_bags/loot_tables/rare_gift_loot_table.json"
+        ]
+      },
+      "path": "~/Loot Tables"
+    },
+    {
+      "name": "EpicGiftLootTable",
+      "type": "loottable",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "epic_gift_loot_table",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mob_loot_bags/loot_tables/epic_gift_loot_table.json"
+        ]
+      },
+      "path": "~/Loot Tables"
+    },
+    {
+      "name": "UncommonGift",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "uncommon_gift",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/mob_loot_bags/models/item/uncommon_gift.json",
+          "src/main/java/net/mcreator/moblootbags/item/UncommonGiftItem.java"
+        ]
+      },
+      "path": "~/Items/Gifts"
     }
   ],
   "variable_elements": [
@@ -588,7 +721,10 @@
       "Epiclootbag",
       "Legendarylootbag",
       "LootBagRecycleBlock",
-      "LootBagOpenerBlock"
+      "LootBagOpenerBlock",
+      "RareGift",
+      "EpicGift",
+      "UncommonGift"
     ]
   },
   "language_map": {
@@ -599,11 +735,14 @@
       "item.mob_loot_bags.commonlootbag": "Common loot bag",
       "item.mob_loot_bags.epiclootbag": "§uEpic loot bag",
       "gui.mob_loot_bags.lootbag_recyle_block_gui.label_xp": "XP:",
+      "item.mob_loot_bags.epic_gift": "Epic Gift",
       "item.mob_loot_bags.legendarylootbag": "§6Legendary loot bag",
       "item.mob_loot_bags.uncommonlootbag": "§2Uncommon loot bag",
       "block.mob_loot_bags.loot_bag_recycle_block": "Loot Bag Recycler",
       "itemGroup.tab_loot_bags_creative_tab": "Loot Bags",
+      "item.mob_loot_bags.rare_gift": "§6Legendary Gift",
       "item_group.mob_loot_bags.loot_bags_creative_tab": "Loot Bags",
+      "item.mob_loot_bags.uncommon_gift": "Uncommon Gift",
       "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_take_out_the_xp": "Take out the xp stored"
     }
   },
@@ -612,7 +751,16 @@
     "children": [
       {
         "name": "Items",
-        "children": []
+        "children": [
+          {
+            "name": "LootBags",
+            "children": []
+          },
+          {
+            "name": "Gifts",
+            "children": []
+          }
+        ]
       },
       {
         "name": "Configs",
@@ -665,7 +813,7 @@
   "workspaceSettings": {
     "modid": "mob_loot_bags",
     "modName": "Mob Loot Bags",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "description": "With each mob you defeat, you have a chance to receive a loot bag containing valuable rewards",
     "author": "NAIZO",
     "websiteURL": "https://meherbensalem.github.io",

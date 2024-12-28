@@ -13,9 +13,12 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.BlockItem;
 
 import net.mcreator.moblootbags.item.UncommonlootbagItem;
+import net.mcreator.moblootbags.item.UncommonGiftItem;
 import net.mcreator.moblootbags.item.RarelootbagItem;
+import net.mcreator.moblootbags.item.RareGiftItem;
 import net.mcreator.moblootbags.item.LegendarylootbagItem;
 import net.mcreator.moblootbags.item.EpiclootbagItem;
+import net.mcreator.moblootbags.item.EpicGiftItem;
 import net.mcreator.moblootbags.item.CommonlootbagItem;
 import net.mcreator.moblootbags.MobLootBagsMod;
 
@@ -28,6 +31,9 @@ public class MobLootBagsModItems {
 	public static final RegistryObject<Item> LEGENDARYLOOTBAG = REGISTRY.register("legendarylootbag", () -> new LegendarylootbagItem());
 	public static final RegistryObject<Item> LOOT_BAG_RECYCLE_BLOCK = block(MobLootBagsModBlocks.LOOT_BAG_RECYCLE_BLOCK);
 	public static final RegistryObject<Item> LOOT_BAG_OPENER_BLOCK = block(MobLootBagsModBlocks.LOOT_BAG_OPENER_BLOCK);
+	public static final RegistryObject<Item> RARE_GIFT = REGISTRY.register("rare_gift", () -> new RareGiftItem());
+	public static final RegistryObject<Item> EPIC_GIFT = REGISTRY.register("epic_gift", () -> new EpicGiftItem());
+	public static final RegistryObject<Item> UNCOMMON_GIFT = REGISTRY.register("uncommon_gift", () -> new UncommonGiftItem());
 
 	// Start of user code block custom items
 	// End of user code block custom items

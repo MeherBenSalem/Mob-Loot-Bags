@@ -5,10 +5,13 @@
   "item.mob_loot_bags.commonlootbag": "Common loot bag",
   "item.mob_loot_bags.epiclootbag": "§uEpic loot bag",
   "gui.mob_loot_bags.lootbag_recyle_block_gui.label_xp": "XP:",
+  "item.mob_loot_bags.epic_gift": "Epic Gift",
   "item.mob_loot_bags.legendarylootbag": "§6Legendary loot bag",
   "item.mob_loot_bags.uncommonlootbag": "§2Uncommon loot bag",
   "block.mob_loot_bags.loot_bag_recycle_block": "Loot Bag Recycler",
   "itemGroup.tab_loot_bags_creative_tab": "Loot Bags",
+  "item.mob_loot_bags.rare_gift": "§6Legendary Gift",
   "item_group.mob_loot_bags.loot_bags_creative_tab": "Loot Bags",
+  "item.mob_loot_bags.uncommon_gift": "Uncommon Gift",
   "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_take_out_the_xp": "Take out the xp stored"
 }

@@ -122,6 +122,8 @@ public class LootBagOpenerGiveToBlockProcedure {
 						counter = counter + 1;
 					}
 				}
+			} else {
+				return;
 			}
 			if ((loot_table_name).equals("")) {
 				loot_table_name = MainConfigFileConfiguration.DEFAULT_LT_NAME.get();

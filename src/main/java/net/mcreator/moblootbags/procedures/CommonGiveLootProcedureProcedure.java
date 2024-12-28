@@ -75,6 +75,12 @@ public class CommonGiveLootProcedureProcedure {
 					counter = counter + 1;
 				}
 			}
+		} else if (itemstack.getItem() == MobLootBagsModItems.UNCOMMON_GIFT.get()) {
+			loot_table_name = "mob_loot_bags:common_gift_loot_table";
+		} else if (itemstack.getItem() == MobLootBagsModItems.EPIC_GIFT.get()) {
+			loot_table_name = "mob_loot_bags:rare_gift_loot_table";
+		} else if (itemstack.getItem() == MobLootBagsModItems.RARE_GIFT.get()) {
+			loot_table_name = "mob_loot_bags:epic_gift_loot_table";
 		}
 		if ((loot_table_name).equals("")) {
 			loot_table_name = MainConfigFileConfiguration.DEFAULT_LT_NAME.get();
