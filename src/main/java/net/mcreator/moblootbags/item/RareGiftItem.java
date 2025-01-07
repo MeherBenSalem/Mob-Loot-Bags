@@ -32,7 +32,7 @@ public class RareGiftItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A7aA sweet \u00A7dholiday \u00A7atreat to keep you warm on snowy nights"));
+		list.add(Component.translatable("item.mob_loot_bags.rare_gift.description_0"));
 	}
 
 	@Override

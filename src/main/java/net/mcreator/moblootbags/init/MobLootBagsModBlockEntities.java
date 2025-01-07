@@ -20,6 +20,8 @@ public class MobLootBagsModBlockEntities {
 	public static final RegistryObject<BlockEntityType<?>> LOOT_BAG_RECYCLE_BLOCK = register("loot_bag_recycle_block", MobLootBagsModBlocks.LOOT_BAG_RECYCLE_BLOCK, LootBagRecycleBlockBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> LOOT_BAG_OPENER_BLOCK = register("loot_bag_opener_block", MobLootBagsModBlocks.LOOT_BAG_OPENER_BLOCK, LootBagOpenerBlockBlockEntity::new);
 
+	// Start of user code block custom block entities
+	// End of user code block custom block entities
 	private static RegistryObject<BlockEntityType<?>> register(String registryname, RegistryObject<Block> block, BlockEntityType.BlockEntitySupplier<?> supplier) {
 		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));
 	}

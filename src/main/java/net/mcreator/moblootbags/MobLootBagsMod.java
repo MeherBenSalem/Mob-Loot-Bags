@@ -50,6 +50,7 @@ public class MobLootBagsMod {
 		MobLootBagsModTabs.REGISTRY.register(bus);
 
 		MobLootBagsModMenus.REGISTRY.register(bus);
+
 		// Start of user code block mod init
 		// End of user code block mod init
 	}

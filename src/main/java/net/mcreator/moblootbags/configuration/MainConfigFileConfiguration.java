@@ -7,6 +7,7 @@ import java.util.List;
 public class MainConfigFileConfiguration {
 	public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 	public static final ForgeConfigSpec SPEC;
+
 	public static final ForgeConfigSpec.ConfigValue<List<? extends String>> COMMON_LT_NAME;
 	public static final ForgeConfigSpec.ConfigValue<List<? extends String>> UNCOMMON_LT_NAME;
 	public static final ForgeConfigSpec.ConfigValue<List<? extends String>> RARE_LT_NAME;

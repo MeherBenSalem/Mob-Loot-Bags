@@ -43,7 +43,7 @@ public class LootBagOpenerBlockBlock extends Block implements EntityBlock {
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A7fUses \u00A74Redstone \u00A7fsignal to open \u00A79loot bags"));
+		list.add(Component.translatable("block.mob_loot_bags.loot_bag_opener_block.description_0"));
 	}
 
 	@Override

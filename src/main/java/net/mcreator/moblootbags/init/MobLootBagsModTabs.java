@@ -28,7 +28,5 @@ public class MobLootBagsModTabs {
 				tabData.accept(MobLootBagsModItems.RARE_GIFT.get());
 				tabData.accept(MobLootBagsModItems.EPIC_GIFT.get());
 				tabData.accept(MobLootBagsModItems.UNCOMMON_GIFT.get());
-			})
-
-					.build());
+			}).build());
 }

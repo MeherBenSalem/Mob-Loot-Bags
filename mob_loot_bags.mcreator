@@ -730,10 +730,13 @@
   "language_map": {
     "en_us": {
       "item.mob_loot_bags.rarelootbag": "§1Rare loot bag",
+      "block.mob_loot_bags.loot_bag_recycle_block.description_0": "§fRecycle unwanted §9loot bags §finto §aexperience",
       "block.mob_loot_bags.loot_bag_opener_block": "Loot Bag Opener Block",
       "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_currentvalue_3000xp": "CurrentValue 3000xp",
       "item.mob_loot_bags.commonlootbag": "Common loot bag",
+      "item.mob_loot_bags.rare_gift.description_0": "§aA sweet §dholiday §atreat to keep you warm on snowy nights",
       "item.mob_loot_bags.epiclootbag": "§uEpic loot bag",
+      "block.mob_loot_bags.loot_bag_opener_block.description_0": "§fUses §4Redstone §fsignal to open §9loot bags",
       "gui.mob_loot_bags.lootbag_recyle_block_gui.label_xp": "XP:",
       "item.mob_loot_bags.epic_gift": "Epic Gift",
       "item.mob_loot_bags.legendarylootbag": "§6Legendary loot bag",
@@ -741,8 +744,10 @@
       "block.mob_loot_bags.loot_bag_recycle_block": "Loot Bag Recycler",
       "itemGroup.tab_loot_bags_creative_tab": "Loot Bags",
       "item.mob_loot_bags.rare_gift": "§6Legendary Gift",
+      "item.mob_loot_bags.epic_gift.description_0": "§aA sweet §dholiday §atreat to keep you warm on snowy nights",
       "item_group.mob_loot_bags.loot_bags_creative_tab": "Loot Bags",
       "item.mob_loot_bags.uncommon_gift": "Uncommon Gift",
+      "item.mob_loot_bags.uncommon_gift.description_0": "§aA sweet §dholiday §atreat to keep you warm on snowy nights",
       "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_take_out_the_xp": "Take out the xp stored"
     }
   },
@@ -828,5 +833,5 @@
     "credits": "no credits yet",
     "modElementsPackage": "net.mcreator.moblootbags"
   },
-  "mcreatorVersion": 202400232117
+  "mcreatorVersion": 202400452410
 }
