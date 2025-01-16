@@ -1,0 +1,11 @@
+{
+  "dramatic": {
+    "subtitle": "subtitles.dramatic",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:dramatic-sound-effect",
+        "stream": true
+      }
+    ]
+  }
+}

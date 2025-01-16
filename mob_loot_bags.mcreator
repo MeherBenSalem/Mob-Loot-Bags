@@ -8,8 +8,8 @@
       "registry_name": "commonlootbag",
       "metadata": {
         "files": [
-          "src/main/resources/assets/mob_loot_bags/models/item/commonlootbag.json",
-          "src/main/java/net/mcreator/moblootbags/item/CommonlootbagItem.java"
+          "src/main/java/tn/naizo/moblootbags/item/CommonlootbagItem.java",
+          "src/main/resources/assets/mob_loot_bags/models/item/commonlootbag.json"
         ]
       },
       "path": "~/Items/LootBags"
@@ -22,8 +22,8 @@
       "registry_name": "uncommonlootbag",
       "metadata": {
         "files": [
-          "src/main/resources/assets/mob_loot_bags/models/item/uncommonlootbag.json",
-          "src/main/java/net/mcreator/moblootbags/item/UncommonlootbagItem.java"
+          "src/main/java/tn/naizo/moblootbags/item/UncommonlootbagItem.java",
+          "src/main/resources/assets/mob_loot_bags/models/item/uncommonlootbag.json"
         ]
       },
       "path": "~/Items/LootBags"
@@ -37,7 +37,7 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/mob_loot_bags/models/item/rarelootbag.json",
-          "src/main/java/net/mcreator/moblootbags/item/RarelootbagItem.java"
+          "src/main/java/tn/naizo/moblootbags/item/RarelootbagItem.java"
         ]
       },
       "path": "~/Items/LootBags"
@@ -50,7 +50,7 @@
       "registry_name": "epiclootbag",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moblootbags/item/EpiclootbagItem.java",
+          "src/main/java/tn/naizo/moblootbags/item/EpiclootbagItem.java",
           "src/main/resources/assets/mob_loot_bags/models/item/epiclootbag.json"
         ]
       },
@@ -64,7 +64,7 @@
       "registry_name": "legendarylootbag",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moblootbags/item/LegendarylootbagItem.java",
+          "src/main/java/tn/naizo/moblootbags/item/LegendarylootbagItem.java",
           "src/main/resources/assets/mob_loot_bags/models/item/legendarylootbag.json"
         ]
       },
@@ -78,7 +78,7 @@
       "registry_name": "main_config_file",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moblootbags/configuration/MainConfigFileConfiguration.java"
+          "src/main/java/tn/naizo/moblootbags/configuration/MainConfigFileConfiguration.java"
         ]
       },
       "path": "~/Configs"
@@ -91,7 +91,7 @@
       "registry_name": "common_give_loot_procedure",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moblootbags/procedures/CommonGiveLootProcedureProcedure.java"
+          "src/main/java/tn/naizo/moblootbags/procedures/CommonGiveLootProcedureProcedure.java"
         ],
         "dependencies": [
           {
@@ -130,7 +130,7 @@
       "registry_name": "on_mob_death_drop_rate",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moblootbags/procedures/OnMobDeathDropRateProcedure.java"
+          "src/main/java/tn/naizo/moblootbags/procedures/OnMobDeathDropRateProcedure.java"
         ],
         "dependencies": [
           {
@@ -217,8 +217,8 @@
       "registry_name": "lootbag_open_block_gui",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moblootbags/client/gui/LootbagOpenBlockGUIScreen.java",
-          "src/main/java/net/mcreator/moblootbags/world/inventory/LootbagOpenBlockGUIMenu.java"
+          "src/main/java/tn/naizo/moblootbags/client/gui/LootbagOpenBlockGUIScreen.java",
+          "src/main/java/tn/naizo/moblootbags/world/inventory/LootbagOpenBlockGUIMenu.java"
         ]
       },
       "path": "~/GUI"
@@ -231,10 +231,10 @@
       "registry_name": "lootbag_recyle_block_gui",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moblootbags/world/inventory/LootbagRecyleBlockGUIMenu.java",
-          "src/main/java/net/mcreator/moblootbags/network/LootbagRecyleBlockGUISlotMessage.java",
-          "src/main/java/net/mcreator/moblootbags/client/gui/LootbagRecyleBlockGUIScreen.java",
-          "src/main/java/net/mcreator/moblootbags/network/LootbagRecyleBlockGUIButtonMessage.java"
+          "src/main/java/tn/naizo/moblootbags/world/inventory/LootbagRecyleBlockGUIMenu.java",
+          "src/main/java/tn/naizo/moblootbags/network/LootbagRecyleBlockGUISlotMessage.java",
+          "src/main/java/tn/naizo/moblootbags/network/LootbagRecyleBlockGUIButtonMessage.java",
+          "src/main/java/tn/naizo/moblootbags/client/gui/LootbagRecyleBlockGUIScreen.java"
         ]
       },
       "path": "~/GUI"
@@ -247,11 +247,11 @@
       "registry_name": "loot_bag_recycle_block",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moblootbags/block/LootBagRecycleBlockBlock.java",
+          "src/main/java/tn/naizo/moblootbags/block/entity/LootBagRecycleBlockBlockEntity.java",
           "src/main/resources/assets/mob_loot_bags/models/item/loot_bag_recycle_block.json",
           "src/main/resources/assets/mob_loot_bags/models/block/loot_bag_recycle_block.json",
           "src/main/resources/assets/mob_loot_bags/blockstates/loot_bag_recycle_block.json",
-          "src/main/java/net/mcreator/moblootbags/block/entity/LootBagRecycleBlockBlockEntity.java",
+          "src/main/java/tn/naizo/moblootbags/block/LootBagRecycleBlockBlock.java",
           "src/main/resources/data/mob_loot_bags/loot_tables/blocks/loot_bag_recycle_block.json"
         ]
       },
@@ -267,10 +267,10 @@
         "files": [
           "src/main/resources/assets/mob_loot_bags/models/item/loot_bag_opener_block.json",
           "src/main/resources/assets/mob_loot_bags/models/block/loot_bag_opener_block.json",
-          "src/main/java/net/mcreator/moblootbags/block/entity/LootBagOpenerBlockBlockEntity.java",
+          "src/main/java/tn/naizo/moblootbags/block/LootBagOpenerBlockBlock.java",
           "src/main/resources/data/mob_loot_bags/loot_tables/blocks/loot_bag_opener_block.json",
-          "src/main/java/net/mcreator/moblootbags/block/LootBagOpenerBlockBlock.java",
-          "src/main/resources/assets/mob_loot_bags/blockstates/loot_bag_opener_block.json"
+          "src/main/resources/assets/mob_loot_bags/blockstates/loot_bag_opener_block.json",
+          "src/main/java/tn/naizo/moblootbags/block/entity/LootBagOpenerBlockBlockEntity.java"
         ]
       },
       "path": "~/Blocks"
@@ -284,7 +284,7 @@
       "metadata": {
         "return_type": "number",
         "files": [
-          "src/main/java/net/mcreator/moblootbags/procedures/GiveFilledSlotNumberInBlockProcedure.java"
+          "src/main/java/tn/naizo/moblootbags/procedures/GiveFilledSlotNumberInBlockProcedure.java"
         ],
         "dependencies": [
           {
@@ -316,7 +316,7 @@
       "metadata": {
         "return_type": "string",
         "files": [
-          "src/main/java/net/mcreator/moblootbags/procedures/ReturnCurrentBlockStoredXpProcedure.java"
+          "src/main/java/tn/naizo/moblootbags/procedures/ReturnCurrentBlockStoredXpProcedure.java"
         ],
         "dependencies": [
           {
@@ -347,7 +347,7 @@
       "registry_name": "loot_bag_recycle_procedure",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moblootbags/procedures/LootBagRecycleProcedureProcedure.java"
+          "src/main/java/tn/naizo/moblootbags/procedures/LootBagRecycleProcedureProcedure.java"
         ],
         "dependencies": [
           {
@@ -382,7 +382,7 @@
       "registry_name": "take_experience_procedure",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moblootbags/procedures/TakeExperienceProcedureProcedure.java"
+          "src/main/java/tn/naizo/moblootbags/procedures/TakeExperienceProcedureProcedure.java"
         ],
         "dependencies": [
           {
@@ -455,7 +455,7 @@
       "metadata": {
         "return_type": "number",
         "files": [
-          "src/main/java/net/mcreator/moblootbags/procedures/ReturnLengthOfCommunBagsProcedure.java"
+          "src/main/java/tn/naizo/moblootbags/procedures/ReturnLengthOfCommunBagsProcedure.java"
         ],
         "dependencies": []
       },
@@ -470,7 +470,7 @@
       "metadata": {
         "return_type": "number",
         "files": [
-          "src/main/java/net/mcreator/moblootbags/procedures/ReturnLengthOfUnCommunProcedure.java"
+          "src/main/java/tn/naizo/moblootbags/procedures/ReturnLengthOfUnCommunProcedure.java"
         ],
         "dependencies": []
       },
@@ -485,7 +485,7 @@
       "metadata": {
         "return_type": "number",
         "files": [
-          "src/main/java/net/mcreator/moblootbags/procedures/ReturnLengthOfRareProcedure.java"
+          "src/main/java/tn/naizo/moblootbags/procedures/ReturnLengthOfRareProcedure.java"
         ],
         "dependencies": []
       },
@@ -500,7 +500,7 @@
       "metadata": {
         "return_type": "number",
         "files": [
-          "src/main/java/net/mcreator/moblootbags/procedures/ReturnLengthOfEpicProcedure.java"
+          "src/main/java/tn/naizo/moblootbags/procedures/ReturnLengthOfEpicProcedure.java"
         ],
         "dependencies": []
       },
@@ -515,7 +515,7 @@
       "metadata": {
         "return_type": "number",
         "files": [
-          "src/main/java/net/mcreator/moblootbags/procedures/ReturnLengthOfLegendaryProcedure.java"
+          "src/main/java/tn/naizo/moblootbags/procedures/ReturnLengthOfLegendaryProcedure.java"
         ],
         "dependencies": []
       },
@@ -529,7 +529,7 @@
       "registry_name": "loot_bag_opener_give_to_block",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/moblootbags/procedures/LootBagOpenerGiveToBlockProcedure.java"
+          "src/main/java/tn/naizo/moblootbags/procedures/LootBagOpenerGiveToBlockProcedure.java"
         ],
         "dependencies": [
           {
@@ -618,34 +618,6 @@
       "path": "~/Recipes"
     },
     {
-      "name": "RareGift",
-      "type": "item",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rare_gift",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/moblootbags/item/RareGiftItem.java",
-          "src/main/resources/assets/mob_loot_bags/models/item/rare_gift.json"
-        ]
-      },
-      "path": "~/Items/Gifts"
-    },
-    {
-      "name": "EpicGift",
-      "type": "item",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "epic_gift",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/mob_loot_bags/models/item/epic_gift.json",
-          "src/main/java/net/mcreator/moblootbags/item/EpicGiftItem.java"
-        ]
-      },
-      "path": "~/Items/Gifts"
-    },
-    {
       "name": "CommonGiftLootTable",
       "type": "loottable",
       "compiles": true,
@@ -685,29 +657,70 @@
       "path": "~/Loot Tables"
     },
     {
-      "name": "UncommonGift",
+      "name": "UnknowChest",
       "type": "item",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uncommon_gift",
+      "registry_name": "unknow_chest",
       "metadata": {
         "files": [
-          "src/main/resources/assets/mob_loot_bags/models/item/uncommon_gift.json",
-          "src/main/java/net/mcreator/moblootbags/item/UncommonGiftItem.java"
+          "src/main/resources/assets/mob_loot_bags/models/item/unknow_chest.json",
+          "src/main/java/tn/naizo/moblootbags/item/UnknowChestItem.java"
         ]
       },
-      "path": "~/Items/Gifts"
-    }
-  ],
-  "variable_elements": [
+      "path": "~/Items/LootBags"
+    },
     {
-      "name": "rewardGiven",
-      "type": "logic",
-      "scope": "player_lifetime",
-      "value": "false"
+      "name": "UnknowchestChances",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "unknowchest_chances",
+      "metadata": {
+        "files": [
+          "src/main/java/tn/naizo/moblootbags/procedures/UnknowchestChancesProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Procedures/LootBags"
     }
   ],
-  "sound_elements": [],
+  "variable_elements": [],
+  "sound_elements": [
+    {
+      "name": "dramatic",
+      "files": [
+        "dramatic-sound-effect"
+      ],
+      "category": "record",
+      "subtitle": "dramatic sound effect"
+    }
+  ],
   "tag_elements": {
     "BLOCKS:minecraft:mineable/pickaxe": [
       "~CUSTOM:LootBagRecycleBlock"
@@ -722,9 +735,7 @@
       "Legendarylootbag",
       "LootBagRecycleBlock",
       "LootBagOpenerBlock",
-      "RareGift",
-      "EpicGift",
-      "UncommonGift"
+      "UnknowChest"
     ]
   },
   "language_map": {
@@ -734,20 +745,17 @@
       "block.mob_loot_bags.loot_bag_opener_block": "Loot Bag Opener Block",
       "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_currentvalue_3000xp": "CurrentValue 3000xp",
       "item.mob_loot_bags.commonlootbag": "Common loot bag",
-      "item.mob_loot_bags.rare_gift.description_0": "§aA sweet §dholiday §atreat to keep you warm on snowy nights",
       "item.mob_loot_bags.epiclootbag": "§uEpic loot bag",
       "block.mob_loot_bags.loot_bag_opener_block.description_0": "§fUses §4Redstone §fsignal to open §9loot bags",
+      "item.mob_loot_bags.unknow_chest": "§6Unknow Chest",
       "gui.mob_loot_bags.lootbag_recyle_block_gui.label_xp": "XP:",
-      "item.mob_loot_bags.epic_gift": "Epic Gift",
+      "subtitles.dramatic": "dramatic sound effect",
       "item.mob_loot_bags.legendarylootbag": "§6Legendary loot bag",
+      "item.mob_loot_bags.unknow_chest.description_0": "§7Open to reveal surprises! Will you get §aamazing treasures§7 or face a §cdaring challenge§7? Luck is on your side... §6or is it?   ",
       "item.mob_loot_bags.uncommonlootbag": "§2Uncommon loot bag",
       "block.mob_loot_bags.loot_bag_recycle_block": "Loot Bag Recycler",
       "itemGroup.tab_loot_bags_creative_tab": "Loot Bags",
-      "item.mob_loot_bags.rare_gift": "§6Legendary Gift",
-      "item.mob_loot_bags.epic_gift.description_0": "§aA sweet §dholiday §atreat to keep you warm on snowy nights",
       "item_group.mob_loot_bags.loot_bags_creative_tab": "Loot Bags",
-      "item.mob_loot_bags.uncommon_gift": "Uncommon Gift",
-      "item.mob_loot_bags.uncommon_gift.description_0": "§aA sweet §dholiday §atreat to keep you warm on snowy nights",
       "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_take_out_the_xp": "Take out the xp stored"
     }
   },
@@ -759,10 +767,6 @@
         "children": [
           {
             "name": "LootBags",
-            "children": []
-          },
-          {
-            "name": "Gifts",
             "children": []
           }
         ]
@@ -818,20 +822,20 @@
   "workspaceSettings": {
     "modid": "mob_loot_bags",
     "modName": "Mob Loot Bags",
-    "version": "1.6.0",
+    "version": "1.7.0",
     "description": "With each mob you defeat, you have a chance to receive a loot bag containing valuable rewards",
     "author": "NAIZO",
     "websiteURL": "https://meherbensalem.github.io",
     "license": "All Rights Reserved",
     "serverSideOnly": false,
-    "modPicture": "logo",
+    "modPicture": "newlogo",
     "requiredMods": [],
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],
     "currentGenerator": "forge-1.20.1",
     "credits": "no credits yet",
-    "modElementsPackage": "net.mcreator.moblootbags"
+    "modElementsPackage": "tn.naizo.moblootbags"
   },
   "mcreatorVersion": 202400452410
 }

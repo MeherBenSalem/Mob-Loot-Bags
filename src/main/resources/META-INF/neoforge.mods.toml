@@ -4,7 +4,7 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="mob_loot_bags"
-version="1.6.0"
+version="1.7.0"
 displayName="Mob Loot Bags"
 displayURL="https://meherbensalem.github.io"
 logoFile="logo.png"
@@ -18,7 +18,7 @@ description="With each mob you defeat, you have a chance to receive a loot bag c
 [[dependencies.mob_loot_bags]]
     modId="neoforge"
     type="required"
-    versionRange="[21.1.1,)"
+    versionRange="[21.1.65,)"
     ordering="AFTER"
     side="BOTH"
 
