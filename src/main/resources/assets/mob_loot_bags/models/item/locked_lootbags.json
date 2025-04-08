@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mob_loot_bags:item/common_lb"
+    "layer0": "mob_loot_bags:item/locked_lb"
   }
 }

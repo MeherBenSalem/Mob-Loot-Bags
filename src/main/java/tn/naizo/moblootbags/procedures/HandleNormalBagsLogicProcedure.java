@@ -16,7 +16,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
-public class CommonGiveLootProcedureProcedure {
+public class HandleNormalBagsLogicProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
 		if (entity == null)
 			return;
@@ -75,6 +75,8 @@ public class CommonGiveLootProcedureProcedure {
 					counter = counter + 1;
 				}
 			}
+		} else if (itemstack.getItem() == MobLootBagsModItems.SUMMONING_LOOTBAGS.get()) {
+			loot_table_name = MainConfigFileConfiguration.SUMMONING_LT_NAME.get();
 		}
 		if ((loot_table_name).equals("")) {
 			loot_table_name = MainConfigFileConfiguration.DEFAULT_LT_NAME.get();

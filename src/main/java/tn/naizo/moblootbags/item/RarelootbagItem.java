@@ -1,7 +1,7 @@
 
 package tn.naizo.moblootbags.item;
 
-import tn.naizo.moblootbags.procedures.CommonGiveLootProcedureProcedure;
+import tn.naizo.moblootbags.procedures.HandleNormalBagsLogicProcedure;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.Rarity;
@@ -19,7 +19,7 @@ public class RarelootbagItem extends Item {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		CommonGiveLootProcedureProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, ar.getObject());
+		HandleNormalBagsLogicProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, ar.getObject());
 		return ar;
 	}
 }

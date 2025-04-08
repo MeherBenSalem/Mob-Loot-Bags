@@ -1,10 +1,7 @@
 
 package tn.naizo.moblootbags.item;
 
-import tn.naizo.moblootbags.procedures.CommonGiveLootProcedureProcedure;
-
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.api.distmarker.Dist;
+import tn.naizo.moblootbags.procedures.HandleNormalBagsLogicProcedure;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.Rarity;
@@ -20,15 +17,9 @@ public class LegendarylootbagItem extends Item {
 	}
 
 	@Override
-	@OnlyIn(Dist.CLIENT)
-	public boolean isFoil(ItemStack itemstack) {
-		return true;
-	}
-
-	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		CommonGiveLootProcedureProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, ar.getObject());
+		HandleNormalBagsLogicProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, ar.getObject());
 		return ar;
 	}
 }

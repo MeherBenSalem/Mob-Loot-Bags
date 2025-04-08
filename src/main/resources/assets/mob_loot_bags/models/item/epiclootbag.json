@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mob_loot_bags:item/epic_lb_new"
+    "layer0": "mob_loot_bags:item/epic_lb"
   }
 }

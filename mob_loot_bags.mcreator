@@ -84,45 +84,6 @@
       "path": "~/Configs"
     },
     {
-      "name": "CommonGiveLootProcedure",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "common_give_loot_procedure",
-      "metadata": {
-        "files": [
-          "src/main/java/tn/naizo/moblootbags/procedures/CommonGiveLootProcedureProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "itemstack",
-            "type": "itemstack"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/Procedures/LootBags"
-    },
-    {
       "name": "OnMobDeathDropRate",
       "type": "procedure",
       "compiles": true,
@@ -618,67 +579,76 @@
       "path": "~/Recipes"
     },
     {
-      "name": "CommonGiftLootTable",
-      "type": "loottable",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "common_gift_loot_table",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/mob_loot_bags/loot_tables/common_gift_loot_table.json"
-        ]
-      },
-      "path": "~/Loot Tables"
-    },
-    {
-      "name": "RareGiftLootTable",
-      "type": "loottable",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rare_gift_loot_table",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/mob_loot_bags/loot_tables/rare_gift_loot_table.json"
-        ]
-      },
-      "path": "~/Loot Tables"
-    },
-    {
-      "name": "EpicGiftLootTable",
-      "type": "loottable",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "epic_gift_loot_table",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/mob_loot_bags/loot_tables/epic_gift_loot_table.json"
-        ]
-      },
-      "path": "~/Loot Tables"
-    },
-    {
-      "name": "UnknowChest",
+      "name": "CursedLootbag",
       "type": "item",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "unknow_chest",
+      "registry_name": "cursed_lootbag",
       "metadata": {
         "files": [
-          "src/main/resources/assets/mob_loot_bags/models/item/unknow_chest.json",
-          "src/main/java/tn/naizo/moblootbags/item/UnknowChestItem.java"
+          "src/main/resources/assets/mob_loot_bags/models/item/cursed_lootbag.json",
+          "src/main/java/tn/naizo/moblootbags/item/CursedLootbagItem.java"
         ]
       },
       "path": "~/Items/LootBags"
     },
     {
-      "name": "UnknowchestChances",
+      "name": "LootbagTrades",
+      "type": "villagertrade",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lootbag_trades",
+      "metadata": {
+        "files": []
+      },
+      "path": "~/Loot Tables"
+    },
+    {
+      "name": "TimedLootBag",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "timed_loot_bag",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/mob_loot_bags/models/item/timed_loot_bag.json",
+          "src/main/java/tn/naizo/moblootbags/item/TimedLootBagItem.java"
+        ]
+      },
+      "path": "~/Items/LootBags"
+    },
+    {
+      "name": "TimedLootBagItemIsCraftedsmelted",
       "type": "procedure",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "unknowchest_chances",
+      "registry_name": "timed_loot_bag_item_is_craftedsmelted",
       "metadata": {
         "files": [
-          "src/main/java/tn/naizo/moblootbags/procedures/UnknowchestChancesProcedure.java"
+          "src/main/java/tn/naizo/moblootbags/procedures/TimedLootBagItemIsCraftedsmeltedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Procedures/LootBags"
+    },
+    {
+      "name": "HandleTimedLoobagLogic",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "handle_timed_loobag_logic",
+      "metadata": {
+        "files": [
+          "src/main/java/tn/naizo/moblootbags/procedures/HandleTimedLoobagLogicProcedure.java"
         ],
         "dependencies": [
           {
@@ -708,6 +678,269 @@
         ]
       },
       "path": "~/Procedures/LootBags"
+    },
+    {
+      "name": "HandleCursedLootBagLogic",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "handle_cursed_loot_bag_logic",
+      "metadata": {
+        "files": [
+          "src/main/java/tn/naizo/moblootbags/procedures/HandleCursedLootBagLogicProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Procedures/LootBags"
+    },
+    {
+      "name": "HandleNormalBagsLogic",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "handle_normal_bags_logic",
+      "metadata": {
+        "files": [
+          "src/main/java/tn/naizo/moblootbags/procedures/HandleNormalBagsLogicProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Procedures/LootBags"
+    },
+    {
+      "name": "DiamondKey",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "diamond_key",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/mob_loot_bags/models/item/diamond_key.json",
+          "src/main/java/tn/naizo/moblootbags/item/DiamondKeyItem.java"
+        ]
+      },
+      "path": "~/Items/Misc"
+    },
+    {
+      "name": "DiamondKeyRecipe",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "diamond_key_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mob_loot_bags/recipes/diamond_key_recipe.json"
+        ]
+      },
+      "path": "~/Items/Misc"
+    },
+    {
+      "name": "LockedLootbags",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "locked_lootbags",
+      "metadata": {
+        "files": [
+          "src/main/java/tn/naizo/moblootbags/item/LockedLootbagsItem.java",
+          "src/main/resources/assets/mob_loot_bags/models/item/locked_lootbags.json"
+        ]
+      },
+      "path": "~/Items/LootBags"
+    },
+    {
+      "name": "SummoningLootbags",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "summoning_lootbags",
+      "metadata": {
+        "files": [
+          "src/main/java/tn/naizo/moblootbags/item/SummoningLootbagsItem.java",
+          "src/main/resources/assets/mob_loot_bags/models/item/summoning_lootbags.json"
+        ]
+      },
+      "path": "~/Items/LootBags"
+    },
+    {
+      "name": "LegendaryLootBagDowngradeRecipe",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "legendary_loot_bag_downgrade_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mob_loot_bags/recipes/legendary_loot_bag_downgrade_recipe.json"
+        ]
+      },
+      "path": "~/Recipes"
+    },
+    {
+      "name": "EpicLootBagDowngradeRecipe",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "epic_loot_bag_downgrade_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mob_loot_bags/recipes/epic_loot_bag_downgrade_recipe.json"
+        ]
+      },
+      "path": "~/Recipes"
+    },
+    {
+      "name": "RareLootBagDowngradeRecipe",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rare_loot_bag_downgrade_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mob_loot_bags/recipes/rare_loot_bag_downgrade_recipe.json"
+        ]
+      },
+      "path": "~/Recipes"
+    },
+    {
+      "name": "UncommonLootBagDowngradeRecipe",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "uncommon_loot_bag_downgrade_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mob_loot_bags/recipes/uncommon_loot_bag_downgrade_recipe.json"
+        ]
+      },
+      "path": "~/Recipes"
+    },
+    {
+      "name": "HandleLockedLootBagLogic",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "handle_locked_loot_bag_logic",
+      "metadata": {
+        "files": [
+          "src/main/java/tn/naizo/moblootbags/procedures/HandleLockedLootBagLogicProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Procedures/LootBags"
+    },
+    {
+      "name": "TimeWarpedLootTable",
+      "type": "loottable",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "time_warped_loot_table",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mob_loot_bags/loot_tables/time_warped_loot_table.json"
+        ]
+      },
+      "path": "~/Loot Tables"
+    },
+    {
+      "name": "SummoningLootTable",
+      "type": "loottable",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "summoning_loot_table",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mob_loot_bags/loot_tables/summoning_loot_table.json"
+        ]
+      },
+      "path": "~/Loot Tables"
+    },
+    {
+      "name": "LockedLootTable",
+      "type": "loottable",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "locked_loot_table",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/mob_loot_bags/loot_tables/locked_loot_table.json"
+        ]
+      },
+      "path": "~/Loot Tables"
     }
   ],
   "variable_elements": [],
@@ -719,6 +952,22 @@
       ],
       "category": "record",
       "subtitle": "dramatic sound effect"
+    },
+    {
+      "name": "lootbag_sfx_1",
+      "files": [
+        "lootbag_1"
+      ],
+      "category": "neutral",
+      "subtitle": "lootbag_sfx_1"
+    },
+    {
+      "name": "lootbag_sfx_2",
+      "files": [
+        "lootbag_2"
+      ],
+      "category": "neutral",
+      "subtitle": "lootbag_sfx_2"
     }
   ],
   "tag_elements": {
@@ -733,30 +982,40 @@
       "Rarelootbag",
       "Epiclootbag",
       "Legendarylootbag",
+      "CursedLootbag",
+      "TimedLootBag",
+      "LockedLootbags",
+      "SummoningLootbags",
+      "DiamondKey",
       "LootBagRecycleBlock",
-      "LootBagOpenerBlock",
-      "UnknowChest"
+      "LootBagOpenerBlock"
     ]
   },
   "language_map": {
     "en_us": {
-      "block.mob_loot_bags.loot_bag_recycle_block.description_0": "§fRecycle unwanted §9loot bags §finto §aexperience",
       "item.mob_loot_bags.rarelootbag": "§1Rare loot bag",
+      "block.mob_loot_bags.loot_bag_recycle_block.description_0": "§fRecycle unwanted §9loot bags §finto §aexperience",
       "block.mob_loot_bags.loot_bag_opener_block": "Loot Bag Opener Block",
       "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_currentvalue_3000xp": "CurrentValue 3000xp",
       "item.mob_loot_bags.commonlootbag": "Common loot bag",
+      "subtitles.lootbag_sfx_1": "lootbag_sfx_1",
+      "subtitles.lootbag_sfx_2": "lootbag_sfx_2",
       "item.mob_loot_bags.epiclootbag": "§uEpic loot bag",
       "block.mob_loot_bags.loot_bag_opener_block.description_0": "§fUses §4Redstone §fsignal to open §9loot bags",
-      "item.mob_loot_bags.unknow_chest": "§6Unknow Chest",
       "gui.mob_loot_bags.lootbag_recyle_block_gui.label_xp": "XP:",
+      "item.mob_loot_bags.summoning_lootbags": "Summoning Lootbags",
       "subtitles.dramatic": "dramatic sound effect",
+      "item.mob_loot_bags.locked_lootbags": "Locked Loot bag",
       "item.mob_loot_bags.legendarylootbag": "§6Legendary loot bag",
-      "item.mob_loot_bags.unknow_chest.description_0": "§7Open to reveal surprises! Will you get §aamazing treasures§7 or face a §cdaring challenge§7? Luck is on your side... §6or is it?   ",
       "item.mob_loot_bags.uncommonlootbag": "§2Uncommon loot bag",
       "block.mob_loot_bags.loot_bag_recycle_block": "Loot Bag Recycler",
+      "item.mob_loot_bags.cursed_lootbag.description_0": "§7Open to reveal surprises! Will you get §aamazing treasures§7 or face a §cdaring challenge§7? Luck is on your side... §6or is it?   ",
+      "item.mob_loot_bags.diamond_key": "Diamond Key",
       "itemGroup.tab_loot_bags_creative_tab": "Loot Bags",
+      "item.mob_loot_bags.cursed_lootbag": "§7Cursed loot bag",
       "item_group.mob_loot_bags.loot_bags_creative_tab": "Loot Bags",
-      "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_take_out_the_xp": "Take out the xp stored"
+      "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_take_out_the_xp": "Take out the xp stored",
+      "item.mob_loot_bags.timed_loot_bag": "Timed loot bag"
     }
   },
   "foldersRoot": {
@@ -767,6 +1026,10 @@
         "children": [
           {
             "name": "LootBags",
+            "children": []
+          },
+          {
+            "name": "Misc",
             "children": []
           }
         ]
@@ -822,7 +1085,7 @@
   "workspaceSettings": {
     "modid": "mob_loot_bags",
     "modName": "Mob Loot Bags",
-    "version": "1.7.0",
+    "version": "1.8.0",
     "description": "With each mob you defeat, you have a chance to receive a loot bag containing valuable rewards",
     "author": "NAIZO",
     "websiteURL": "https://meherbensalem.github.io",

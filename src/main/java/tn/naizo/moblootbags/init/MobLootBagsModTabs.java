@@ -23,8 +23,12 @@ public class MobLootBagsModTabs {
 				tabData.accept(MobLootBagsModItems.RARELOOTBAG.get());
 				tabData.accept(MobLootBagsModItems.EPICLOOTBAG.get());
 				tabData.accept(MobLootBagsModItems.LEGENDARYLOOTBAG.get());
+				tabData.accept(MobLootBagsModItems.CURSED_LOOTBAG.get());
+				tabData.accept(MobLootBagsModItems.TIMED_LOOT_BAG.get());
+				tabData.accept(MobLootBagsModItems.LOCKED_LOOTBAGS.get());
+				tabData.accept(MobLootBagsModItems.SUMMONING_LOOTBAGS.get());
+				tabData.accept(MobLootBagsModItems.DIAMOND_KEY.get());
 				tabData.accept(MobLootBagsModBlocks.LOOT_BAG_RECYCLE_BLOCK.get().asItem());
 				tabData.accept(MobLootBagsModBlocks.LOOT_BAG_OPENER_BLOCK.get().asItem());
-				tabData.accept(MobLootBagsModItems.UNKNOW_CHEST.get());
 			}).build());
 }

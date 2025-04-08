@@ -11,9 +11,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 
-public class UncommonlootbagItem extends Item {
-	public UncommonlootbagItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.UNCOMMON));
+public class SummoningLootbagsItem extends Item {
+	public SummoningLootbagsItem() {
+		super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));
 	}
 
 	@Override
