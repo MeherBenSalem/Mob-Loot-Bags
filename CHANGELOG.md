@@ -10,7 +10,6 @@
 - Grant a **random spawn egg** upon opening
 
 ## 🧿 NEW Cursed Lootbags
-- Drop chance is now **completely random (0–100%)**.
 - Added **config option** to disable cursed lootbag drops
 - New **funny sounds** added when opening
 - Added config option to **disable cursed bag sounds**
