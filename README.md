@@ -1,4 +1,4 @@
-# Shiny LootBags Mod
+# Mob LootBags Mod
   
 **Enhancement for Minecraft that adds dynamic loot bags to the game. With each mob you defeat, you have a chance to receive a loot bag containing valuable rewards. Ranging from common resources to epic treasures, these loot bags are categorized into tiers including
 Common, Uncommon, Rare, Epic, and Legendary.** 
@@ -12,7 +12,7 @@ Explore all features, configurations, and tips on getting the most out of the **
 
 ## 💖 Sponsors List  
 *None yet* 😔  
-Want to support this project? [Become a sponsor](https://github.com/sponsors/MeherBenSalem)!  
+Want to support this project? [Become a sponsor](https://ko-fi.com/nightbeamstudio)!  
 
 ---
 
@@ -31,11 +31,11 @@ Check out my other mods for more amazing Minecraft experiences! 😊
 
 ## 🌐 Social Media & Links  
 Follow me for updates, announcements, and sneak peeks of upcoming projects:
-- **Discord**: [M3HER COMMUNITY SERVER](https://discord.gg/SAmd9fhNhr)
+- **Discord**: [NightBeam Studio COMMUNITY SERVER](https://discord.gg/SAmd9fhNhr)
 - **CurseForge**: [Download Mod](https://www.curseforge.com/minecraft/mc-mods/mob-loot-bags)
 - **Modrinth**: [Download Mod](https://modrinth.com/mod/mob-loot-bags/versions)
-- **YouTube**: [Join My Community](https://www.youtube.com/@naizo_mods)
+- **YouTube**: [Subscribe](https://www.youtube.com/@nightbeamstudio)
 
 ---
 
-Thank you for downloading and playing **Shiny LootBags**! Your feedback, suggestions, and support are always welcome.  
+Thank you for downloading and playing **Mob LootBags**! Your feedback, suggestions, and support are always welcome.  
