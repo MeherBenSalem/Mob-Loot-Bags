@@ -1,5 +1,6 @@
 package tn.naizo.moblootbags.init;
 
+import tn.naizo.moblootbags.configuration.WhiteBlackListConfigConfiguration;
 import tn.naizo.moblootbags.configuration.MainConfigFileConfiguration;
 import tn.naizo.moblootbags.MobLootBagsMod;
 
@@ -14,7 +15,8 @@ public class MobLootBagsModConfigs {
 	@SubscribeEvent
 	public static void register(FMLConstructModEvent event) {
 		event.enqueueWork(() -> {
-			ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MainConfigFileConfiguration.SPEC, "MobLootBags/MobsLootTables.toml");
+			ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, MainConfigFileConfiguration.SPEC, "MobLootBags/main.toml");
+			ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, WhiteBlackListConfigConfiguration.SPEC, "MobLootBags/whitelist.toml");
 		});
 	}
 }

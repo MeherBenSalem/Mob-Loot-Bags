@@ -66,7 +66,7 @@ public class MainConfigFileConfiguration {
 				"place structure minecraft:village_plains", "place structure minecraft:village_desert  ", "place structure minecraft:ruined_portal  ", "place structure minecraft:pillager_outpost  ", "place structure minecraft:jungle_temple  "),
 				entry -> true);
 		BUILDER.pop();
-		BUILDER.push("Bag Recycler Settings");
+		BUILDER.push("Bag Recycler XP Settings");
 		COMMON_XP = BUILDER.define("common_lb", (double) 10);
 		UNCOMMON_XP = BUILDER.define("uncommon_lb", (double) 20);
 		RARE_XP = BUILDER.define("rare_lb", (double) 40);

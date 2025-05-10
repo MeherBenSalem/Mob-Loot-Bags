@@ -95,6 +95,10 @@
         ],
         "dependencies": [
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
             "name": "sourceentity",
             "type": "entity"
           },
@@ -941,6 +945,19 @@
         ]
       },
       "path": "~/Loot Tables"
+    },
+    {
+      "name": "WhiteBlackListConfig",
+      "type": "config",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "white_black_list_config",
+      "metadata": {
+        "files": [
+          "src/main/java/tn/naizo/moblootbags/configuration/WhiteBlackListConfigConfiguration.java"
+        ]
+      },
+      "path": "~/Configs"
     }
   ],
   "variable_elements": [],
@@ -1086,7 +1103,7 @@
   "workspaceSettings": {
     "modid": "mob_loot_bags",
     "modName": "Mob Loot Bags",
-    "version": "1.8.0",
+    "version": "1.9.0",
     "description": "With each mob you defeat, you have a chance to receive a loot bag containing valuable rewards",
     "author": "NAIZO",
     "websiteURL": "https://meherbensalem.github.io",

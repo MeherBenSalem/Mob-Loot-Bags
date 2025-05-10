@@ -1,4 +1,18 @@
 =============================================
+## Changelog 1.9.0
+=============================================
+
+### 🔧 Configuration Changes
+- ✅ **Whitelist and Blacklist Support**
+  - Added support for **entity whitelisting/blacklisting** using the `NameRegistry` format (e.g. `"minecraft:cow"`).
+  - Configure which entities can drop lootbags with precision.
+
+- 📝 **Config File Updates**
+  - Renamed the main configuration file to: `main.toml`
+  - Renamed section:  
+    `Bag Recycler Settings` ➡️ **`Bag Recycler XP Settings`**
+
+=============================================
 ## Changelog 1.8.0
 =============================================
 
