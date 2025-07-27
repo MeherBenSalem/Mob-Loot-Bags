@@ -1,4 +1,16 @@
 =============================================
+## Changelog 1.10
+=============================================
+
+## Changes & Improvements
+
+- **Switched config format**: All configuration files are now `.json` instead of `.toml`.
+- **Dependency update**: Now using the powerful **Jauml** library. _(This is a required dependency!)_
+- **Live config updates**: Configs are now **dynamic** and can be changed in **real-time** without restarting or reloading.
+- **Performance boost**: Optimized the mod's performance and cleaned up around **30%** of unnecessary code.
+- 🖼**Visual refresh**: changed the mod icon to a new design.
+
+=============================================
 ## Changelog 1.9.0
 =============================================
 

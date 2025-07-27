@@ -1,7 +1,7 @@
 package tn.naizo.moblootbags.procedures;
 
 import tn.naizo.moblootbags.init.MobLootBagsModItems;
-import tn.naizo.moblootbags.configuration.MainConfigFileConfiguration;
+import tn.naizo.jauml.JaumlConfigLib;
 
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
@@ -31,7 +31,7 @@ public class LootBagRecycleProcedureProcedure {
 				return _retval.get();
 			}
 		}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot_number)).getItem() == MobLootBagsModItems.COMMONLOOTBAG.get()) {
-			addedExp = (double) MainConfigFileConfiguration.COMMON_XP.get();
+			addedExp = JaumlConfigLib.getNumberValue("mlb", "bag_recycler", "common_lb");
 		} else if ((new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -41,7 +41,7 @@ public class LootBagRecycleProcedureProcedure {
 				return _retval.get();
 			}
 		}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot_number)).getItem() == MobLootBagsModItems.UNCOMMONLOOTBAG.get()) {
-			addedExp = (double) MainConfigFileConfiguration.UNCOMMON_XP.get();
+			addedExp = JaumlConfigLib.getNumberValue("mlb", "bag_recycler", "uncommon_lb");
 		} else if ((new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -51,7 +51,7 @@ public class LootBagRecycleProcedureProcedure {
 				return _retval.get();
 			}
 		}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot_number)).getItem() == MobLootBagsModItems.RARELOOTBAG.get()) {
-			addedExp = (double) MainConfigFileConfiguration.RARE_XP.get();
+			addedExp = JaumlConfigLib.getNumberValue("mlb", "bag_recycler", "rare_lb");
 		} else if ((new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -61,7 +61,7 @@ public class LootBagRecycleProcedureProcedure {
 				return _retval.get();
 			}
 		}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot_number)).getItem() == MobLootBagsModItems.EPICLOOTBAG.get()) {
-			addedExp = (double) MainConfigFileConfiguration.EPIC_XP.get();
+			addedExp = JaumlConfigLib.getNumberValue("mlb", "bag_recycler", "epic_lb");
 		} else if ((new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -71,7 +71,7 @@ public class LootBagRecycleProcedureProcedure {
 				return _retval.get();
 			}
 		}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot_number)).getItem() == MobLootBagsModItems.LEGENDARYLOOTBAG.get()) {
-			addedExp = (double) MainConfigFileConfiguration.LEGENDARY_XP.get();
+			addedExp = JaumlConfigLib.getNumberValue("mlb", "bag_recycler", "legendary_lb");
 		} else if ((new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -81,7 +81,7 @@ public class LootBagRecycleProcedureProcedure {
 				return _retval.get();
 			}
 		}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot_number)).getItem() == MobLootBagsModItems.CURSED_LOOTBAG.get()) {
-			addedExp = (double) MainConfigFileConfiguration.CURSED_XP.get();
+			addedExp = JaumlConfigLib.getNumberValue("mlb", "bag_recycler", "cursed_lb");
 		} else if ((new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -100,9 +100,9 @@ public class LootBagRecycleProcedureProcedure {
 					return _retval.get();
 				}
 			}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot_number))) != 0) {
-				addedExp = (double) MainConfigFileConfiguration.TIMED_ENCH_XP.get();
+				addedExp = JaumlConfigLib.getNumberValue("mlb", "bag_recycler", "enchanted_timed_lb");
 			} else {
-				addedExp = (double) MainConfigFileConfiguration.TIMED_XP.get();
+				addedExp = JaumlConfigLib.getNumberValue("mlb", "bag_recycler", "timed_lb");
 			}
 		} else if ((new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
@@ -113,7 +113,7 @@ public class LootBagRecycleProcedureProcedure {
 				return _retval.get();
 			}
 		}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot_number)).getItem() == MobLootBagsModItems.LOCKED_LOOTBAGS.get()) {
-			addedExp = (double) MainConfigFileConfiguration.LOCKED_XP.get();
+			addedExp = JaumlConfigLib.getNumberValue("mlb", "bag_recycler", "locked_lb");
 		} else if ((new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -123,7 +123,7 @@ public class LootBagRecycleProcedureProcedure {
 				return _retval.get();
 			}
 		}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot_number)).getItem() == MobLootBagsModItems.SUMMONING_LOOTBAGS.get()) {
-			addedExp = (double) MainConfigFileConfiguration.SUMMONING_XP.get();
+			addedExp = JaumlConfigLib.getNumberValue("mlb", "bag_recycler", "summoning_lb");
 		} else {
 			return;
 		}

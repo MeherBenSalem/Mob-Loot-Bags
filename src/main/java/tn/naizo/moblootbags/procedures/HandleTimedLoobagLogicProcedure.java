@@ -1,6 +1,6 @@
 package tn.naizo.moblootbags.procedures;
 
-import tn.naizo.moblootbags.configuration.MainConfigFileConfiguration;
+import tn.naizo.jauml.JaumlConfigLib;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.Vec2;
@@ -22,24 +22,11 @@ public class HandleTimedLoobagLogicProcedure {
 		if (entity == null)
 			return;
 		double lootTableChosen = 0;
-		double counter = 0;
 		if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.UNBREAKING, itemstack) != 0) {
-			counter = 0;
-			for (String stringiterator : MainConfigFileConfiguration.LUCKY_LIST.get()) {
-				counter = counter + 1;
-			}
-			lootTableChosen = Mth.nextInt(RandomSource.create(), 0, (int) counter);
-			counter = 0;
-			for (String stringiterator : MainConfigFileConfiguration.LUCKY_LIST.get()) {
-				if (counter == lootTableChosen) {
-					if (world instanceof ServerLevel _level)
-						_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-								stringiterator);
-					break;
-				} else {
-					counter = counter + 1;
-				}
-			}
+			lootTableChosen = Mth.nextInt(RandomSource.create(), 0, (int) (JaumlConfigLib.getNumberValue("mlb", "special_bags", "events") - 1));
+			if (world instanceof ServerLevel _level)
+				_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+						JaumlConfigLib.getArrayElement("mlb", "special_bags", "events", ((int) lootTableChosen)));
 			if (entity instanceof Player _player) {
 				ItemStack _stktoremove = itemstack;
 				_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());

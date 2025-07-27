@@ -1,9 +1,7 @@
 package tn.naizo.moblootbags.procedures;
 
 import tn.naizo.moblootbags.init.MobLootBagsModItems;
-import tn.naizo.moblootbags.configuration.WhiteBlackListConfigConfiguration;
-import tn.naizo.moblootbags.configuration.MainConfigFileConfiguration;
-import tn.naizo.moblootbags.MobLootBagsMod;
+import tn.naizo.jauml.JaumlConfigLib;
 
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.fml.common.Mod;
@@ -43,76 +41,64 @@ public class OnMobDeathDropRateProcedure {
 		boolean continueDrop = false;
 		continueDrop = false;
 		if (sourceentity instanceof Player || sourceentity instanceof ServerPlayer) {
-			if (WhiteBlackListConfigConfiguration.ENABLE_WHITE.get()) {
-				for (String stringiterator : WhiteBlackListConfigConfiguration.WHITELIST.get()) {
-					if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals(stringiterator)) {
-						continueDrop = true;
-						break;
-					}
+			if (JaumlConfigLib.getBooleanValue("mlb", "whitelist", "enable")) {
+				continueDrop = false;
+				if (JaumlConfigLib.stringExistsInArray("mlb", "whitelist", "mobs", (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()))) {
+					continueDrop = true;
 				}
-			} else if (WhiteBlackListConfigConfiguration.ENABLE_BLACK.get()) {
+			} else if (JaumlConfigLib.getBooleanValue("mlb", "blacklist", "enable")) {
 				continueDrop = true;
-				for (String stringiterator : WhiteBlackListConfigConfiguration.BLACKLIST.get()) {
-					if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals(stringiterator)) {
-						continueDrop = false;
-						break;
-					}
+				if (JaumlConfigLib.stringExistsInArray("mlb", "blacklist", "mobs", (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()))) {
+					continueDrop = false;
 				}
 			} else {
 				continueDrop = true;
 			}
 		}
-		MobLootBagsMod.LOGGER.info(("" + continueDrop));
 		if (continueDrop) {
-			if (Mth.nextInt(RandomSource.create(), 1, 100) <= (double) MainConfigFileConfiguration.DROP_CHANCE_OVERALL.get()) {
+			if (Mth.nextInt(RandomSource.create(), 1, 100) <= JaumlConfigLib.getNumberValue("mlb", "drop_rates", "drop_chance")) {
 				itemDroped = Mth.nextDouble(RandomSource.create(), 1, 100);
-				if (itemDroped <= (double) MainConfigFileConfiguration.LEGENDARY_DROP_RATE.get()) {
-					MobLootBagsMod.LOGGER.info("legendary");
+				if (itemDroped <= JaumlConfigLib.getNumberValue("mlb", "drop_rates", "legendary_drop_rate")) {
 					if (world instanceof ServerLevel _level) {
 						ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(MobLootBagsModItems.LEGENDARYLOOTBAG.get()));
 						entityToSpawn.setPickUpDelay(10);
 						_level.addFreshEntity(entityToSpawn);
 					}
-				} else if (itemDroped <= (double) MainConfigFileConfiguration.EPIC_DROP_RATE.get()) {
-					MobLootBagsMod.LOGGER.info("epic");
+				} else if (itemDroped <= JaumlConfigLib.getNumberValue("mlb", "drop_rates", "epic_drop_rate")) {
 					if (world instanceof ServerLevel _level) {
 						ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(MobLootBagsModItems.EPICLOOTBAG.get()));
 						entityToSpawn.setPickUpDelay(10);
 						_level.addFreshEntity(entityToSpawn);
 					}
-				} else if (itemDroped <= (double) MainConfigFileConfiguration.RARE_DROP_RATE.get()) {
-					if (Mth.nextInt(RandomSource.create(), 1, 100) <= (double) MainConfigFileConfiguration.TIMED_DROP_RATE.get()) {
-						MobLootBagsMod.LOGGER.info("timed");
+				} else if (itemDroped <= JaumlConfigLib.getNumberValue("mlb", "drop_rates", "rare_drop_rate")) {
+					if (Mth.nextInt(RandomSource.create(), 1, 100) <= JaumlConfigLib.getNumberValue("mlb", "drop_rates", "timed_drop_rate")) {
 						if (world instanceof ServerLevel _level) {
 							ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(MobLootBagsModItems.TIMED_LOOT_BAG.get()));
 							entityToSpawn.setPickUpDelay(10);
 							_level.addFreshEntity(entityToSpawn);
 						}
 					} else {
-						MobLootBagsMod.LOGGER.info("rare");
 						if (world instanceof ServerLevel _level) {
 							ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(MobLootBagsModItems.RARELOOTBAG.get()));
 							entityToSpawn.setPickUpDelay(10);
 							_level.addFreshEntity(entityToSpawn);
 						}
 					}
-				} else if (itemDroped <= (double) MainConfigFileConfiguration.UNCOMMON_DROP_RATE.get()) {
-					MobLootBagsMod.LOGGER.info("uncommon");
+				} else if (itemDroped <= JaumlConfigLib.getNumberValue("mlb", "drop_rates", "uncommon_drop_rate")) {
 					if (world instanceof ServerLevel _level) {
 						ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(MobLootBagsModItems.UNCOMMONLOOTBAG.get()));
 						entityToSpawn.setPickUpDelay(10);
 						_level.addFreshEntity(entityToSpawn);
 					}
 				} else {
-					MobLootBagsMod.LOGGER.info("common");
 					if (world instanceof ServerLevel _level) {
 						ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(MobLootBagsModItems.COMMONLOOTBAG.get()));
 						entityToSpawn.setPickUpDelay(10);
 						_level.addFreshEntity(entityToSpawn);
 					}
 				}
-				if (MainConfigFileConfiguration.ENABLE_CURSED_BAG.get()) {
-					if (Mth.nextInt(RandomSource.create(), 0, 100) <= (double) MainConfigFileConfiguration.CURSED_DROP_RATE.get()) {
+				if (JaumlConfigLib.getBooleanValue("mlb", "special_bags", "enable_cursed_bag")) {
+					if (Mth.nextInt(RandomSource.create(), 0, 100) <= JaumlConfigLib.getNumberValue("mlb", "drop_rates", "cursed_drop_rate")) {
 						if (world instanceof ServerLevel _level) {
 							ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(MobLootBagsModItems.CURSED_LOOTBAG.get()));
 							entityToSpawn.setPickUpDelay(10);

@@ -1,6 +1,6 @@
 {
-  "block.mob_loot_bags.loot_bag_opener_block": "Loot Bag Opener Block",
   "itemGroup.mob_loot_bags.loot_bags_creative_tab": "Loot Bags",
+  "block.mob_loot_bags.loot_bag_opener_block": "Loot Bag Opener Block",
   "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_currentvalue_3000xp": "CurrentValue 3000xp",
   "block.mob_loot_bags.loot_bag_opener_block.description_0": "§fUses §4Redstone §fsignal to open §9loot bags",
   "item.mob_loot_bags.summoning_lootbags": "Summoning Lootbags",

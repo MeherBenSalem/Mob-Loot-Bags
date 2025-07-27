@@ -71,19 +71,6 @@
       "path": "~/Items/LootBags"
     },
     {
-      "name": "MainConfigFile",
-      "type": "config",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "main_config_file",
-      "metadata": {
-        "files": [
-          "src/main/java/tn/naizo/moblootbags/configuration/MainConfigFileConfiguration.java"
-        ]
-      },
-      "path": "~/Configs"
-    },
-    {
       "name": "OnMobDeathDropRate",
       "type": "procedure",
       "compiles": true,
@@ -196,8 +183,8 @@
       "registry_name": "lootbag_recyle_block_gui",
       "metadata": {
         "files": [
-          "src/main/java/tn/naizo/moblootbags/world/inventory/LootbagRecyleBlockGUIMenu.java",
           "src/main/java/tn/naizo/moblootbags/network/LootbagRecyleBlockGUISlotMessage.java",
+          "src/main/java/tn/naizo/moblootbags/world/inventory/LootbagRecyleBlockGUIMenu.java",
           "src/main/java/tn/naizo/moblootbags/network/LootbagRecyleBlockGUIButtonMessage.java",
           "src/main/java/tn/naizo/moblootbags/client/gui/LootbagRecyleBlockGUIScreen.java"
         ]
@@ -212,12 +199,12 @@
       "registry_name": "loot_bag_recycle_block",
       "metadata": {
         "files": [
-          "src/main/java/tn/naizo/moblootbags/block/entity/LootBagRecycleBlockBlockEntity.java",
-          "src/main/resources/assets/mob_loot_bags/models/item/loot_bag_recycle_block.json",
-          "src/main/resources/assets/mob_loot_bags/models/block/loot_bag_recycle_block.json",
-          "src/main/resources/assets/mob_loot_bags/blockstates/loot_bag_recycle_block.json",
           "src/main/java/tn/naizo/moblootbags/block/LootBagRecycleBlockBlock.java",
-          "src/main/resources/data/mob_loot_bags/loot_tables/blocks/loot_bag_recycle_block.json"
+          "src/main/resources/data/mob_loot_bags/loot_tables/blocks/loot_bag_recycle_block.json",
+          "src/main/resources/assets/mob_loot_bags/models/item/loot_bag_recycle_block.json",
+          "src/main/resources/assets/mob_loot_bags/blockstates/loot_bag_recycle_block.json",
+          "src/main/java/tn/naizo/moblootbags/block/entity/LootBagRecycleBlockBlockEntity.java",
+          "src/main/resources/assets/mob_loot_bags/models/block/loot_bag_recycle_block.json"
         ]
       },
       "path": "~/Blocks"
@@ -230,12 +217,12 @@
       "registry_name": "loot_bag_opener_block",
       "metadata": {
         "files": [
-          "src/main/resources/assets/mob_loot_bags/models/item/loot_bag_opener_block.json",
-          "src/main/resources/assets/mob_loot_bags/models/block/loot_bag_opener_block.json",
           "src/main/java/tn/naizo/moblootbags/block/LootBagOpenerBlockBlock.java",
           "src/main/resources/data/mob_loot_bags/loot_tables/blocks/loot_bag_opener_block.json",
-          "src/main/resources/assets/mob_loot_bags/blockstates/loot_bag_opener_block.json",
-          "src/main/java/tn/naizo/moblootbags/block/entity/LootBagOpenerBlockBlockEntity.java"
+          "src/main/resources/assets/mob_loot_bags/models/block/loot_bag_opener_block.json",
+          "src/main/resources/assets/mob_loot_bags/models/item/loot_bag_opener_block.json",
+          "src/main/java/tn/naizo/moblootbags/block/entity/LootBagOpenerBlockBlockEntity.java",
+          "src/main/resources/assets/mob_loot_bags/blockstates/loot_bag_opener_block.json"
         ]
       },
       "path": "~/Blocks"
@@ -410,81 +397,6 @@
         "files": []
       },
       "path": "~/Recipes"
-    },
-    {
-      "name": "ReturnLengthOfCommunBags",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "return_length_of_commun_bags",
-      "metadata": {
-        "return_type": "number",
-        "files": [
-          "src/main/java/tn/naizo/moblootbags/procedures/ReturnLengthOfCommunBagsProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/Procedures/LootBags/ReturnLengthsOfLists"
-    },
-    {
-      "name": "ReturnLengthOfUnCommun",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "return_length_of_un_commun",
-      "metadata": {
-        "return_type": "number",
-        "files": [
-          "src/main/java/tn/naizo/moblootbags/procedures/ReturnLengthOfUnCommunProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/Procedures/LootBags/ReturnLengthsOfLists"
-    },
-    {
-      "name": "ReturnLengthOfRare",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "return_length_of_rare",
-      "metadata": {
-        "return_type": "number",
-        "files": [
-          "src/main/java/tn/naizo/moblootbags/procedures/ReturnLengthOfRareProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/Procedures/LootBags/ReturnLengthsOfLists"
-    },
-    {
-      "name": "ReturnLengthOfEpic",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "return_length_of_epic",
-      "metadata": {
-        "return_type": "number",
-        "files": [
-          "src/main/java/tn/naizo/moblootbags/procedures/ReturnLengthOfEpicProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/Procedures/LootBags/ReturnLengthsOfLists"
-    },
-    {
-      "name": "ReturnLengthOfLegendary",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "return_length_of_legendary",
-      "metadata": {
-        "return_type": "number",
-        "files": [
-          "src/main/java/tn/naizo/moblootbags/procedures/ReturnLengthOfLegendaryProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/Procedures/LootBags/ReturnLengthsOfLists"
     },
     {
       "name": "LootBagOpenerGiveToBlock",
@@ -810,8 +722,8 @@
       "registry_name": "summoning_lootbags",
       "metadata": {
         "files": [
-          "src/main/java/tn/naizo/moblootbags/item/SummoningLootbagsItem.java",
-          "src/main/resources/assets/mob_loot_bags/models/item/summoning_lootbags.json"
+          "src/main/resources/assets/mob_loot_bags/models/item/summoning_lootbags.json",
+          "src/main/java/tn/naizo/moblootbags/item/SummoningLootbagsItem.java"
         ]
       },
       "path": "~/Items/LootBags"
@@ -947,15 +859,86 @@
       "path": "~/Loot Tables"
     },
     {
-      "name": "WhiteBlackListConfig",
-      "type": "config",
+      "name": "CreateConfigLootBags",
+      "type": "procedure",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "white_black_list_config",
+      "registry_name": "create_config_loot_bags",
       "metadata": {
         "files": [
-          "src/main/java/tn/naizo/moblootbags/configuration/WhiteBlackListConfigConfiguration.java"
-        ]
+          "src/main/java/tn/naizo/moblootbags/procedures/CreateConfigLootBagsProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/Configs"
+    },
+    {
+      "name": "CreateConfigWhitelist",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "create_config_whitelist",
+      "metadata": {
+        "files": [
+          "src/main/java/tn/naizo/moblootbags/procedures/CreateConfigWhitelistProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/Configs"
+    },
+    {
+      "name": "CreateConfigBlacklist",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "create_config_blacklist",
+      "metadata": {
+        "files": [
+          "src/main/java/tn/naizo/moblootbags/procedures/CreateConfigBlacklistProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/Configs"
+    },
+    {
+      "name": "CreateDropRatesConfig",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "create_drop_rates_config",
+      "metadata": {
+        "files": [
+          "src/main/java/tn/naizo/moblootbags/procedures/CreateDropRatesConfigProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/Configs"
+    },
+    {
+      "name": "CreateConfigEvents",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "create_config_events",
+      "metadata": {
+        "files": [
+          "src/main/java/tn/naizo/moblootbags/procedures/CreateConfigEventsProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/Configs"
+    },
+    {
+      "name": "CreateRecycleBlockConfig",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "create_recycle_block_config",
+      "metadata": {
+        "files": [
+          "src/main/java/tn/naizo/moblootbags/procedures/CreateRecycleBlockConfigProcedure.java"
+        ],
+        "dependencies": []
       },
       "path": "~/Configs"
     }
@@ -1010,8 +993,8 @@
   },
   "language_map": {
     "en_us": {
-      "block.mob_loot_bags.loot_bag_opener_block": "Loot Bag Opener Block",
       "itemGroup.mob_loot_bags.loot_bags_creative_tab": "Loot Bags",
+      "block.mob_loot_bags.loot_bag_opener_block": "Loot Bag Opener Block",
       "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_currentvalue_3000xp": "CurrentValue 3000xp",
       "block.mob_loot_bags.loot_bag_opener_block.description_0": "§fUses §4Redstone §fsignal to open §9loot bags",
       "item.mob_loot_bags.summoning_lootbags": "Summoning Lootbags",
@@ -1061,12 +1044,7 @@
         "children": [
           {
             "name": "LootBags",
-            "children": [
-              {
-                "name": "ReturnLengthsOfLists",
-                "children": []
-              }
-            ]
+            "children": []
           },
           {
             "name": "Mob",
@@ -1103,17 +1081,19 @@
   "workspaceSettings": {
     "modid": "mob_loot_bags",
     "modName": "Mob Loot Bags",
-    "version": "1.9.0",
+    "version": "1.10",
     "description": "With each mob you defeat, you have a chance to receive a loot bag containing valuable rewards",
     "author": "NAIZO",
     "websiteURL": "https://meherbensalem.github.io",
     "license": "All Rights Reserved",
     "serverSideOnly": false,
-    "modPicture": "newlogo",
+    "modPicture": "logo",
     "requiredMods": [],
     "dependencies": [],
     "dependants": [],
-    "mcreatorDependencies": [],
+    "mcreatorDependencies": [
+      "jauml"
+    ],
     "currentGenerator": "forge-1.20.1",
     "credits": "no credits yet",
     "modElementsPackage": "tn.naizo.moblootbags"

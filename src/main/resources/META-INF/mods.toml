@@ -4,7 +4,7 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="mob_loot_bags"
-version="1.9.0"
+version="1.10"
 displayName="Mob Loot Bags"
 displayURL="https://meherbensalem.github.io"
 logoFile="logo.png"
@@ -23,6 +23,19 @@ description="With each mob you defeat, you have a chance to receive a loot bag c
     side="BOTH"
 
 
+[[dependencies.mob_loot_bags]]
+    modId="jauml"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.memory_of_the_past]]
+    modId="jauml"
+    mandatory=true
+    versionRange="[1.0.3,)"
+    ordering="NONE"
+    side="BOTH"
 
 
 # Start of user code block dependencies configuration
