@@ -2,7 +2,7 @@
 ## Changelog 1.10
 =============================================
 
-##CONFIG FILE NAME CHANGE `Mob Lootbags` -> `mlb`
+## CONFIG FILE NAME CHANGE `Mob Lootbags` -> `mlb`
 
 ## ✨ Changes & Improvements
 
