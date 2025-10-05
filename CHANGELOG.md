@@ -1,4 +1,11 @@
 =============================================
+## Changelog 1.10.1
+=============================================
+
+- 🐞 **Bug Fix:** Loot Bags now correctly drop items.  
+- ⚡ **Improvement:** Left-clicking the Loot Bag Recycler block will now release XP orbs if it contains stored XP.
+
+=============================================
 ## Changelog 1.10
 =============================================
 
