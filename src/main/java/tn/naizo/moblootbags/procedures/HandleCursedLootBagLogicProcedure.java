@@ -35,25 +35,25 @@ public class HandleCursedLootBagLogicProcedure {
 			if (lootTableChosen == 2) {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("mob_loot_bags:dramatic")), SoundSource.RECORDS, 1, 1);
+						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.parse("mob_loot_bags:dramatic")), SoundSource.RECORDS, 1, 1);
 					} else {
-						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("mob_loot_bags:dramatic")), SoundSource.RECORDS, 1, 1, false);
+						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.parse("mob_loot_bags:dramatic")), SoundSource.RECORDS, 1, 1, false);
 					}
 				}
 			} else if (lootTableChosen == 1) {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("mob_loot_bags:lootbag_sfx_1")), SoundSource.RECORDS, 1, 1);
+						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.parse("mob_loot_bags:lootbag_sfx_1")), SoundSource.RECORDS, 1, 1);
 					} else {
-						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("mob_loot_bags:lootbag_sfx_1")), SoundSource.RECORDS, 1, 1, false);
+						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.parse("mob_loot_bags:lootbag_sfx_1")), SoundSource.RECORDS, 1, 1, false);
 					}
 				}
 			} else {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("mob_loot_bags:lootbag_sfx_2")), SoundSource.RECORDS, 1, 1);
+						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.parse("mob_loot_bags:lootbag_sfx_2")), SoundSource.RECORDS, 1, 1);
 					} else {
-						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("mob_loot_bags:lootbag_sfx_2")), SoundSource.RECORDS, 1, 1, false);
+						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(ResourceLocation.parse("mob_loot_bags:lootbag_sfx_2")), SoundSource.RECORDS, 1, 1, false);
 					}
 				}
 			}

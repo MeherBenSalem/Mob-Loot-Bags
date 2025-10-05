@@ -1,4 +1,3 @@
-
 /*
  *	MCreator note: This file will be REGENERATED on each build.
  */
@@ -22,5 +21,9 @@ public class MobLootBagsModScreens {
 			MenuScreens.register(MobLootBagsModMenus.LOOTBAG_OPEN_BLOCK_GUI.get(), LootbagOpenBlockGUIScreen::new);
 			MenuScreens.register(MobLootBagsModMenus.LOOTBAG_RECYLE_BLOCK_GUI.get(), LootbagRecyleBlockGUIScreen::new);
 		});
+	}
+
+	public interface ScreenAccessor {
+		void updateMenuState(int elementType, String name, Object elementState);
 	}
 }

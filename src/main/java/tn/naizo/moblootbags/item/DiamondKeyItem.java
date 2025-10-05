@@ -1,4 +1,3 @@
-
 package tn.naizo.moblootbags.item;
 
 import net.minecraft.world.item.Rarity;

@@ -56,7 +56,7 @@ public class OnMobDeathDropRateProcedure {
 			}
 		}
 		if (continueDrop) {
-			if (Mth.nextInt(RandomSource.create(), 1, 100) <= JaumlConfigLib.getNumberValue("mlb", "drop_rates", "drop_chance")) {
+			if (Mth.nextInt(RandomSource.create(), 1, 100) <= JaumlConfigLib.getNumberValue("mlb", "drop_rates", "drop_chance_overall")) {
 				itemDroped = Mth.nextDouble(RandomSource.create(), 1, 100);
 				if (itemDroped <= JaumlConfigLib.getNumberValue("mlb", "drop_rates", "legendary_drop_rate")) {
 					if (world instanceof ServerLevel _level) {

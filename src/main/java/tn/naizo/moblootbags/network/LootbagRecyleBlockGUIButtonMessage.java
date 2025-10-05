@@ -1,7 +1,5 @@
-
 package tn.naizo.moblootbags.network;
 
-import tn.naizo.moblootbags.world.inventory.LootbagRecyleBlockGUIMenu;
 import tn.naizo.moblootbags.procedures.TakeExperienceProcedureProcedure;
 import tn.naizo.moblootbags.MobLootBagsMod;
 
@@ -16,7 +14,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
 import java.util.function.Supplier;
-import java.util.HashMap;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class LootbagRecyleBlockGUIButtonMessage {
@@ -58,7 +55,6 @@ public class LootbagRecyleBlockGUIButtonMessage {
 
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
 		Level world = entity.level();
-		HashMap guistate = LootbagRecyleBlockGUIMenu.guistate;
 		// security measure to prevent arbitrary chunk generation
 		if (!world.hasChunkAt(new BlockPos(x, y, z)))
 			return;

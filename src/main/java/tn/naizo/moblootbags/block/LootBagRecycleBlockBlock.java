@@ -1,7 +1,7 @@
-
 package tn.naizo.moblootbags.block;
 
 import tn.naizo.moblootbags.world.inventory.LootbagRecyleBlockGUIMenu;
+import tn.naizo.moblootbags.procedures.LootBagRecycleBlockBlockDestroyedByPlayerProcedure;
 import tn.naizo.moblootbags.block.entity.LootBagRecycleBlockBlockEntity;
 
 import net.minecraftforge.network.NetworkHooks;
@@ -36,7 +36,7 @@ import io.netty.buffer.Unpooled;
 
 public class LootBagRecycleBlockBlock extends Block implements EntityBlock {
 	public LootBagRecycleBlockBlock() {
-		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.METAL).strength(1f, 10f));
+		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(1f, 10f).instrument(NoteBlockInstrument.BASEDRUM));
 	}
 
 	@Override
@@ -48,6 +48,12 @@ public class LootBagRecycleBlockBlock extends Block implements EntityBlock {
 	@Override
 	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
 		return 15;
+	}
+
+	@Override
+	public void attack(BlockState blockstate, Level world, BlockPos pos, Player entity) {
+		super.attack(blockstate, world, pos, entity);
+		LootBagRecycleBlockBlockDestroyedByPlayerProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	@Override

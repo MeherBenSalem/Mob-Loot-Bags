@@ -941,6 +941,37 @@
         "dependencies": []
       },
       "path": "~/Configs"
+    },
+    {
+      "name": "LootBagRecycleBlockBlockDestroyedByPlayer",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "loot_bag_recycle_block_block_destroyed_by_player",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/tn/naizo/moblootbags/procedures/LootBagRecycleBlockBlockDestroyedByPlayerProcedure.java"
+        ]
+      },
+      "path": "~/Procedures/Blocks"
     }
   ],
   "variable_elements": [],
@@ -993,8 +1024,8 @@
   },
   "language_map": {
     "en_us": {
-      "itemGroup.mob_loot_bags.loot_bags_creative_tab": "Loot Bags",
       "block.mob_loot_bags.loot_bag_opener_block": "Loot Bag Opener Block",
+      "itemGroup.mob_loot_bags.loot_bags_creative_tab": "Loot Bags",
       "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_currentvalue_3000xp": "CurrentValue 3000xp",
       "block.mob_loot_bags.loot_bag_opener_block.description_0": "§fUses §4Redstone §fsignal to open §9loot bags",
       "item.mob_loot_bags.summoning_lootbags": "Summoning Lootbags",
@@ -1018,6 +1049,23 @@
       "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_take_out_the_xp": "Take out the xp stored",
       "item.mob_loot_bags.timed_loot_bag": "Timed loot bag"
     }
+  },
+  "metadata": {
+    "files": [
+      "src/main/resources/assets/mob_loot_bags/sounds.json",
+      "src/main/resources/pack.mcmeta",
+      "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModTabs.java",
+      "src/main/resources/META-INF/mods.toml",
+      "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModSounds.java",
+      "src/main/java/tn/naizo/moblootbags/MobLootBagsMod.java",
+      "src/main/java/tn/naizo/moblootbags/network/MenuStateUpdateMessage.java",
+      "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModScreens.java",
+      "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModMenus.java",
+      "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModTrades.java",
+      "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModBlocks.java",
+      "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModBlockEntities.java",
+      "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModItems.java"
+    ]
   },
   "foldersRoot": {
     "name": "~",
@@ -1081,14 +1129,16 @@
   "workspaceSettings": {
     "modid": "mob_loot_bags",
     "modName": "Mob Loot Bags",
-    "version": "1.10",
+    "version": "1.10.1",
     "description": "With each mob you defeat, you have a chance to receive a loot bag containing valuable rewards",
     "author": "NAIZO",
     "websiteURL": "https://meherbensalem.github.io",
     "license": "All Rights Reserved",
     "serverSideOnly": false,
     "modPicture": "logo",
-    "requiredMods": [],
+    "requiredMods": [
+      "jauml"
+    ],
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [
@@ -1098,5 +1148,5 @@
     "credits": "no credits yet",
     "modElementsPackage": "tn.naizo.moblootbags"
   },
-  "mcreatorVersion": 202400452410
+  "mcreatorVersion": 202500228610
 }

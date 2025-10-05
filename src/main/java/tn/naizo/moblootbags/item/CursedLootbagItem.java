@@ -1,4 +1,3 @@
-
 package tn.naizo.moblootbags.item;
 
 import tn.naizo.moblootbags.procedures.HandleCursedLootBagLogicProcedure;

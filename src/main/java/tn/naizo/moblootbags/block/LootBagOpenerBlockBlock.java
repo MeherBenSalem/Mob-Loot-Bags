@@ -1,4 +1,3 @@
-
 package tn.naizo.moblootbags.block;
 
 import tn.naizo.moblootbags.world.inventory.LootbagOpenBlockGUIMenu;
@@ -37,7 +36,7 @@ import io.netty.buffer.Unpooled;
 
 public class LootBagOpenerBlockBlock extends Block implements EntityBlock {
 	public LootBagOpenerBlockBlock() {
-		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.METAL).strength(1f, 10f));
+		super(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(1f, 10f).instrument(NoteBlockInstrument.BASEDRUM));
 	}
 
 	@Override
