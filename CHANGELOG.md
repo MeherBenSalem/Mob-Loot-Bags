@@ -2,6 +2,8 @@
 ## Changelog 1.10
 =============================================
 
+## CONFIG FILE NAME CHANGE `Mob Lootbags` -> `mlb`, thanks @Alkeari
+
 ## ✨ Changes & Improvements
 
 - 🔁 **Switched config format**: All configuration files are now `.json` instead of `.toml`.
