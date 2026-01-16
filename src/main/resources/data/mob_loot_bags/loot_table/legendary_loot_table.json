@@ -13,7 +13,7 @@
           "weight": 3,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
@@ -27,15 +27,14 @@
           "weight": 5,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
               }
             },
             {
-              "function": "enchant_with_levels",
-              "treasure": true,
+              "function": "minecraft:enchant_with_levels",
               "levels": {
                 "min": 60,
                 "max": 70
@@ -49,7 +48,7 @@
           "weight": 15,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 10,
                 "max": 20
@@ -63,7 +62,7 @@
           "weight": 8,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
@@ -85,7 +84,7 @@
           "weight": 5,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
@@ -99,15 +98,14 @@
           "weight": 5,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
               }
             },
             {
-              "function": "enchant_with_levels",
-              "treasure": true,
+              "function": "minecraft:enchant_with_levels",
               "levels": {
                 "min": 60,
                 "max": 70
@@ -121,7 +119,7 @@
           "weight": 15,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 5,
                 "max": 10
@@ -135,15 +133,14 @@
           "weight": 6,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
               }
             },
             {
-              "function": "enchant_with_levels",
-              "treasure": true,
+              "function": "minecraft:enchant_with_levels",
               "levels": {
                 "min": 90,
                 "max": 100
@@ -157,7 +154,7 @@
           "weight": 4,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 2
@@ -179,15 +176,14 @@
           "weight": 10,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
               }
             },
             {
-              "function": "enchant_with_levels",
-              "treasure": true,
+              "function": "minecraft:enchant_with_levels",
               "levels": {
                 "min": 3,
                 "max": 4
@@ -201,7 +197,7 @@
           "weight": 10,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
@@ -215,7 +211,7 @@
           "weight": 10,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 3,
                 "max": 5

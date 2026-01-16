@@ -3,11 +3,10 @@ package tn.naizo.moblootbags.procedures;
 import tn.naizo.moblootbags.init.MobLootBagsModItems;
 import tn.naizo.jauml.JaumlConfigLib;
 
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.bus.api.Event;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.ItemStack;
@@ -18,14 +17,15 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import javax.annotation.Nullable;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class OnMobDeathDropRateProcedure {
 	@SubscribeEvent
 	public static void onEntityDeath(LivingDeathEvent event) {
-		if (event != null && event.getEntity() != null) {
+		if (event.getEntity() != null) {
 			execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity(), event.getSource().getEntity());
 		}
 	}
@@ -43,12 +43,12 @@ public class OnMobDeathDropRateProcedure {
 		if (sourceentity instanceof Player || sourceentity instanceof ServerPlayer) {
 			if (JaumlConfigLib.getBooleanValue("mlb", "whitelist", "enable")) {
 				continueDrop = false;
-				if (JaumlConfigLib.stringExistsInArray("mlb", "whitelist", "mobs", (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()))) {
+				if (JaumlConfigLib.stringExistsInArray("mlb", "whitelist", "mobs", (BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString()))) {
 					continueDrop = true;
 				}
 			} else if (JaumlConfigLib.getBooleanValue("mlb", "blacklist", "enable")) {
 				continueDrop = true;
-				if (JaumlConfigLib.stringExistsInArray("mlb", "blacklist", "mobs", (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()))) {
+				if (JaumlConfigLib.stringExistsInArray("mlb", "blacklist", "mobs", (BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString()))) {
 					continueDrop = false;
 				}
 			} else {

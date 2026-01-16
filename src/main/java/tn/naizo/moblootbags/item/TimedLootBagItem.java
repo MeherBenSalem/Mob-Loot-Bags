@@ -8,25 +8,29 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.server.level.ServerLevel;
+
+import javax.annotation.Nullable;
 
 public class TimedLootBagItem extends Item {
-	public TimedLootBagItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC));
+	public TimedLootBagItem(Item.Properties properties) {
+		super(properties.rarity(Rarity.EPIC).stacksTo(1));
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		HandleTimedLoobagLogicProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, ar.getObject());
+	public InteractionResult use(Level world, Player entity, InteractionHand hand) {
+		InteractionResult ar = super.use(world, entity, hand);
+		HandleTimedLoobagLogicProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, entity.getItemInHand(hand));
 		return ar;
 	}
 
 	@Override
-	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
-		super.inventoryTick(itemstack, world, entity, slot, selected);
+	public void inventoryTick(ItemStack itemstack, ServerLevel world, Entity entity, @Nullable EquipmentSlot equipmentSlot) {
+		super.inventoryTick(itemstack, world, entity, equipmentSlot);
 		TimedLootBagItemIsCraftedsmeltedProcedure.execute(world, itemstack);
 	}
 }

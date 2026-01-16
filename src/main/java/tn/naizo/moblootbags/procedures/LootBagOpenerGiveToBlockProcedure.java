@@ -3,12 +3,13 @@ package tn.naizo.moblootbags.procedures;
 import tn.naizo.moblootbags.init.MobLootBagsModItems;
 import tn.naizo.jauml.JaumlConfigLib;
 
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.common.extensions.ILevelExtension;
+import net.neoforged.neoforge.capabilities.Capabilities;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.ItemStack;
@@ -20,8 +21,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
-import java.util.concurrent.atomic.AtomicReference;
-
 public class LootBagOpenerGiveToBlockProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		String loot_table_name = "";
@@ -29,70 +28,22 @@ public class LootBagOpenerGiveToBlockProcedure {
 		double slot_number = 0;
 		slot_number = GiveFilledSlotNumberInBlockProcedure.execute(world, x, y, z);
 		if (slot_number != 99) {
-			if ((new Object() {
-				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-					BlockEntity _ent = world.getBlockEntity(pos);
-					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-					return _retval.get();
-				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot_number)).getItem() == MobLootBagsModItems.COMMONLOOTBAG.get()) {
+			if ((itemFromBlockInventory(world, BlockPos.containing(x, y, z), (int) slot_number).copy()).getItem() == MobLootBagsModItems.COMMONLOOTBAG.get()) {
 				lootTableChosen = Mth.nextInt(RandomSource.create(), 0, (int) (JaumlConfigLib.getArrayLength("mlb", "loot_tables", "common_lt_name") - 1));
 				loot_table_name = JaumlConfigLib.getArrayElement("mlb", "loot_tables", "common_lt_name", ((int) lootTableChosen));
-			} else if ((new Object() {
-				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-					BlockEntity _ent = world.getBlockEntity(pos);
-					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-					return _retval.get();
-				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot_number)).getItem() == MobLootBagsModItems.UNCOMMONLOOTBAG.get()) {
+			} else if ((itemFromBlockInventory(world, BlockPos.containing(x, y, z), (int) slot_number).copy()).getItem() == MobLootBagsModItems.UNCOMMONLOOTBAG.get()) {
 				lootTableChosen = Mth.nextInt(RandomSource.create(), 0, (int) (JaumlConfigLib.getArrayLength("mlb", "loot_tables", "uncommon_lt_name") - 1));
 				loot_table_name = JaumlConfigLib.getArrayElement("mlb", "loot_tables", "uncommon_lt_name", ((int) lootTableChosen));
-			} else if ((new Object() {
-				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-					BlockEntity _ent = world.getBlockEntity(pos);
-					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-					return _retval.get();
-				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot_number)).getItem() == MobLootBagsModItems.RARELOOTBAG.get()) {
+			} else if ((itemFromBlockInventory(world, BlockPos.containing(x, y, z), (int) slot_number).copy()).getItem() == MobLootBagsModItems.RARELOOTBAG.get()) {
 				lootTableChosen = Mth.nextInt(RandomSource.create(), 0, (int) (JaumlConfigLib.getArrayLength("mlb", "loot_tables", "rare_lt_name") - 1));
 				loot_table_name = JaumlConfigLib.getArrayElement("mlb", "loot_tables", "rare_lt_name", ((int) lootTableChosen));
-			} else if ((new Object() {
-				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-					BlockEntity _ent = world.getBlockEntity(pos);
-					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-					return _retval.get();
-				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot_number)).getItem() == MobLootBagsModItems.EPICLOOTBAG.get()) {
+			} else if ((itemFromBlockInventory(world, BlockPos.containing(x, y, z), (int) slot_number).copy()).getItem() == MobLootBagsModItems.EPICLOOTBAG.get()) {
 				lootTableChosen = Mth.nextInt(RandomSource.create(), 0, (int) (JaumlConfigLib.getArrayLength("mlb", "loot_tables", "epic_lt_name") - 1));
 				loot_table_name = JaumlConfigLib.getArrayElement("mlb", "loot_tables", "epic_lt_name", ((int) lootTableChosen));
-			} else if ((new Object() {
-				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-					BlockEntity _ent = world.getBlockEntity(pos);
-					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-					return _retval.get();
-				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot_number)).getItem() == MobLootBagsModItems.LEGENDARYLOOTBAG.get()) {
+			} else if ((itemFromBlockInventory(world, BlockPos.containing(x, y, z), (int) slot_number).copy()).getItem() == MobLootBagsModItems.LEGENDARYLOOTBAG.get()) {
 				lootTableChosen = Mth.nextInt(RandomSource.create(), 0, (int) (JaumlConfigLib.getArrayLength("mlb", "loot_tables", "legendary_lt_name") - 1));
 				loot_table_name = JaumlConfigLib.getArrayElement("mlb", "loot_tables", "legendary_lt_name", ((int) lootTableChosen));
-			} else if ((new Object() {
-				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-					BlockEntity _ent = world.getBlockEntity(pos);
-					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-					return _retval.get();
-				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot_number)).getItem() == MobLootBagsModItems.SUMMONING_LOOTBAGS.get()) {
+			} else if ((itemFromBlockInventory(world, BlockPos.containing(x, y, z), (int) slot_number).copy()).getItem() == MobLootBagsModItems.SUMMONING_LOOTBAGS.get()) {
 				loot_table_name = JaumlConfigLib.getStringValue("mlb", "loot_tables", "summoning_lt_name");
 			} else {
 				return;
@@ -129,20 +80,21 @@ public class LootBagOpenerGiveToBlockProcedure {
 					_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, (y + 1), z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 							("loot spawn ~ ~ ~ loot " + loot_table_name));
 			}
-			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
-				if (_ent != null) {
-					final int _slotid = (int) slot_number;
-					final int _amount = 1;
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-						if (capability instanceof IItemHandlerModifiable) {
-							ItemStack _stk = capability.getStackInSlot(_slotid).copy();
-							_stk.shrink(_amount);
-							((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _stk);
-						}
-					});
-				}
+			if (world instanceof ILevelExtension _ext && _ext.getCapability(Capabilities.ItemHandler.BLOCK, BlockPos.containing(x, y, z), null) instanceof IItemHandlerModifiable _itemHandlerModifiable) {
+				int _slotid = (int) slot_number;
+				ItemStack _stk = _itemHandlerModifiable.getStackInSlot(_slotid).copy();
+				_stk.shrink(1);
+				_itemHandlerModifiable.setStackInSlot(_slotid, _stk);
 			}
 		}
+	}
+
+	private static ItemStack itemFromBlockInventory(LevelAccessor world, BlockPos pos, int slot) {
+		if (world instanceof ILevelExtension ext) {
+			IItemHandler itemHandler = ext.getCapability(Capabilities.ItemHandler.BLOCK, pos, null);
+			if (itemHandler != null)
+				return itemHandler.getStackInSlot(slot);
+		}
+		return ItemStack.EMPTY;
 	}
 }

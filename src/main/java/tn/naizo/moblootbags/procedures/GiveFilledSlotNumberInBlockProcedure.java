@@ -1,12 +1,12 @@
 package tn.naizo.moblootbags.procedures;
 
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.common.extensions.ILevelExtension;
+import net.neoforged.neoforge.capabilities.Capabilities;
 
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.BlockPos;
-
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class GiveFilledSlotNumberInBlockProcedure {
 	public static double execute(LevelAccessor world, double x, double y, double z) {
@@ -16,20 +16,21 @@ public class GiveFilledSlotNumberInBlockProcedure {
 		FilledSlot = 99;
 		itterator = 0;
 		while (itterator <= 23) {
-			if (new Object() {
-				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
-					AtomicInteger _retval = new AtomicInteger(0);
-					BlockEntity _ent = world.getBlockEntity(pos);
-					if (_ent != null)
-						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
-					return _retval.get();
-				}
-			}.getAmount(world, BlockPos.containing(x, y, z), (int) itterator) > 0) {
+			if (itemFromBlockInventory(world, BlockPos.containing(x, y, z), (int) itterator).getCount() > 0) {
 				FilledSlot = itterator;
 				break;
 			}
 			itterator = itterator + 1;
 		}
 		return FilledSlot;
+	}
+
+	private static ItemStack itemFromBlockInventory(LevelAccessor world, BlockPos pos, int slot) {
+		if (world instanceof ILevelExtension ext) {
+			IItemHandler itemHandler = ext.getCapability(Capabilities.ItemHandler.BLOCK, pos, null);
+			if (itemHandler != null)
+				return itemHandler.getStackInSlot(slot);
+		}
+		return ItemStack.EMPTY;
 	}
 }

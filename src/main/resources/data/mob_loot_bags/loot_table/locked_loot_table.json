@@ -10,15 +10,14 @@
           "weight": 5,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
               }
             },
             {
-              "function": "enchant_with_levels",
-              "treasure": true,
+              "function": "minecraft:enchant_with_levels",
               "levels": {
                 "min": 50,
                 "max": 100
@@ -32,15 +31,14 @@
           "weight": 5,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
               }
             },
             {
-              "function": "enchant_with_levels",
-              "treasure": true,
+              "function": "minecraft:enchant_with_levels",
               "levels": {
                 "min": 50,
                 "max": 100
@@ -54,15 +52,14 @@
           "weight": 5,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
               }
             },
             {
-              "function": "enchant_with_levels",
-              "treasure": true,
+              "function": "minecraft:enchant_with_levels",
               "levels": {
                 "min": 50,
                 "max": 100
@@ -76,15 +73,14 @@
           "weight": 5,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
               }
             },
             {
-              "function": "enchant_with_levels",
-              "treasure": true,
+              "function": "minecraft:enchant_with_levels",
               "levels": {
                 "min": 50,
                 "max": 100
@@ -103,15 +99,14 @@
           "weight": 5,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
               }
             },
             {
-              "function": "enchant_with_levels",
-              "treasure": true,
+              "function": "minecraft:enchant_with_levels",
               "levels": {
                 "min": 50,
                 "max": 100
@@ -125,15 +120,14 @@
           "weight": 5,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
               }
             },
             {
-              "function": "enchant_with_levels",
-              "treasure": true,
+              "function": "minecraft:enchant_with_levels",
               "levels": {
                 "min": 50,
                 "max": 100
@@ -147,15 +141,14 @@
           "weight": 5,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
               }
             },
             {
-              "function": "enchant_with_levels",
-              "treasure": true,
+              "function": "minecraft:enchant_with_levels",
               "levels": {
                 "min": 50,
                 "max": 100
@@ -169,15 +162,14 @@
           "weight": 5,
           "functions": [
             {
-              "function": "set_count",
+              "function": "minecraft:set_count",
               "count": {
                 "min": 1,
                 "max": 1
               }
             },
             {
-              "function": "enchant_with_levels",
-              "treasure": true,
+              "function": "minecraft:enchant_with_levels",
               "levels": {
                 "min": 50,
                 "max": 100

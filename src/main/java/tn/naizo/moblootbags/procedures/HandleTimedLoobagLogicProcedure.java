@@ -6,7 +6,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
@@ -14,6 +14,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.network.chat.Component;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
@@ -22,7 +24,7 @@ public class HandleTimedLoobagLogicProcedure {
 		if (entity == null)
 			return;
 		double lootTableChosen = 0;
-		if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.UNBREAKING, itemstack) != 0) {
+		if (itemstack.getEnchantmentLevel(world.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.UNBREAKING)) != 0) {
 			lootTableChosen = Mth.nextInt(RandomSource.create(), 0, (int) (JaumlConfigLib.getNumberValue("mlb", "special_bags", "events") - 1));
 			if (world instanceof ServerLevel _level)
 				_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
@@ -33,7 +35,9 @@ public class HandleTimedLoobagLogicProcedure {
 			}
 		} else {
 			if (entity instanceof Player _player && !_player.level().isClientSide())
-				_player.displayClientMessage(Component.literal(("\u00A74This lootbag isn't ready to be opened yet" + " wait for " + Math.round(itemstack.getOrCreateTag().getDouble("lb_timer") / 20) + " sec")), false);
+				_player.displayClientMessage(
+						Component.literal(("\u00A74This lootbag isn't ready to be opened yet" + " wait for " + Math.round(itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDoubleOr("lb_timer", 0) / 20) + " sec")),
+						false);
 		}
 	}
 }

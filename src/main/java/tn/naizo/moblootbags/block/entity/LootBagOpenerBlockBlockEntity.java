@@ -3,12 +3,8 @@ package tn.naizo.moblootbags.block.entity;
 import tn.naizo.moblootbags.world.inventory.LootbagOpenBlockGUIMenu;
 import tn.naizo.moblootbags.init.MobLootBagsModBlockEntities;
 
-import net.minecraftforge.items.wrapper.SidedInvWrapper;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.capabilities.Capability;
-
+import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.item.ItemStack;
@@ -21,6 +17,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
@@ -31,27 +28,25 @@ import java.util.stream.IntStream;
 import io.netty.buffer.Unpooled;
 
 public class LootBagOpenerBlockBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(24, ItemStack.EMPTY);
-	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
+	private NonNullList<ItemStack> stacks = NonNullList.withSize(24, ItemStack.EMPTY);
 
 	public LootBagOpenerBlockBlockEntity(BlockPos position, BlockState state) {
 		super(MobLootBagsModBlockEntities.LOOT_BAG_OPENER_BLOCK.get(), position, state);
 	}
 
 	@Override
-	public void load(CompoundTag compound) {
-		super.load(compound);
-		if (!this.tryLoadLootTable(compound))
+	public void loadAdditional(ValueInput valueInput) {
+		super.loadAdditional(valueInput);
+		if (!this.tryLoadLootTable(valueInput))
 			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-		ContainerHelper.loadAllItems(compound, this.stacks);
+		ContainerHelper.loadAllItems(valueInput, this.stacks);
 	}
 
 	@Override
-	public void saveAdditional(CompoundTag compound) {
-		super.saveAdditional(compound);
-		if (!this.trySaveLootTable(compound)) {
-			ContainerHelper.saveAllItems(compound, this.stacks);
-		}
+	public void saveAdditional(ValueOutput valueOutput) {
+		super.saveAdditional(valueOutput);
+		if (!this.trySaveLootTable(valueOutput))
+			ContainerHelper.saveAllItems(valueOutput, this.stacks);
 	}
 
 	@Override
@@ -60,8 +55,8 @@ public class LootBagOpenerBlockBlockEntity extends RandomizableContainerBlockEnt
 	}
 
 	@Override
-	public CompoundTag getUpdateTag() {
-		return this.saveWithFullMetadata();
+	public CompoundTag getUpdateTag(HolderLookup.Provider lookupProvider) {
+		return this.saveWithFullMetadata(lookupProvider);
 	}
 
 	@Override
@@ -173,19 +168,5 @@ public class LootBagOpenerBlockBlockEntity extends RandomizableContainerBlockEnt
 		if (index == 23)
 			return false;
 		return true;
-	}
-
-	@Override
-	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
-		if (!this.remove && facing != null && capability == ForgeCapabilities.ITEM_HANDLER)
-			return handlers[facing.ordinal()].cast();
-		return super.getCapability(capability, facing);
-	}
-
-	@Override
-	public void setRemoved() {
-		super.setRemoved();
-		for (LazyOptional<? extends IItemHandler> handler : handlers)
-			handler.invalidate();
 	}
 }

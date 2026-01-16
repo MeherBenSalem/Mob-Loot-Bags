@@ -4,25 +4,26 @@ import tn.naizo.moblootbags.world.inventory.LootbagRecyleBlockGUIMenu;
 import tn.naizo.moblootbags.procedures.ReturnCurrentBlockStoredXpProcedure;
 import tn.naizo.moblootbags.network.LootbagRecyleBlockGUIButtonMessage;
 import tn.naizo.moblootbags.init.MobLootBagsModScreens;
-import tn.naizo.moblootbags.MobLootBagsMod;
+
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphics;
-
-import com.mojang.blaze3d.systems.RenderSystem;
 
 public class LootbagRecyleBlockGUIScreen extends AbstractContainerScreen<LootbagRecyleBlockGUIMenu> implements MobLootBagsModScreens.ScreenAccessor {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
 	private boolean menuStateUpdateActive = false;
-	ImageButton imagebutton_addbutton;
+	private ImageButton imagebutton_addbutton;
 
 	public LootbagRecyleBlockGUIScreen(LootbagRecyleBlockGUIMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -45,11 +46,10 @@ public class LootbagRecyleBlockGUIScreen extends AbstractContainerScreen<Lootbag
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-		this.renderBackground(guiGraphics);
 		super.render(guiGraphics, mouseX, mouseY, partialTicks);
 		boolean customTooltipShown = false;
 		if (mouseX > leftPos + 81 && mouseX < leftPos + 97 && mouseY > topPos + 65 && mouseY < topPos + 81) {
-			guiGraphics.renderTooltip(font, Component.translatable("gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_take_out_the_xp"), mouseX, mouseY);
+			guiGraphics.setTooltipForNextFrame(font, Component.translatable("gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_take_out_the_xp"), mouseX, mouseY);
 			customTooltipShown = true;
 		}
 		if (!customTooltipShown)
@@ -58,11 +58,7 @@ public class LootbagRecyleBlockGUIScreen extends AbstractContainerScreen<Lootbag
 
 	@Override
 	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
-		RenderSystem.setShaderColor(1, 1, 1, 1);
-		RenderSystem.enableBlend();
-		RenderSystem.defaultBlendFunc();
-		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
-		RenderSystem.disableBlend();
+		guiGraphics.blit(RenderPipelines.GUI_TEXTURED, texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 	}
 
 	@Override
@@ -83,14 +79,20 @@ public class LootbagRecyleBlockGUIScreen extends AbstractContainerScreen<Lootbag
 	@Override
 	public void init() {
 		super.init();
-		imagebutton_addbutton = new ImageButton(this.leftPos + 80, this.topPos + 65, 16, 16, 0, 0, 16, ResourceLocation.parse("mob_loot_bags:textures/screens/atlas/imagebutton_addbutton.png"), 16, 32, e -> {
-			int x = LootbagRecyleBlockGUIScreen.this.x;
-			int y = LootbagRecyleBlockGUIScreen.this.y;
-			if (true) {
-				MobLootBagsMod.PACKET_HANDLER.sendToServer(new LootbagRecyleBlockGUIButtonMessage(0, x, y, z));
-				LootbagRecyleBlockGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
+		imagebutton_addbutton = new ImageButton(this.leftPos + 80, this.topPos + 65, 16, 16,
+				new WidgetSprites(ResourceLocation.parse("mob_loot_bags:textures/screens/add-button.png"), ResourceLocation.parse("mob_loot_bags:textures/screens/add-button.png")), e -> {
+					int x = LootbagRecyleBlockGUIScreen.this.x;
+					int y = LootbagRecyleBlockGUIScreen.this.y;
+					if (true) {
+						ClientPacketDistributor.sendToServer(new LootbagRecyleBlockGUIButtonMessage(0, x, y, z));
+						LootbagRecyleBlockGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
+					}
+				}) {
+			@Override
+			public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+				guiGraphics.blit(RenderPipelines.GUI_TEXTURED, sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 0, 0, width, height, width, height);
 			}
-		});
+		};
 		this.addRenderableWidget(imagebutton_addbutton);
 	}
 }

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc"
+  ],
+  "key": {
+    "a": "minecraft:redstone_torch",
+    "b": "minecraft:comparator",
+    "c": "minecraft:bucket",
+    "d": "mob_loot_bags:loot_bag_opener_block"
+  },
+  "result": {
+    "id": "mob_loot_bags:loot_bag_recycle_block",
+    "count": 1
+  }
+}

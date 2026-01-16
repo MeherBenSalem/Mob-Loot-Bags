@@ -8,6 +8,7 @@
       "registry_name": "commonlootbag",
       "metadata": {
         "files": [
+          "src/main/resources/assets/mob_loot_bags/items/commonlootbag.json",
           "src/main/java/tn/naizo/moblootbags/item/CommonlootbagItem.java",
           "src/main/resources/assets/mob_loot_bags/models/item/commonlootbag.json"
         ]
@@ -23,6 +24,7 @@
       "metadata": {
         "files": [
           "src/main/java/tn/naizo/moblootbags/item/UncommonlootbagItem.java",
+          "src/main/resources/assets/mob_loot_bags/items/uncommonlootbag.json",
           "src/main/resources/assets/mob_loot_bags/models/item/uncommonlootbag.json"
         ]
       },
@@ -36,6 +38,7 @@
       "registry_name": "rarelootbag",
       "metadata": {
         "files": [
+          "src/main/resources/assets/mob_loot_bags/items/rarelootbag.json",
           "src/main/resources/assets/mob_loot_bags/models/item/rarelootbag.json",
           "src/main/java/tn/naizo/moblootbags/item/RarelootbagItem.java"
         ]
@@ -51,6 +54,7 @@
       "metadata": {
         "files": [
           "src/main/java/tn/naizo/moblootbags/item/EpiclootbagItem.java",
+          "src/main/resources/assets/mob_loot_bags/items/epiclootbag.json",
           "src/main/resources/assets/mob_loot_bags/models/item/epiclootbag.json"
         ]
       },
@@ -65,7 +69,8 @@
       "metadata": {
         "files": [
           "src/main/java/tn/naizo/moblootbags/item/LegendarylootbagItem.java",
-          "src/main/resources/assets/mob_loot_bags/models/item/legendarylootbag.json"
+          "src/main/resources/assets/mob_loot_bags/models/item/legendarylootbag.json",
+          "src/main/resources/assets/mob_loot_bags/items/legendarylootbag.json"
         ]
       },
       "path": "~/Items/LootBags"
@@ -117,7 +122,7 @@
       "registry_name": "common_loot_table",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/loot_tables/lootbags/common.json"
+          "src/main/resources/data/mob_loot_bags/loot_table/lootbags/common.json"
         ]
       },
       "path": "~/Loot Tables"
@@ -130,7 +135,7 @@
       "registry_name": "rare_loot_table",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/loot_tables/lootbags/rare.json"
+          "src/main/resources/data/mob_loot_bags/loot_table/lootbags/rare.json"
         ]
       },
       "path": "~/Loot Tables"
@@ -143,7 +148,7 @@
       "registry_name": "epic_loot_table",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/loot_tables/lootbags/epic.json"
+          "src/main/resources/data/mob_loot_bags/loot_table/lootbags/epic.json"
         ]
       },
       "path": "~/Loot Tables"
@@ -156,7 +161,7 @@
       "registry_name": "un_common",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/loot_tables/un_common.json"
+          "src/main/resources/data/mob_loot_bags/loot_table/un_common.json"
         ]
       },
       "path": "~/Loot Tables"
@@ -200,7 +205,8 @@
       "metadata": {
         "files": [
           "src/main/java/tn/naizo/moblootbags/block/LootBagRecycleBlockBlock.java",
-          "src/main/resources/data/mob_loot_bags/loot_tables/blocks/loot_bag_recycle_block.json",
+          "src/main/resources/assets/mob_loot_bags/items/loot_bag_recycle_block.json",
+          "src/main/resources/data/mob_loot_bags/loot_table/blocks/loot_bag_recycle_block.json",
           "src/main/resources/assets/mob_loot_bags/models/item/loot_bag_recycle_block.json",
           "src/main/resources/assets/mob_loot_bags/blockstates/loot_bag_recycle_block.json",
           "src/main/java/tn/naizo/moblootbags/block/entity/LootBagRecycleBlockBlockEntity.java",
@@ -218,11 +224,12 @@
       "metadata": {
         "files": [
           "src/main/java/tn/naizo/moblootbags/block/LootBagOpenerBlockBlock.java",
-          "src/main/resources/data/mob_loot_bags/loot_tables/blocks/loot_bag_opener_block.json",
+          "src/main/resources/data/mob_loot_bags/loot_table/blocks/loot_bag_opener_block.json",
           "src/main/resources/assets/mob_loot_bags/models/block/loot_bag_opener_block.json",
           "src/main/resources/assets/mob_loot_bags/models/item/loot_bag_opener_block.json",
           "src/main/java/tn/naizo/moblootbags/block/entity/LootBagOpenerBlockBlockEntity.java",
-          "src/main/resources/assets/mob_loot_bags/blockstates/loot_bag_opener_block.json"
+          "src/main/resources/assets/mob_loot_bags/blockstates/loot_bag_opener_block.json",
+          "src/main/resources/assets/mob_loot_bags/items/loot_bag_opener_block.json"
         ]
       },
       "path": "~/Blocks"
@@ -369,7 +376,7 @@
       "registry_name": "recycle_block_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/recipes/recycle_block_recipe.json"
+          "src/main/resources/data/mob_loot_bags/recipe/recycle_block_recipe.json"
         ]
       },
       "path": "~/Recipes"
@@ -382,7 +389,7 @@
       "registry_name": "bag_opener_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/recipes/bag_opener_recipe.json"
+          "src/main/resources/data/mob_loot_bags/recipe/bag_opener_recipe.json"
         ]
       },
       "path": "~/Recipes"
@@ -437,7 +444,7 @@
       "registry_name": "legendary_loot_table",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/loot_tables/legendary_loot_table.json"
+          "src/main/resources/data/mob_loot_bags/loot_table/legendary_loot_table.json"
         ]
       },
       "path": "~/Loot Tables"
@@ -450,7 +457,7 @@
       "registry_name": "uncommon_loot_bag_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/recipes/uncommon_loot_bag_recipe.json"
+          "src/main/resources/data/mob_loot_bags/recipe/uncommon_loot_bag_recipe.json"
         ]
       },
       "path": "~/Recipes"
@@ -463,7 +470,7 @@
       "registry_name": "epic_loot_bag_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/recipes/epic_loot_bag_recipe.json"
+          "src/main/resources/data/mob_loot_bags/recipe/epic_loot_bag_recipe.json"
         ]
       },
       "path": "~/Recipes"
@@ -476,7 +483,7 @@
       "registry_name": "rare_loot_bag_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/recipes/rare_loot_bag_recipe.json"
+          "src/main/resources/data/mob_loot_bags/recipe/rare_loot_bag_recipe.json"
         ]
       },
       "path": "~/Recipes"
@@ -489,7 +496,7 @@
       "registry_name": "legendary_loot_bag_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/recipes/legendary_loot_bag_recipe.json"
+          "src/main/resources/data/mob_loot_bags/recipe/legendary_loot_bag_recipe.json"
         ]
       },
       "path": "~/Recipes"
@@ -502,6 +509,7 @@
       "registry_name": "cursed_lootbag",
       "metadata": {
         "files": [
+          "src/main/resources/assets/mob_loot_bags/items/cursed_lootbag.json",
           "src/main/resources/assets/mob_loot_bags/models/item/cursed_lootbag.json",
           "src/main/java/tn/naizo/moblootbags/item/CursedLootbagItem.java"
         ]
@@ -527,6 +535,7 @@
       "registry_name": "timed_loot_bag",
       "metadata": {
         "files": [
+          "src/main/resources/assets/mob_loot_bags/items/timed_loot_bag.json",
           "src/main/resources/assets/mob_loot_bags/models/item/timed_loot_bag.json",
           "src/main/java/tn/naizo/moblootbags/item/TimedLootBagItem.java"
         ]
@@ -681,6 +690,7 @@
       "registry_name": "diamond_key",
       "metadata": {
         "files": [
+          "src/main/resources/assets/mob_loot_bags/items/diamond_key.json",
           "src/main/resources/assets/mob_loot_bags/models/item/diamond_key.json",
           "src/main/java/tn/naizo/moblootbags/item/DiamondKeyItem.java"
         ]
@@ -695,7 +705,7 @@
       "registry_name": "diamond_key_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/recipes/diamond_key_recipe.json"
+          "src/main/resources/data/mob_loot_bags/recipe/diamond_key_recipe.json"
         ]
       },
       "path": "~/Items/Misc"
@@ -708,6 +718,7 @@
       "registry_name": "locked_lootbags",
       "metadata": {
         "files": [
+          "src/main/resources/assets/mob_loot_bags/items/locked_lootbags.json",
           "src/main/java/tn/naizo/moblootbags/item/LockedLootbagsItem.java",
           "src/main/resources/assets/mob_loot_bags/models/item/locked_lootbags.json"
         ]
@@ -723,7 +734,8 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/mob_loot_bags/models/item/summoning_lootbags.json",
-          "src/main/java/tn/naizo/moblootbags/item/SummoningLootbagsItem.java"
+          "src/main/java/tn/naizo/moblootbags/item/SummoningLootbagsItem.java",
+          "src/main/resources/assets/mob_loot_bags/items/summoning_lootbags.json"
         ]
       },
       "path": "~/Items/LootBags"
@@ -736,7 +748,7 @@
       "registry_name": "legendary_loot_bag_downgrade_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/recipes/legendary_loot_bag_downgrade_recipe.json"
+          "src/main/resources/data/mob_loot_bags/recipe/legendary_loot_bag_downgrade_recipe.json"
         ]
       },
       "path": "~/Recipes"
@@ -749,7 +761,7 @@
       "registry_name": "epic_loot_bag_downgrade_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/recipes/epic_loot_bag_downgrade_recipe.json"
+          "src/main/resources/data/mob_loot_bags/recipe/epic_loot_bag_downgrade_recipe.json"
         ]
       },
       "path": "~/Recipes"
@@ -762,7 +774,7 @@
       "registry_name": "rare_loot_bag_downgrade_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/recipes/rare_loot_bag_downgrade_recipe.json"
+          "src/main/resources/data/mob_loot_bags/recipe/rare_loot_bag_downgrade_recipe.json"
         ]
       },
       "path": "~/Recipes"
@@ -775,7 +787,7 @@
       "registry_name": "uncommon_loot_bag_downgrade_recipe",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/recipes/uncommon_loot_bag_downgrade_recipe.json"
+          "src/main/resources/data/mob_loot_bags/recipe/uncommon_loot_bag_downgrade_recipe.json"
         ]
       },
       "path": "~/Recipes"
@@ -827,7 +839,7 @@
       "registry_name": "time_warped_loot_table",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/loot_tables/time_warped_loot_table.json"
+          "src/main/resources/data/mob_loot_bags/loot_table/time_warped_loot_table.json"
         ]
       },
       "path": "~/Loot Tables"
@@ -840,7 +852,7 @@
       "registry_name": "summoning_loot_table",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/loot_tables/summoning_loot_table.json"
+          "src/main/resources/data/mob_loot_bags/loot_table/summoning_loot_table.json"
         ]
       },
       "path": "~/Loot Tables"
@@ -853,7 +865,7 @@
       "registry_name": "locked_loot_table",
       "metadata": {
         "files": [
-          "src/main/resources/data/mob_loot_bags/loot_tables/locked_loot_table.json"
+          "src/main/resources/data/mob_loot_bags/loot_table/locked_loot_table.json"
         ]
       },
       "path": "~/Loot Tables"
@@ -1047,24 +1059,26 @@
       "item.mob_loot_bags.cursed_lootbag.description_0": "§7Open to reveal surprises! Will you get §aamazing treasures§7 or face a §cdaring challenge§7? Luck is on your side... §6or is it?   ",
       "itemGroup.tab_loot_bags_creative_tab": "Loot Bags",
       "gui.mob_loot_bags.lootbag_recyle_block_gui.tooltip_take_out_the_xp": "Take out the xp stored",
-      "item.mob_loot_bags.timed_loot_bag": "Timed loot bag"
+      "item.mob_loot_bags.timed_loot_bag": "Timed loot bag",
+      "item.mob_loot_bags.loot_bag_recycle_block": "Loot Bag Recycler",
+      "item.mob_loot_bags.loot_bag_opener_block": "Loot Bag Opener Block"
     }
   },
   "metadata": {
     "files": [
-      "src/main/resources/assets/mob_loot_bags/sounds.json",
-      "src/main/resources/pack.mcmeta",
-      "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModTabs.java",
-      "src/main/resources/META-INF/mods.toml",
-      "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModSounds.java",
-      "src/main/java/tn/naizo/moblootbags/MobLootBagsMod.java",
       "src/main/java/tn/naizo/moblootbags/network/MenuStateUpdateMessage.java",
       "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModScreens.java",
       "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModMenus.java",
       "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModTrades.java",
       "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModBlocks.java",
       "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModBlockEntities.java",
-      "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModItems.java"
+      "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModItems.java",
+      "src/main/resources/assets/mob_loot_bags/sounds.json",
+      "src/main/resources/pack.mcmeta",
+      "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModTabs.java",
+      "src/main/resources/META-INF/neoforge.mods.toml",
+      "src/main/java/tn/naizo/moblootbags/init/MobLootBagsModSounds.java",
+      "src/main/java/tn/naizo/moblootbags/MobLootBagsMod.java"
     ]
   },
   "foldersRoot": {
@@ -1144,9 +1158,9 @@
     "mcreatorDependencies": [
       "jauml"
     ],
-    "currentGenerator": "forge-1.20.1",
+    "currentGenerator": "neoforge-1.21.8",
     "credits": "no credits yet",
     "modElementsPackage": "tn.naizo.moblootbags"
   },
-  "mcreatorVersion": 202500228610
+  "mcreatorVersion": 202500344519
 }

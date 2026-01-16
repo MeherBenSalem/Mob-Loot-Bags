@@ -4,21 +4,20 @@ import tn.naizo.moblootbags.procedures.HandleLockedLootBagLogicProcedure;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
 
 public class LockedLootbagsItem extends Item {
-	public LockedLootbagsItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));
+	public LockedLootbagsItem(Item.Properties properties) {
+		super(properties.rarity(Rarity.EPIC));
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		HandleLockedLootBagLogicProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, ar.getObject());
+	public InteractionResult use(Level world, Player entity, InteractionHand hand) {
+		InteractionResult ar = super.use(world, entity, hand);
+		HandleLockedLootBagLogicProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, entity.getItemInHand(hand));
 		return ar;
 	}
 }
