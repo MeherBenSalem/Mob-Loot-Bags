@@ -1,0 +1,49 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Client",
+      "presentation": {
+        "group": "Mod Development - Mob-Loot-Bags",
+        "order": 0
+      },
+      "projectName": "Mob-Loot-Bags",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@D:\\Projects\\NightBeam\\Mob-Loot-Bags\\build\\moddev\\clientRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@D:\\Projects\\NightBeam\\Mob-Loot-Bags\\build\\moddev\\clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dmcreator%%D:\\Projects\\NightBeam\\Mob-Loot-Bags\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Server",
+      "presentation": {
+        "group": "Mod Development - Mob-Loot-Bags",
+        "order": 1
+      },
+      "projectName": "Mob-Loot-Bags",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@D:\\Projects\\NightBeam\\Mob-Loot-Bags\\build\\moddev\\serverRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@D:\\Projects\\NightBeam\\Mob-Loot-Bags\\build\\moddev\\serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dmcreator%%D:\\Projects\\NightBeam\\Mob-Loot-Bags\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "neoforge - Client",
+      "presentation": {
+        "group": "Mod Development - neoforge",
+        "order": 0
+      },
+      "projectName": "neoforge",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@D:\\Projects\\NightBeam\\Mob-Loot-Bags\\1.20.1\\MultiLoader-Template-1.20.1\\neoforge\\build\\moddev\\clientRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@D:\\Projects\\NightBeam\\Mob-Loot-Bags\\1.20.1\\MultiLoader-Template-1.20.1\\neoforge\\build\\moddev\\clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dmob_loot_bags%%D:\\Projects\\NightBeam\\Mob-Loot-Bags\\1.20.1\\MultiLoader-Template-1.20.1\\neoforge\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\neoforge\\run",
+      "env": {
+        "MOD_CLASSES": "mob_loot_bags%%D:\\Projects\\NightBeam\\Mob-Loot-Bags\\1.20.1\\MultiLoader-Template-1.20.1\\neoforge\\bin\\main"
+      },
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "neoforge - Data",
+      "presentation": {
+        "group": "Mod Development - neoforge",
+        "order": 1
+      },
+      "projectName": "neoforge",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@D:\\Projects\\NightBeam\\Mob-Loot-Bags\\1.20.1\\MultiLoader-Template-1.20.1\\neoforge\\build\\moddev\\dataRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@D:\\Projects\\NightBeam\\Mob-Loot-Bags\\1.20.1\\MultiLoader-Template-1.20.1\\neoforge\\build\\moddev\\dataRunVmArgs.txt",
+        "-Dfml.modFolders\u003dmob_loot_bags%%D:\\Projects\\NightBeam\\Mob-Loot-Bags\\1.20.1\\MultiLoader-Template-1.20.1\\neoforge\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\neoforge\\run",
+      "env": {
+        "MOD_CLASSES": "mob_loot_bags%%D:\\Projects\\NightBeam\\Mob-Loot-Bags\\1.20.1\\MultiLoader-Template-1.20.1\\neoforge\\bin\\main"
+      },
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "neoforge - Server",
+      "presentation": {
+        "group": "Mod Development - neoforge",
+        "order": 2
+      },
+      "projectName": "neoforge",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@D:\\Projects\\NightBeam\\Mob-Loot-Bags\\1.20.1\\MultiLoader-Template-1.20.1\\neoforge\\build\\moddev\\serverRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@D:\\Projects\\NightBeam\\Mob-Loot-Bags\\1.20.1\\MultiLoader-Template-1.20.1\\neoforge\\build\\moddev\\serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dmob_loot_bags%%D:\\Projects\\NightBeam\\Mob-Loot-Bags\\1.20.1\\MultiLoader-Template-1.20.1\\neoforge\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\neoforge\\run",
+      "env": {
+        "MOD_CLASSES": "mob_loot_bags%%D:\\Projects\\NightBeam\\Mob-Loot-Bags\\1.20.1\\MultiLoader-Template-1.20.1\\neoforge\\bin\\main"
+      },
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    }
+  ]
+}
