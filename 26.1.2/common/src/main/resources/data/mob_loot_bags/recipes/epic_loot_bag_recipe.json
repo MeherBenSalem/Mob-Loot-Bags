@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "mob_loot_bags:rarelootbag"
+    },
+    {
+      "item": "mob_loot_bags:rarelootbag"
+    },
+    {
+      "item": "mob_loot_bags:rarelootbag"
+    },
+    {
+      "item": "mob_loot_bags:rarelootbag"
+    }
+  ],
+  "result": {
+    "item": "mob_loot_bags:epiclootbag",
+    "count": 1
+  }
+}

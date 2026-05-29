@@ -1,0 +1,27 @@
+{
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${version}",
+    "name": "${mod_name}",
+    "description": "${description}",
+    "authors": [
+        "${mod_author}"
+    ],
+    "contact": {},
+    "license": "${license}",
+    "icon": "assets/mob_loot_bags/textures/logo.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "tn.naizo.moblootbags.fabric.MobLootBagsFabric"
+        ]
+    },
+    "mixins": [],
+    "depends": {
+        "fabricloader": ">=${fabric_loader_version}",
+        "fabric-api": "*",
+        "minecraft": "${minecraft_version}",
+        "java": ">=${java_version}"
+    },
+    "suggests": {}
+}
