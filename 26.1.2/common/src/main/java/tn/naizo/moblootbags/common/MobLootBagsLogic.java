@@ -21,8 +21,10 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -93,7 +95,7 @@ public final class MobLootBagsLogic {
             player.sendOverlayMessage(Component.literal("This lootbag is not ready yet. Wait " + seconds + "s."));
             return InteractionResult.FAIL;
         }
-        executeRandomEvent((ServerLevel) level, player, false);
+        openLootTableAtPlayer((ServerLevel) level, player, stack, MobLootBagsConfig.timedLootTable());
         if (!player.getAbilities().instabuild) {
             stack.shrink(1);
         }
@@ -115,7 +117,8 @@ public final class MobLootBagsLogic {
         if (!(victim.level() instanceof ServerLevel serverLevel)) {
             return;
         }
-        if (!(source.getEntity() instanceof ServerPlayer player)) {
+        ServerPlayer player = getAttackingPlayer(source);
+        if (player == null) {
             return;
         }
 
@@ -137,9 +140,35 @@ public final class MobLootBagsLogic {
             serverLevel.addFreshEntity(new ItemEntity(serverLevel, victim.getX(), victim.getY(), victim.getZ(), new ItemStack(item)));
         }
 
-        if (MobLootBagsConfig.cursedEnabled() && random.nextInt(100) + 1 <= MobLootBagsConfig.cursedDropRate()) {
+        if (MobLootBagsConfig.cursedEnabled()
+                && MobLootBagsRegistry.CURSED_LOOTBAG != null
+                && random.nextInt(100) + 1 <= MobLootBagsConfig.cursedDropRate()) {
             serverLevel.addFreshEntity(new ItemEntity(serverLevel, victim.getX(), victim.getY(), victim.getZ(), new ItemStack(MobLootBagsRegistry.CURSED_LOOTBAG)));
         }
+    }
+
+    private static ServerPlayer getAttackingPlayer(DamageSource source) {
+        Entity entity = source.getEntity();
+        if (entity instanceof ServerPlayer player) {
+            return player;
+        }
+        if (entity instanceof Projectile projectile) {
+            Entity owner = projectile.getOwner();
+            if (owner instanceof ServerPlayer player) {
+                return player;
+            }
+        }
+        Entity direct = source.getDirectEntity();
+        if (direct instanceof ServerPlayer player) {
+            return player;
+        }
+        if (direct instanceof Projectile projectile) {
+            Entity owner = projectile.getOwner();
+            if (owner instanceof ServerPlayer player) {
+                return player;
+            }
+        }
+        return null;
     }
 
     public static boolean isOpenerSupportedBag(ItemStack stack) {

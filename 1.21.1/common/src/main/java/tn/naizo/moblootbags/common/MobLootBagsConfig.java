@@ -64,7 +64,7 @@ public final class MobLootBagsConfig {
     }
 
     public static String timedLootTable() {
-        return "mob_loot_bags:time_warped_loot_table";
+        return getString(lootTables, "timed_lt_name", "mob_loot_bags:time_warped_loot_table");
     }
 
     public static boolean cursedEnabled() {
@@ -143,37 +143,50 @@ public final class MobLootBagsConfig {
                 write(path, defaults);
                 return defaults.deepCopy();
             }
+
+            JsonObject userConfig;
             try (Reader reader = Files.newBufferedReader(path)) {
                 JsonElement parsed = JsonParser.parseReader(reader);
                 if (!parsed.isJsonObject()) {
                     write(path, defaults);
                     return defaults.deepCopy();
                 }
-                JsonObject merged = defaults.deepCopy();
-                merge(merged, parsed.getAsJsonObject());
-                write(path, merged);
-                return merged;
+                userConfig = parsed.getAsJsonObject();
             }
+
+            JsonObject result = userConfig.deepCopy();
+            boolean addedDefaults = mergeMissingDefaults(result, defaults);
+            if (addedDefaults) {
+                write(path, result);
+            }
+            return result;
         } catch (IOException ignored) {
             return defaults.deepCopy();
         }
     }
 
+    private static boolean mergeMissingDefaults(JsonObject target, JsonObject defaults) {
+        boolean added = false;
+        for (String key : defaults.keySet()) {
+            JsonElement defaultValue = defaults.get(key);
+            if (!target.has(key)) {
+                target.add(key, defaultValue.deepCopy());
+                added = true;
+                continue;
+            }
+            JsonElement targetValue = target.get(key);
+            if (defaultValue.isJsonObject() && targetValue.isJsonObject()) {
+                if (mergeMissingDefaults(targetValue.getAsJsonObject(), defaultValue.getAsJsonObject())) {
+                    added = true;
+                }
+            }
+        }
+        return added;
+    }
+
     private static void write(Path path, JsonObject object) throws IOException {
         try (Writer writer = Files.newBufferedWriter(path)) {
             GSON.toJson(object, writer);
-        }
-    }
-
-    private static void merge(JsonObject target, JsonObject source) {
-        for (String key : source.keySet()) {
-            JsonElement sourceValue = source.get(key);
-            JsonElement targetValue = target.get(key);
-            if (sourceValue.isJsonObject() && targetValue != null && targetValue.isJsonObject()) {
-                merge(targetValue.getAsJsonObject(), sourceValue.getAsJsonObject());
-            } else {
-                target.add(key, sourceValue);
-            }
         }
     }
 
@@ -233,6 +246,7 @@ public final class MobLootBagsConfig {
         o.add("legendary_lt_name", array("mob_loot_bags:legendary_loot_table"));
         o.addProperty("summoning_lt_name", "mob_loot_bags:summoning_loot_table");
         o.addProperty("locked_lt_name", "mob_loot_bags:locked_loot_table");
+        o.addProperty("timed_lt_name", "mob_loot_bags:time_warped_loot_table");
         o.addProperty("default_lt_name", "minecraft:chests/end_city_treasure");
         return o;
     }
