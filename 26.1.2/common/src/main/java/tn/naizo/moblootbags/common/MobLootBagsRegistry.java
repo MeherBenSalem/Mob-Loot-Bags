@@ -6,6 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -66,21 +67,21 @@ public final class MobLootBagsRegistry {
         }
         registered = true;
 
-        LOOT_BAG_RECYCLE_BLOCK = registerBlock("loot_bag_recycle_block", createLootBagRecyclerBlock());
-        LOOT_BAG_OPENER_BLOCK = registerBlock("loot_bag_opener_block", createLootBagOpenerBlock());
+        LOOT_BAG_RECYCLE_BLOCK = registerBlock("loot_bag_recycle_block", createLootBagRecyclerBlock(blockProperties("loot_bag_recycle_block")));
+        LOOT_BAG_OPENER_BLOCK = registerBlock("loot_bag_opener_block", createLootBagOpenerBlock(blockProperties("loot_bag_opener_block")));
         LOOT_BAG_RECYCLE_BLOCK_ITEM = registerBlockItem("loot_bag_recycle_block", LOOT_BAG_RECYCLE_BLOCK, "block.mob_loot_bags.loot_bag_recycle_block.description_0");
         LOOT_BAG_OPENER_BLOCK_ITEM = registerBlockItem("loot_bag_opener_block", LOOT_BAG_OPENER_BLOCK, "block.mob_loot_bags.loot_bag_opener_block.description_0");
 
-        COMMONLOOTBAG = registerItem("commonlootbag", () -> createTierLootBagItem("common", new Item.Properties()));
-        UNCOMMONLOOTBAG = registerItem("uncommonlootbag", () -> createTierLootBagItem("uncommon", new Item.Properties()));
-        RARELOOTBAG = registerItem("rarelootbag", () -> createTierLootBagItem("rare", new Item.Properties()));
-        EPICLOOTBAG = registerItem("epiclootbag", () -> createTierLootBagItem("epic", new Item.Properties().rarity(Rarity.RARE)));
-        LEGENDARYLOOTBAG = registerItem("legendarylootbag", () -> createTierLootBagItem("legendary", new Item.Properties().rarity(Rarity.EPIC)));
-        CURSED_LOOTBAG = registerItem("cursed_lootbag", () -> createCursedLootBagItem(new Item.Properties().rarity(Rarity.UNCOMMON)));
-        TIMED_LOOT_BAG = registerItem("timed_loot_bag", () -> createTimedLootBagItem(new Item.Properties().rarity(Rarity.UNCOMMON)));
-        DIAMOND_KEY = registerItem("diamond_key", () -> createDiamondKeyItem(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
-        LOCKED_LOOTBAGS = registerItem("locked_lootbags", () -> createLockedLootBagItem(new Item.Properties().rarity(Rarity.EPIC)));
-        SUMMONING_LOOTBAGS = registerItem("summoning_lootbags", () -> createSummoningLootBagItem(new Item.Properties().rarity(Rarity.RARE)));
+        COMMONLOOTBAG = registerItem("commonlootbag", () -> createTierLootBagItem("common", itemProperties("commonlootbag")));
+        UNCOMMONLOOTBAG = registerItem("uncommonlootbag", () -> createTierLootBagItem("uncommon", itemProperties("uncommonlootbag")));
+        RARELOOTBAG = registerItem("rarelootbag", () -> createTierLootBagItem("rare", itemProperties("rarelootbag")));
+        EPICLOOTBAG = registerItem("epiclootbag", () -> createTierLootBagItem("epic", itemProperties("epiclootbag").rarity(Rarity.RARE)));
+        LEGENDARYLOOTBAG = registerItem("legendarylootbag", () -> createTierLootBagItem("legendary", itemProperties("legendarylootbag").rarity(Rarity.EPIC)));
+        CURSED_LOOTBAG = registerItem("cursed_lootbag", () -> createCursedLootBagItem(itemProperties("cursed_lootbag").rarity(Rarity.UNCOMMON)));
+        TIMED_LOOT_BAG = registerItem("timed_loot_bag", () -> createTimedLootBagItem(itemProperties("timed_loot_bag").rarity(Rarity.UNCOMMON)));
+        DIAMOND_KEY = registerItem("diamond_key", () -> createDiamondKeyItem(itemProperties("diamond_key").stacksTo(16).rarity(Rarity.UNCOMMON)));
+        LOCKED_LOOTBAGS = registerItem("locked_lootbags", () -> createLockedLootBagItem(itemProperties("locked_lootbags").rarity(Rarity.EPIC)));
+        SUMMONING_LOOTBAGS = registerItem("summoning_lootbags", () -> createSummoningLootBagItem(itemProperties("summoning_lootbags").rarity(Rarity.RARE)));
 
         DRAMATIC = registerSound("dramatic");
         LOOTBAG_SFX_1 = registerSound("lootbag_sfx_1");
@@ -109,12 +110,40 @@ public final class MobLootBagsRegistry {
         }
     }
 
-    public static Block createLootBagRecyclerBlock() {
-        return new LootBagRecyclerBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(1.0F, 10.0F).sound(SoundType.METAL));
+    public static Block createLootBagRecyclerBlock(BlockBehaviour.Properties properties) {
+        return new LootBagRecyclerBlock(properties);
     }
 
-    public static Block createLootBagOpenerBlock() {
-        return new LootBagOpenerBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(1.0F, 10.0F).sound(SoundType.METAL));
+    public static Block createLootBagOpenerBlock(BlockBehaviour.Properties properties) {
+        return new LootBagOpenerBlock(properties);
+    }
+
+    public static BlockBehaviour.Properties blockProperties(String name) {
+        return blockProperties(Identifier.fromNamespaceAndPath("mob_loot_bags", name));
+    }
+
+    public static BlockBehaviour.Properties blockProperties(Identifier name) {
+        return BlockBehaviour.Properties.of()
+                .mapColor(MapColor.METAL)
+                .strength(1.0F, 10.0F)
+                .sound(SoundType.METAL)
+                .setId(ResourceKey.create(Registries.BLOCK, name));
+    }
+
+    public static Item.Properties itemProperties(String name) {
+        return itemProperties(Identifier.fromNamespaceAndPath("mob_loot_bags", name));
+    }
+
+    public static Item.Properties itemProperties(Identifier name) {
+        return new Item.Properties().setId(ResourceKey.create(Registries.ITEM, name));
+    }
+
+    public static Item.Properties blockItemProperties(String name) {
+        return blockItemProperties(Identifier.fromNamespaceAndPath("mob_loot_bags", name));
+    }
+
+    public static Item.Properties blockItemProperties(Identifier name) {
+        return itemProperties(name).useBlockDescriptionPrefix();
     }
 
     public static Item createTierLootBagItem(String tier, Item.Properties properties) {
@@ -151,7 +180,11 @@ public final class MobLootBagsRegistry {
     }
 
     private static Item registerBlockItem(String id, Block block, String tooltipKey) {
-        return Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath("mob_loot_bags", id), new TooltipBlockItem(block, new Item.Properties(), tooltipKey));
+        return Registry.register(
+                BuiltInRegistries.ITEM,
+                Identifier.fromNamespaceAndPath("mob_loot_bags", id),
+                new TooltipBlockItem(block, blockItemProperties(id), tooltipKey)
+        );
     }
 
     private static Item registerItem(String id, Supplier<Item> itemFactory) {

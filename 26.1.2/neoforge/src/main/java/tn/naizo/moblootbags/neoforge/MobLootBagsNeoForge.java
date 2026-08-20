@@ -33,8 +33,15 @@ public final class MobLootBagsNeoForge {
     private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, MODID);
     private static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-    private static final DeferredHolder<Block, Block> LOOT_BAG_RECYCLE_BLOCK = BLOCKS.register("loot_bag_recycle_block", MobLootBagsRegistry::createLootBagRecyclerBlock);
-    private static final DeferredHolder<Block, Block> LOOT_BAG_OPENER_BLOCK = BLOCKS.register("loot_bag_opener_block", MobLootBagsRegistry::createLootBagOpenerBlock);
+    // Registry ID binding pattern based on PR #9 by Sami (0x-sami).
+    private static final DeferredHolder<Block, Block> LOOT_BAG_RECYCLE_BLOCK = BLOCKS.register(
+            "loot_bag_recycle_block",
+            name -> MobLootBagsRegistry.createLootBagRecyclerBlock(MobLootBagsRegistry.blockProperties(name))
+    );
+    private static final DeferredHolder<Block, Block> LOOT_BAG_OPENER_BLOCK = BLOCKS.register(
+            "loot_bag_opener_block",
+            name -> MobLootBagsRegistry.createLootBagOpenerBlock(MobLootBagsRegistry.blockProperties(name))
+    );
     private static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LootBagRecyclerBlockEntity>> LOOT_BAG_RECYCLE_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
             "loot_bag_recycle_block",
             () -> new BlockEntityType<>(LootBagRecyclerBlockEntity::new, LOOT_BAG_RECYCLE_BLOCK.get())
@@ -44,24 +51,62 @@ public final class MobLootBagsNeoForge {
             () -> new BlockEntityType<>(LootBagOpenerBlockEntity::new, LOOT_BAG_OPENER_BLOCK.get())
     );
 
-    private static final DeferredHolder<Item, Item> COMMONLOOTBAG = ITEMS.register("commonlootbag", () -> MobLootBagsRegistry.createTierLootBagItem("common", new Item.Properties()));
-    private static final DeferredHolder<Item, Item> UNCOMMONLOOTBAG = ITEMS.register("uncommonlootbag", () -> MobLootBagsRegistry.createTierLootBagItem("uncommon", new Item.Properties()));
-    private static final DeferredHolder<Item, Item> RARELOOTBAG = ITEMS.register("rarelootbag", () -> MobLootBagsRegistry.createTierLootBagItem("rare", new Item.Properties()));
-    private static final DeferredHolder<Item, Item> EPICLOOTBAG = ITEMS.register("epiclootbag", () -> MobLootBagsRegistry.createTierLootBagItem("epic", new Item.Properties().rarity(net.minecraft.world.item.Rarity.RARE)));
-    private static final DeferredHolder<Item, Item> LEGENDARYLOOTBAG = ITEMS.register("legendarylootbag", () -> MobLootBagsRegistry.createTierLootBagItem("legendary", new Item.Properties().rarity(net.minecraft.world.item.Rarity.EPIC)));
-    private static final DeferredHolder<Item, Item> CURSED_LOOTBAG = ITEMS.register("cursed_lootbag", () -> MobLootBagsRegistry.createCursedLootBagItem(new Item.Properties().rarity(net.minecraft.world.item.Rarity.UNCOMMON)));
-    private static final DeferredHolder<Item, Item> TIMED_LOOT_BAG = ITEMS.register("timed_loot_bag", () -> MobLootBagsRegistry.createTimedLootBagItem(new Item.Properties().rarity(net.minecraft.world.item.Rarity.UNCOMMON)));
-    private static final DeferredHolder<Item, Item> DIAMOND_KEY = ITEMS.register("diamond_key", () -> MobLootBagsRegistry.createDiamondKeyItem(new Item.Properties().stacksTo(16).rarity(net.minecraft.world.item.Rarity.UNCOMMON)));
-    private static final DeferredHolder<Item, Item> LOCKED_LOOTBAGS = ITEMS.register("locked_lootbags", () -> MobLootBagsRegistry.createLockedLootBagItem(new Item.Properties().rarity(net.minecraft.world.item.Rarity.EPIC)));
-    private static final DeferredHolder<Item, Item> SUMMONING_LOOTBAGS = ITEMS.register("summoning_lootbags", () -> MobLootBagsRegistry.createSummoningLootBagItem(new Item.Properties().rarity(net.minecraft.world.item.Rarity.RARE)));
+    private static final DeferredHolder<Item, Item> COMMONLOOTBAG = ITEMS.register(
+            "commonlootbag",
+            name -> MobLootBagsRegistry.createTierLootBagItem("common", MobLootBagsRegistry.itemProperties(name))
+    );
+    private static final DeferredHolder<Item, Item> UNCOMMONLOOTBAG = ITEMS.register(
+            "uncommonlootbag",
+            name -> MobLootBagsRegistry.createTierLootBagItem("uncommon", MobLootBagsRegistry.itemProperties(name))
+    );
+    private static final DeferredHolder<Item, Item> RARELOOTBAG = ITEMS.register(
+            "rarelootbag",
+            name -> MobLootBagsRegistry.createTierLootBagItem("rare", MobLootBagsRegistry.itemProperties(name))
+    );
+    private static final DeferredHolder<Item, Item> EPICLOOTBAG = ITEMS.register(
+            "epiclootbag",
+            name -> MobLootBagsRegistry.createTierLootBagItem("epic", MobLootBagsRegistry.itemProperties(name).rarity(net.minecraft.world.item.Rarity.RARE))
+    );
+    private static final DeferredHolder<Item, Item> LEGENDARYLOOTBAG = ITEMS.register(
+            "legendarylootbag",
+            name -> MobLootBagsRegistry.createTierLootBagItem("legendary", MobLootBagsRegistry.itemProperties(name).rarity(net.minecraft.world.item.Rarity.EPIC))
+    );
+    private static final DeferredHolder<Item, Item> CURSED_LOOTBAG = ITEMS.register(
+            "cursed_lootbag",
+            name -> MobLootBagsRegistry.createCursedLootBagItem(MobLootBagsRegistry.itemProperties(name).rarity(net.minecraft.world.item.Rarity.UNCOMMON))
+    );
+    private static final DeferredHolder<Item, Item> TIMED_LOOT_BAG = ITEMS.register(
+            "timed_loot_bag",
+            name -> MobLootBagsRegistry.createTimedLootBagItem(MobLootBagsRegistry.itemProperties(name).rarity(net.minecraft.world.item.Rarity.UNCOMMON))
+    );
+    private static final DeferredHolder<Item, Item> DIAMOND_KEY = ITEMS.register(
+            "diamond_key",
+            name -> MobLootBagsRegistry.createDiamondKeyItem(MobLootBagsRegistry.itemProperties(name).stacksTo(16).rarity(net.minecraft.world.item.Rarity.UNCOMMON))
+    );
+    private static final DeferredHolder<Item, Item> LOCKED_LOOTBAGS = ITEMS.register(
+            "locked_lootbags",
+            name -> MobLootBagsRegistry.createLockedLootBagItem(MobLootBagsRegistry.itemProperties(name).rarity(net.minecraft.world.item.Rarity.EPIC))
+    );
+    private static final DeferredHolder<Item, Item> SUMMONING_LOOTBAGS = ITEMS.register(
+            "summoning_lootbags",
+            name -> MobLootBagsRegistry.createSummoningLootBagItem(MobLootBagsRegistry.itemProperties(name).rarity(net.minecraft.world.item.Rarity.RARE))
+    );
 
     private static final DeferredHolder<Item, Item> LOOT_BAG_RECYCLE_BLOCK_ITEM = ITEMS.register(
             "loot_bag_recycle_block",
-            () -> MobLootBagsRegistry.createTooltipBlockItem(LOOT_BAG_RECYCLE_BLOCK.get(), new Item.Properties(), "block.mob_loot_bags.loot_bag_recycle_block.description_0")
+            name -> MobLootBagsRegistry.createTooltipBlockItem(
+                    LOOT_BAG_RECYCLE_BLOCK.get(),
+                    MobLootBagsRegistry.blockItemProperties(name),
+                    "block.mob_loot_bags.loot_bag_recycle_block.description_0"
+            )
     );
     private static final DeferredHolder<Item, Item> LOOT_BAG_OPENER_BLOCK_ITEM = ITEMS.register(
             "loot_bag_opener_block",
-            () -> MobLootBagsRegistry.createTooltipBlockItem(LOOT_BAG_OPENER_BLOCK.get(), new Item.Properties(), "block.mob_loot_bags.loot_bag_opener_block.description_0")
+            name -> MobLootBagsRegistry.createTooltipBlockItem(
+                    LOOT_BAG_OPENER_BLOCK.get(),
+                    MobLootBagsRegistry.blockItemProperties(name),
+                    "block.mob_loot_bags.loot_bag_opener_block.description_0"
+            )
     );
 
     private static final DeferredHolder<SoundEvent, SoundEvent> DRAMATIC = SOUNDS.register("dramatic", () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(MODID, "dramatic")));
