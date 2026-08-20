@@ -1,12 +1,45 @@
+# Gradle
+.gradle/
+**/build/
+**/out/
+**/bin/
+*.jar
+!**/gradle/wrapper/gradle-wrapper.jar
+!releases/*.jar
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.classpath
+.project
+.settings/
+.metadata/
+*.launch
+.eclipse/
+
+# Minecraft / runs
+run/
+runs/
+eclipse/
+
+# MCreator leftovers
+.mcreator/
 ascendant_mobs.mcreator
-.gradle
-.mcreator
-.eclipse
-.settings
-bin
-elements
-run
-runs
+elements/
 mcreator.gradle
-/build/
-**/build
+
+# Env / secrets / logs
+.env
+.env.*
+*.log
+*.tmp
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
