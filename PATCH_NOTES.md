@@ -1,5 +1,18 @@
 # Mob Loot Bags — Patch Notes
 
+## 1.11.2
+
+### Fixes
+- **Minecraft 26.1.2 startup crash** — block/item registration now sets registry IDs (`Properties.setId`) on Fabric and NeoForge, fixing `Block id not set` / `Item id not set` / unbound `ResourceKey` crashes.
+- **26.1.2 datapacks** — recipes under `data/.../recipe/` with 26.1 ingredient/`id` result schema; pickaxe mineable tag under `tags/block/`.
+- **Opener / recycler break parity (26.1.2)** — container contents (and recycler stored XP) drop via block-entity `preRemoveSideEffects`, matching vanilla container behavior.
+
+### Credits
+- Registry ID fix approach contributed by **Sami (`0x-sami`)** in PR #9 (completed for Fabric + common in this release).
+
+### Version note
+- All workspaces ship as **1.11.2**. Code fixes above apply to the **26.1.2** workspace; 1.20.1 and 1.21.1 are version-aligned releases with no registry API change required.
+
 ## 1.11.1
 
 ### Fixes
