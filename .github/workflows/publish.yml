@@ -32,6 +32,9 @@ on:
         description: "modrinth, curseforge, or both"
         required: false
         default: "both"
+      minecraft_version:
+        description: "Optional MC version filter (e.g. 26.2) — only upload matching jars"
+        required: false
 
 jobs:
   publish:
@@ -128,6 +131,21 @@ jobs:
           if [ ${#JARS[@]} -eq 0 ]; then
             echo "No jars found for version ${VERSION}" >&2
             exit 1
+          fi
+          MC_FILTER="${{ inputs.minecraft_version }}"
+          if [ -n "$MC_FILTER" ]; then
+            FILTERED=()
+            for jar in "${JARS[@]}"; do
+              base=$(basename "$jar")
+              if echo "$base" | grep -qE "(^|-)${MC_FILTER}(-|$)"; then
+                FILTERED+=("$jar")
+              fi
+            done
+            if [ ${#FILTERED[@]} -eq 0 ]; then
+              echo "No jars matched minecraft_version filter ${MC_FILTER}" >&2
+              exit 1
+            fi
+            JARS=("${FILTERED[@]}")
           fi
           printf '%s\n' "${JARS[@]}"
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)

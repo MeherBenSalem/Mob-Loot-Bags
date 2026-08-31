@@ -18,6 +18,7 @@ Minecraft mod that adds tiered loot bags dropped by mobs, plus opener and recycl
 | 1.20.1 | 17+ | Fabric, NeoForge |
 | 1.21.1 | 21+ | Fabric, NeoForge |
 | 26.1.2 | 25+ | Fabric, NeoForge |
+| 26.2 | 25+ | Fabric, NeoForge |
 
 ## Installation
 

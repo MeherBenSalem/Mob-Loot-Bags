@@ -2,6 +2,9 @@
 
 ## 1.11.2
 
+### Additions
+- **Minecraft 26.2 support** — Fabric and NeoForge jars for Minecraft 26.2 (mod version remains 1.11.2).
+
 ### Fixes
 - **Minecraft 26.1.2 startup crash** — block/item registration now sets registry IDs (`Properties.setId`) on Fabric and NeoForge, fixing `Block id not set` / `Item id not set` / unbound `ResourceKey` crashes.
 - **26.1.2 datapacks** — recipes under `data/.../recipe/` with 26.1 ingredient/`id` result schema; pickaxe mineable tag under `tags/block/`.
