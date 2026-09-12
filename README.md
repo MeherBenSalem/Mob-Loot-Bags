@@ -2,6 +2,23 @@
 
 Minecraft mod that adds tiered loot bags dropped by mobs, plus opener and recycler utility blocks. Bags range from Common through Legendary, with special cursed, timed, locked, and summoning variants.
 
+## Which jar do I download?
+
+Jar names are `mob_loot_bags-{loader}-{minecraft}-{modVersion}.jar`. Match **both** the Minecraft version and the loader.
+
+| Minecraft | Java | Fabric jar | NeoForge / Forge jar |
+|-----------|------|------------|----------------------|
+| 1.20.1 | 17+ | `…-fabric-1.20.1-….jar` | `…-neoforge-1.20.1-….jar` (Forge-compatible on 1.20.1) |
+| 1.21.1 | 21+ | `…-fabric-1.21.1-….jar` | `…-neoforge-1.21.1-….jar` |
+| 26.1.2 | 25+ | `…-fabric-26.1.2-….jar` | `…-neoforge-26.1.2-….jar` |
+| 26.2 | 25+ | `…-fabric-26.2-….jar` | `…-neoforge-26.2-….jar` |
+
+**Do not** install a `26.1.2` or `26.2` jar on Minecraft 1.21.1 (or the reverse). Those are different game versions; a 26.x jar declares `minecraft: 26.x` and needs Java 25+.
+
+If a download page lists several files under “1.21.1”, open the file name and confirm it contains `-1.21.1-`, not `-26.1.2-`. Prefer the May 29 **1.11.0** Fabric 1.21.1 build or any later jar whose **filename** includes `fabric-1.21.1` (or `neoforge-1.21.1`).
+
+> **Publisher note (1.11.1 / 1.11.2):** some `*-26.1.2-*.jar` files were mistakenly tagged as game version 1.21.1 on Modrinth/CurseForge by a publish-script bug. Those files still require Minecraft **26.1.2**. Hide or retag them on the storefronts; this repo no longer defaults unknown jars to 1.21.1.
+
 ## Features
 
 - Configurable mob drop rates and loot tables
@@ -23,7 +40,7 @@ Minecraft mod that adds tiered loot bags dropped by mobs, plus opener and recycl
 ## Installation
 
 1. Install Fabric or NeoForge for your Minecraft version.
-2. Download the matching jar from [Modrinth](https://modrinth.com/mod/mob-loot-bags/versions) or [CurseForge](https://www.curseforge.com/minecraft/mc-mods/mob-loot-bags).
+2. Download the matching jar from [Modrinth](https://modrinth.com/mod/mob-loot-bags/versions) or [CurseForge](https://www.curseforge.com/minecraft/mc-mods/mob-loot-bags) using the table above.
 3. Place the jar in your `mods` folder.
 
 ## Building
@@ -36,6 +53,8 @@ cd 1.21.1
 ```
 
 Jars are written under each loader's `build/libs/` directory. Prebuilt release jars may also be placed in `releases/` for the publish workflow.
+
+Publish metadata is derived from the jar **filename** (see `.github/scripts/detect-jar-meta.js`). Run `node .github/scripts/detect-jar-meta.test.js` to verify detection.
 
 ## Configuration
 

@@ -1,5 +1,19 @@
 # Mob Loot Bags — Patch Notes
 
+## 1.11.2 (metadata maintenance)
+
+### Fixes
+- **Publish game-version tagging** — calendar Minecraft versions such as `26.1.2` are no longer mis-detected as `1.21.1` when uploading to Modrinth/CurseForge. The old detector only matched `26.X` (not `26.X.Y`) and fell back to `1.21.1`, so `mob_loot_bags-*-26.1.2-*.jar` files appeared under the 1.21.1 filter while still requiring Minecraft 26.1.2 / Java 25+.
+- **NeoForge Minecraft ranges** — `1.20.1` workspace now declares `[1.20.1, 1.21)`; `1.21.1` declares `[1.21.1, 1.21.2)` (was open to `1.22)`).
+- **Docs** — README “Which jar do I download?” table clarifies MC × loader filenames.
+
+### Player guidance (1.21.1 Fabric)
+- Prefer jars whose **filename** contains `fabric-1.21.1` (for example the May 29 **1.11.0** Fabric build, or a correctly named later `1.11.x` Fabric 1.21.1 jar).
+- Ignore listings that show a `*-26.1.2-*.jar` under a 1.21.1 filter — that file is for Minecraft 26.1.2 only.
+
+### Publisher follow-up
+- Unlist or retag mis-labeled `*-26.1.2-*` files that still show game version 1.21.1 on Modrinth/CurseForge. Do not re-upload from this PR unless intentionally releasing.
+
 ## 1.11.2
 
 ### Additions
