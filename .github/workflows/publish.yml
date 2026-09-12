@@ -63,7 +63,9 @@ jobs:
         run: |
           VERSION="${{ steps.ver.outputs.version }}"
           mapfile -t JARS < <(find releases -maxdepth 1 -type f -name "*-${VERSION}.jar" \
-            ! -name "*-sources.jar" ! -name "*-javadoc.jar" 2>/dev/null | sort)
+            ! -name "*-sources.jar" ! -name "*-javadoc.jar" \
+            ! -name "*-dev.jar" ! -name "*-dev-shadow.jar" \
+            ! -name "*-common-*.jar" 2>/dev/null | sort)
           if [ ${#JARS[@]} -gt 0 ]; then
             echo "found=true" >> "$GITHUB_OUTPUT"
             EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
@@ -122,11 +124,15 @@ jobs:
         shell: bash
         run: |
           VERSION="${{ steps.ver.outputs.version }}"
-          mapfile -t JARS < <(find releases -maxdepth 1 -type f -name "*-${VERSION}.jar" 2>/dev/null | sort)
+          mapfile -t JARS < <(find releases -maxdepth 1 -type f -name "*-${VERSION}.jar" \
+            ! -name "*-sources.jar" ! -name "*-javadoc.jar" \
+            ! -name "*-dev.jar" ! -name "*-dev-shadow.jar" \
+            ! -name "*-common-*.jar" 2>/dev/null | sort)
           if [ ${#JARS[@]} -eq 0 ]; then
             mapfile -t JARS < <(find . -type f -path "*/build/libs/*-${VERSION}.jar" \
               ! -name "*-sources.jar" ! -name "*-javadoc.jar" \
-              ! -name "*-dev.jar" ! -name "*-dev-shadow.jar" | sort)
+              ! -name "*-dev.jar" ! -name "*-dev-shadow.jar" \
+              ! -name "*-common-*.jar" | sort)
           fi
           if [ ${#JARS[@]} -eq 0 ]; then
             echo "No jars found for version ${VERSION}" >&2
