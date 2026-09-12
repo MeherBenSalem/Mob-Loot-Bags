@@ -1,5 +1,13 @@
 # Mob Loot Bags — Patch Notes
 
+## 1.11.3
+
+### Fixes
+- **CurseForge / Modrinth game-version metadata** — republish with the fixed publish detector (PR #11): `*-26.1.2-*` jars upload with Minecraft **26.1.2** game-version tags instead of **1.21.1**.
+
+### No gameplay changes
+- Mod behavior is unchanged from **1.11.2**. This release only corrects storefront metadata so each loader jar appears under the right Minecraft version filter.
+
 ## 1.11.2 (metadata maintenance)
 
 ### Fixes

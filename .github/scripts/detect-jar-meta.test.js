@@ -6,14 +6,14 @@ const { detect, detectRequired } = require('./detect-jar-meta.js');
 
 const cases = [
   // Current MultiLoader naming
-  ['mob_loot_bags-fabric-1.20.1-1.11.2.jar', 'fabric', '1.20.1'],
-  ['mob_loot_bags-fabric-1.21.1-1.11.2.jar', 'fabric', '1.21.1'],
-  ['mob_loot_bags-fabric-26.1.2-1.11.2.jar', 'fabric', '26.1.2'],
-  ['mob_loot_bags-fabric-26.2-1.11.2.jar', 'fabric', '26.2'],
-  ['mob_loot_bags-neoforge-1.21.1-1.11.2.jar', 'neoforge', '1.21.1'],
-  ['mob_loot_bags-neoforge-26.1.2-1.11.2.jar', 'neoforge', '26.1.2'],
-  ['mob_loot_bags-neoforge-26.2-1.11.2.jar', 'neoforge', '26.2'],
-  ['mob_loot_bags-neoforge-1.20.1-1.11.2.jar', 'neoforge', '1.20.1'],
+  ['mob_loot_bags-fabric-1.20.1-1.11.3.jar', 'fabric', '1.20.1'],
+  ['mob_loot_bags-fabric-1.21.1-1.11.3.jar', 'fabric', '1.21.1'],
+  ['mob_loot_bags-fabric-26.1.2-1.11.3.jar', 'fabric', '26.1.2'],
+  ['mob_loot_bags-fabric-26.2-1.11.3.jar', 'fabric', '26.2'],
+  ['mob_loot_bags-neoforge-1.21.1-1.11.3.jar', 'neoforge', '1.21.1'],
+  ['mob_loot_bags-neoforge-26.1.2-1.11.3.jar', 'neoforge', '26.1.2'],
+  ['mob_loot_bags-neoforge-26.2-1.11.3.jar', 'neoforge', '26.2'],
+  ['mob_loot_bags-neoforge-1.20.1-1.11.3.jar', 'neoforge', '1.20.1'],
   // Older forge-style names
   ['mob_loot_bags-1.10.1-forge-1.20.1.jar', 'forge', '1.20.1'],
   ['mob_loot_bags-1.10.1-neoforge-1.21.1.jar', 'neoforge', '1.21.1'],
@@ -44,7 +44,7 @@ try {
 
 // Historical bug: old regex matched only 26.\\d+ then fell through to default 1.21.1
 {
-  const got = detect('mob_loot_bags-fabric-26.1.2-1.11.2.jar');
+  const got = detect('mob_loot_bags-fabric-26.1.2-1.11.3.jar');
   assert.strictEqual(got.gv, '26.1.2');
   assert.notStrictEqual(got.gv, '1.21.1');
   console.log('ok 26.1.2 is not mis-detected as 1.21.1');
