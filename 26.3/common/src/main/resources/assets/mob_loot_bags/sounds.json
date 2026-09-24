@@ -1,0 +1,29 @@
+{
+  "dramatic": {
+    "subtitle": "subtitles.dramatic",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:dramatic-sound-effect",
+        "stream": true
+      }
+    ]
+  },
+  "lootbag_sfx_1": {
+    "subtitle": "subtitles.lootbag_sfx_1",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:lootbag_1",
+        "stream": false
+      }
+    ]
+  },
+  "lootbag_sfx_2": {
+    "subtitle": "subtitles.lootbag_sfx_2",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:lootbag_2",
+        "stream": false
+      }
+    ]
+  }
+}

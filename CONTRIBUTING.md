@@ -5,7 +5,7 @@ Thanks for helping improve Mob Loot Bags.
 ## How to contribute
 
 1. Fork the repository and create a feature branch from `main`.
-2. Make focused changes in the relevant Minecraft version workspace (`1.20.1/`, `1.21.1/`, `26.1.2/`, or `26.2/`).
+2. Make focused changes in the relevant Minecraft version workspace (`1.20.1/`, `1.21.1/`, `26.1.2/`, `26.2/`, or `26.3/`).
 3. Build the workspace you changed (`./gradlew build` from that folder).
 4. Open a pull request describing the change and how you tested it.
 

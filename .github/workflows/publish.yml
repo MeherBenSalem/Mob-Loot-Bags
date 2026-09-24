@@ -94,7 +94,7 @@ jobs:
         run: |
           set -euo pipefail
           built=0
-          for ws in 1.20.1 1.21.1 26.1.2 26.2; do
+          for ws in 1.20.1 1.21.1 26.1.2 26.2 26.3; do
             if [ -f "$ws/gradlew" ] || [ -f "$ws/settings.gradle" ] || [ -f "$ws/settings.gradle.kts" ]; then
               echo "Building workspace $ws"
               (

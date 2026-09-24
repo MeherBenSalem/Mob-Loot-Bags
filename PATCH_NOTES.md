@@ -2,11 +2,14 @@
 
 ## 1.11.3
 
+### Additions
+- **Minecraft 26.3 support** — Fabric and NeoForge jars for Minecraft 26.3 (mod version remains 1.11.3). NeoForge targets the 26.3 beta loader (`26.3.0.16-beta`). Fabric declares a Fabric API dependency. No gameplay changes versus the 26.2 line.
+
 ### Fixes
 - **CurseForge / Modrinth game-version metadata** — republish with the fixed publish detector (PR #11): `*-26.1.2-*` jars upload with Minecraft **26.1.2** game-version tags instead of **1.21.1**.
 
 ### No gameplay changes
-- Mod behavior is unchanged from **1.11.2**. This release only corrects storefront metadata so each loader jar appears under the right Minecraft version filter.
+- Behavior on previously supported versions is unchanged from **1.11.2**. The 26.3 workspace is a port of the 26.2 feature set (including `config/mlb/` configs); it does not add new items, bags, or blocks.
 
 ## 1.11.2 (metadata maintenance)
 
