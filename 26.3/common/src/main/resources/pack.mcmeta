@@ -1,6 +1,7 @@
 {
   "pack": {
-    "pack_format": 34,
-    "description": "With each mob you defeat, you have a chance to receive a loot bag containing valuable rewards"
+    "description": "With each mob you defeat, you have a chance to receive a loot bag containing valuable rewards",
+    "min_format": 121,
+    "max_format": 121
   }
 }

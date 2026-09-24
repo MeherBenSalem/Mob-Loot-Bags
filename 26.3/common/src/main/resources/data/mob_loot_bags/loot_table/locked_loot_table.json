@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:generic",
+  "type": "minecraft:chest",
   "pools": [
     {
       "rolls": 1,
@@ -8,20 +8,23 @@
           "type": "minecraft:item",
           "name": "minecraft:netherite_sword",
           "weight": 5,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
               "count": {
+                "type": "minecraft:uniform",
                 "min": 1,
                 "max": 1
-              }
+              },
+              "type": "minecraft:set_count"
             },
             {
-              "function": "minecraft:enchant_with_levels",
               "levels": {
+                "type": "minecraft:uniform",
                 "min": 50,
                 "max": 100
-              }
+              },
+              "type": "minecraft:enchant_with_levels",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -29,20 +32,23 @@
           "type": "minecraft:item",
           "name": "minecraft:netherite_axe",
           "weight": 5,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
               "count": {
+                "type": "minecraft:uniform",
                 "min": 1,
                 "max": 1
-              }
+              },
+              "type": "minecraft:set_count"
             },
             {
-              "function": "minecraft:enchant_with_levels",
               "levels": {
+                "type": "minecraft:uniform",
                 "min": 50,
                 "max": 100
-              }
+              },
+              "type": "minecraft:enchant_with_levels",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -50,20 +56,23 @@
           "type": "minecraft:item",
           "name": "minecraft:netherite_pickaxe",
           "weight": 5,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
               "count": {
+                "type": "minecraft:uniform",
                 "min": 1,
                 "max": 1
-              }
+              },
+              "type": "minecraft:set_count"
             },
             {
-              "function": "minecraft:enchant_with_levels",
               "levels": {
+                "type": "minecraft:uniform",
                 "min": 50,
                 "max": 100
-              }
+              },
+              "type": "minecraft:enchant_with_levels",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -71,20 +80,23 @@
           "type": "minecraft:item",
           "name": "minecraft:netherite_shovel",
           "weight": 5,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
               "count": {
+                "type": "minecraft:uniform",
                 "min": 1,
                 "max": 1
-              }
+              },
+              "type": "minecraft:set_count"
             },
             {
-              "function": "minecraft:enchant_with_levels",
               "levels": {
+                "type": "minecraft:uniform",
                 "min": 50,
                 "max": 100
-              }
+              },
+              "type": "minecraft:enchant_with_levels",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         }
@@ -97,20 +109,23 @@
           "type": "minecraft:item",
           "name": "minecraft:netherite_helmet",
           "weight": 5,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
               "count": {
+                "type": "minecraft:uniform",
                 "min": 1,
                 "max": 1
-              }
+              },
+              "type": "minecraft:set_count"
             },
             {
-              "function": "minecraft:enchant_with_levels",
               "levels": {
+                "type": "minecraft:uniform",
                 "min": 50,
                 "max": 100
-              }
+              },
+              "type": "minecraft:enchant_with_levels",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -118,20 +133,23 @@
           "type": "minecraft:item",
           "name": "minecraft:netherite_leggings",
           "weight": 5,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
               "count": {
+                "type": "minecraft:uniform",
                 "min": 1,
                 "max": 1
-              }
+              },
+              "type": "minecraft:set_count"
             },
             {
-              "function": "minecraft:enchant_with_levels",
               "levels": {
+                "type": "minecraft:uniform",
                 "min": 50,
                 "max": 100
-              }
+              },
+              "type": "minecraft:enchant_with_levels",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -139,20 +157,23 @@
           "type": "minecraft:item",
           "name": "minecraft:netherite_chestplate",
           "weight": 5,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
               "count": {
+                "type": "minecraft:uniform",
                 "min": 1,
                 "max": 1
-              }
+              },
+              "type": "minecraft:set_count"
             },
             {
-              "function": "minecraft:enchant_with_levels",
               "levels": {
+                "type": "minecraft:uniform",
                 "min": 50,
                 "max": 100
-              }
+              },
+              "type": "minecraft:enchant_with_levels",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -160,20 +181,23 @@
           "type": "minecraft:item",
           "name": "minecraft:netherite_boots",
           "weight": 5,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
               "count": {
+                "type": "minecraft:uniform",
                 "min": 1,
                 "max": 1
-              }
+              },
+              "type": "minecraft:set_count"
             },
             {
-              "function": "minecraft:enchant_with_levels",
               "levels": {
+                "type": "minecraft:uniform",
                 "min": 50,
                 "max": 100
-              }
+              },
+              "type": "minecraft:enchant_with_levels",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         }
