@@ -12,8 +12,9 @@ Jar names are `mob_loot_bags-{loader}-{minecraft}-{modVersion}.jar`. Match **bot
 | 1.21.1 | 21+ | `…-fabric-1.21.1-….jar` | `…-neoforge-1.21.1-….jar` |
 | 26.1.2 | 25+ | `…-fabric-26.1.2-….jar` | `…-neoforge-26.1.2-….jar` |
 | 26.2 | 25+ | `…-fabric-26.2-….jar` | `…-neoforge-26.2-….jar` |
+| 26.3 | 25+ | `…-fabric-26.3-….jar` | `…-neoforge-26.3-….jar` |
 
-**Do not** install a `26.1.2` or `26.2` jar on Minecraft 1.21.1 (or the reverse). Those are different game versions; a 26.x jar declares `minecraft: 26.x` and needs Java 25+.
+**Do not** install a `26.1.2`, `26.2`, or `26.3` jar on Minecraft 1.21.1 (or the reverse). Those are different game versions; a 26.x jar declares `minecraft: 26.x` and needs Java 25+.
 
 If a download page lists several files under “1.21.1”, open the file name and confirm it contains `-1.21.1-`, not `-26.1.2-`. Prefer the May 29 **1.11.0** Fabric 1.21.1 build or any later jar whose **filename** includes `fabric-1.21.1` (or `neoforge-1.21.1`).
 
@@ -36,6 +37,7 @@ If a download page lists several files under “1.21.1”, open the file name an
 | 1.21.1 | 21+ | Fabric, NeoForge |
 | 26.1.2 | 25+ | Fabric, NeoForge |
 | 26.2 | 25+ | Fabric, NeoForge |
+| 26.3 | 25+ | Fabric, NeoForge |
 
 ## Installation
 
