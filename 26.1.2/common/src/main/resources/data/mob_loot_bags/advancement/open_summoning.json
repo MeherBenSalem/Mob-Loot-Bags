@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "mob_loot_bags:summoning_lootbags"
+    },
+    "title": {
+      "translate": "advancements.mob_loot_bags.open_summoning.title"
+    },
+    "description": {
+      "translate": "advancements.mob_loot_bags.open_summoning.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "mob_loot_bags:summoning_lootbags"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get"
+    ]
+  ],
+  "parent": "mob_loot_bags:open_bag"
+}

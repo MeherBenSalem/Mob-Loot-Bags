@@ -1,176 +1,125 @@
 package tn.naizo.moblootbags.neoforge;
 
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.CreativeModeTab;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.fml.loading.FMLPaths;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.util.FakePlayer;
+import net.neoforged.neoforge.event.OnDatapackSyncEvent;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.event.server.ServerStartedEvent;
+import net.neoforged.neoforge.event.server.ServerStoppingEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.Block;
-import tn.naizo.moblootbags.common.LootBagOpenerBlockEntity;
-import tn.naizo.moblootbags.common.LootBagRecyclerBlockEntity;
+import net.neoforged.neoforge.transfer.item.WorldlyContainerWrapper;
 import tn.naizo.moblootbags.common.MobLootBagsCommon;
-import tn.naizo.moblootbags.common.MobLootBagsConfig;
-import tn.naizo.moblootbags.common.MobLootBagsLogic;
-import tn.naizo.moblootbags.common.MobLootBagsRegistry;
+import tn.naizo.moblootbags.common.MobLootBagsEvents;
+import tn.naizo.moblootbags.common.content.ModContent;
+import tn.naizo.moblootbags.common.network.RevealPayload;
+import tn.naizo.moblootbags.common.network.SyncPayload;
+import tn.naizo.moblootbags.common.platform.Platform;
+import tn.naizo.moblootbags.common.platform.Registrar;
 
 @Mod(MobLootBagsCommon.MOD_ID)
 public final class MobLootBagsNeoForge {
-    private static final String MODID = MobLootBagsCommon.MOD_ID;
+    private final Map<ResourceKey<?>, DeferredRegister<?>> registers = new HashMap<>();
 
-    private static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
-    private static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
-    private static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(Registries.SOUND_EVENT, MODID);
-    private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, MODID);
-    private static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+    public MobLootBagsNeoForge(IEventBus modBus) {
+        MobLootBagsCommon.init(new NeoForgePlatform(), new NeoForgeRegistrar(), new ModContent.MenuTypeFactory() {
+            @Override
+            public <T extends AbstractContainerMenu> MenuType<T> create(ModContent.MenuConstructor<T> constructor) {
+                return new MenuType<>(constructor::create, FeatureFlags.VANILLA_SET);
+            }
+        });
+        DeferredRegister<CreativeModeTab> tabs = register(Registries.CREATIVE_MODE_TAB);
+        tabs.register("loot_bags_creative_tab", () -> CreativeModeTab.builder()
+                .title(ModContent.tabTitle())
+                .icon(ModContent::tabIcon)
+                .displayItems((parameters, output) -> ModContent.forEachTabItem(output::accept))
+                .build());
+        registers.values().forEach(deferred -> deferred.register(modBus));
 
-    // Registry ID binding pattern based on PR #9 by Sami (0x-sami).
-    private static final DeferredHolder<Block, Block> LOOT_BAG_RECYCLE_BLOCK = BLOCKS.register(
-            "loot_bag_recycle_block",
-            name -> MobLootBagsRegistry.createLootBagRecyclerBlock(MobLootBagsRegistry.blockProperties(name))
-    );
-    private static final DeferredHolder<Block, Block> LOOT_BAG_OPENER_BLOCK = BLOCKS.register(
-            "loot_bag_opener_block",
-            name -> MobLootBagsRegistry.createLootBagOpenerBlock(MobLootBagsRegistry.blockProperties(name))
-    );
-    private static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LootBagRecyclerBlockEntity>> LOOT_BAG_RECYCLE_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
-            "loot_bag_recycle_block",
-            () -> new BlockEntityType<>(LootBagRecyclerBlockEntity::new, LOOT_BAG_RECYCLE_BLOCK.get())
-    );
-    private static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LootBagOpenerBlockEntity>> LOOT_BAG_OPENER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
-            "loot_bag_opener_block",
-            () -> new BlockEntityType<>(LootBagOpenerBlockEntity::new, LOOT_BAG_OPENER_BLOCK.get())
-    );
-
-    private static final DeferredHolder<Item, Item> COMMONLOOTBAG = ITEMS.register(
-            "commonlootbag",
-            name -> MobLootBagsRegistry.createTierLootBagItem("common", MobLootBagsRegistry.itemProperties(name))
-    );
-    private static final DeferredHolder<Item, Item> UNCOMMONLOOTBAG = ITEMS.register(
-            "uncommonlootbag",
-            name -> MobLootBagsRegistry.createTierLootBagItem("uncommon", MobLootBagsRegistry.itemProperties(name))
-    );
-    private static final DeferredHolder<Item, Item> RARELOOTBAG = ITEMS.register(
-            "rarelootbag",
-            name -> MobLootBagsRegistry.createTierLootBagItem("rare", MobLootBagsRegistry.itemProperties(name))
-    );
-    private static final DeferredHolder<Item, Item> EPICLOOTBAG = ITEMS.register(
-            "epiclootbag",
-            name -> MobLootBagsRegistry.createTierLootBagItem("epic", MobLootBagsRegistry.itemProperties(name).rarity(net.minecraft.world.item.Rarity.RARE))
-    );
-    private static final DeferredHolder<Item, Item> LEGENDARYLOOTBAG = ITEMS.register(
-            "legendarylootbag",
-            name -> MobLootBagsRegistry.createTierLootBagItem("legendary", MobLootBagsRegistry.itemProperties(name).rarity(net.minecraft.world.item.Rarity.EPIC))
-    );
-    private static final DeferredHolder<Item, Item> CURSED_LOOTBAG = ITEMS.register(
-            "cursed_lootbag",
-            name -> MobLootBagsRegistry.createCursedLootBagItem(MobLootBagsRegistry.itemProperties(name).rarity(net.minecraft.world.item.Rarity.UNCOMMON))
-    );
-    private static final DeferredHolder<Item, Item> TIMED_LOOT_BAG = ITEMS.register(
-            "timed_loot_bag",
-            name -> MobLootBagsRegistry.createTimedLootBagItem(MobLootBagsRegistry.itemProperties(name).rarity(net.minecraft.world.item.Rarity.UNCOMMON))
-    );
-    private static final DeferredHolder<Item, Item> DIAMOND_KEY = ITEMS.register(
-            "diamond_key",
-            name -> MobLootBagsRegistry.createDiamondKeyItem(MobLootBagsRegistry.itemProperties(name).stacksTo(16).rarity(net.minecraft.world.item.Rarity.UNCOMMON))
-    );
-    private static final DeferredHolder<Item, Item> LOCKED_LOOTBAGS = ITEMS.register(
-            "locked_lootbags",
-            name -> MobLootBagsRegistry.createLockedLootBagItem(MobLootBagsRegistry.itemProperties(name).rarity(net.minecraft.world.item.Rarity.EPIC))
-    );
-    private static final DeferredHolder<Item, Item> SUMMONING_LOOTBAGS = ITEMS.register(
-            "summoning_lootbags",
-            name -> MobLootBagsRegistry.createSummoningLootBagItem(MobLootBagsRegistry.itemProperties(name).rarity(net.minecraft.world.item.Rarity.RARE))
-    );
-
-    private static final DeferredHolder<Item, Item> LOOT_BAG_RECYCLE_BLOCK_ITEM = ITEMS.register(
-            "loot_bag_recycle_block",
-            name -> MobLootBagsRegistry.createTooltipBlockItem(
-                    LOOT_BAG_RECYCLE_BLOCK.get(),
-                    MobLootBagsRegistry.blockItemProperties(name),
-                    "block.mob_loot_bags.loot_bag_recycle_block.description_0"
-            )
-    );
-    private static final DeferredHolder<Item, Item> LOOT_BAG_OPENER_BLOCK_ITEM = ITEMS.register(
-            "loot_bag_opener_block",
-            name -> MobLootBagsRegistry.createTooltipBlockItem(
-                    LOOT_BAG_OPENER_BLOCK.get(),
-                    MobLootBagsRegistry.blockItemProperties(name),
-                    "block.mob_loot_bags.loot_bag_opener_block.description_0"
-            )
-    );
-
-    private static final DeferredHolder<SoundEvent, SoundEvent> DRAMATIC = SOUNDS.register("dramatic", () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(MODID, "dramatic")));
-    private static final DeferredHolder<SoundEvent, SoundEvent> LOOTBAG_SFX_1 = SOUNDS.register("lootbag_sfx_1", () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(MODID, "lootbag_sfx_1")));
-    private static final DeferredHolder<SoundEvent, SoundEvent> LOOTBAG_SFX_2 = SOUNDS.register("lootbag_sfx_2", () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(MODID, "lootbag_sfx_2")));
-
-    private static final DeferredHolder<CreativeModeTab, CreativeModeTab> LOOT_BAGS_TAB = CREATIVE_TABS.register("loot_bags_creative_tab", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.mob_loot_bags.loot_bags_creative_tab"))
-            .icon(() -> new ItemStack(COMMONLOOTBAG.get()))
-            .displayItems((parameters, output) -> {
-                output.accept(LOOT_BAG_RECYCLE_BLOCK_ITEM.get());
-                output.accept(LOOT_BAG_OPENER_BLOCK_ITEM.get());
-                output.accept(COMMONLOOTBAG.get());
-                output.accept(UNCOMMONLOOTBAG.get());
-                output.accept(RARELOOTBAG.get());
-                output.accept(EPICLOOTBAG.get());
-                output.accept(LEGENDARYLOOTBAG.get());
-                output.accept(CURSED_LOOTBAG.get());
-                output.accept(TIMED_LOOT_BAG.get());
-                output.accept(DIAMOND_KEY.get());
-                output.accept(LOCKED_LOOTBAGS.get());
-                output.accept(SUMMONING_LOOTBAGS.get());
-            })
-            .build());
-
-    public MobLootBagsNeoForge(IEventBus modEventBus) {
-        MobLootBagsConfig.init();
-
-        BLOCKS.register(modEventBus);
-        ITEMS.register(modEventBus);
-        SOUNDS.register(modEventBus);
-        BLOCK_ENTITY_TYPES.register(modEventBus);
-        CREATIVE_TABS.register(modEventBus);
-
-        modEventBus.addListener(this::onCommonSetup);
-        NeoForge.EVENT_BUS.addListener(this::onLivingDeath);
-    }
-
-    private void onCommonSetup(FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            MobLootBagsRegistry.LOOT_BAG_RECYCLE_BLOCK = LOOT_BAG_RECYCLE_BLOCK.get();
-            MobLootBagsRegistry.LOOT_BAG_OPENER_BLOCK = LOOT_BAG_OPENER_BLOCK.get();
-            MobLootBagsRegistry.LOOT_BAG_RECYCLE_BLOCK_ENTITY = LOOT_BAG_RECYCLE_BLOCK_ENTITY.get();
-            MobLootBagsRegistry.LOOT_BAG_OPENER_BLOCK_ENTITY = LOOT_BAG_OPENER_BLOCK_ENTITY.get();
-            MobLootBagsRegistry.COMMONLOOTBAG = COMMONLOOTBAG.get();
-            MobLootBagsRegistry.UNCOMMONLOOTBAG = UNCOMMONLOOTBAG.get();
-            MobLootBagsRegistry.RARELOOTBAG = RARELOOTBAG.get();
-            MobLootBagsRegistry.EPICLOOTBAG = EPICLOOTBAG.get();
-            MobLootBagsRegistry.LEGENDARYLOOTBAG = LEGENDARYLOOTBAG.get();
-            MobLootBagsRegistry.CURSED_LOOTBAG = CURSED_LOOTBAG.get();
-            MobLootBagsRegistry.TIMED_LOOT_BAG = TIMED_LOOT_BAG.get();
-            MobLootBagsRegistry.DIAMOND_KEY = DIAMOND_KEY.get();
-            MobLootBagsRegistry.LOCKED_LOOTBAGS = LOCKED_LOOTBAGS.get();
-            MobLootBagsRegistry.SUMMONING_LOOTBAGS = SUMMONING_LOOTBAGS.get();
-            MobLootBagsRegistry.DRAMATIC = DRAMATIC.get();
-            MobLootBagsRegistry.LOOTBAG_SFX_1 = LOOTBAG_SFX_1.get();
-            MobLootBagsRegistry.LOOTBAG_SFX_2 = LOOTBAG_SFX_2.get();
-            MobLootBagsRegistry.LOOT_BAG_RECYCLE_BLOCK_ITEM = LOOT_BAG_RECYCLE_BLOCK_ITEM.get();
-            MobLootBagsRegistry.LOOT_BAG_OPENER_BLOCK_ITEM = LOOT_BAG_OPENER_BLOCK_ITEM.get();
-            LOOT_BAGS_TAB.get();
+        modBus.addListener(this::registerPayloads);
+        modBus.addListener(this::registerCapabilities);
+        NeoForge.EVENT_BUS.addListener((LivingDeathEvent event) -> MobLootBagsEvents.onLivingDeath(event.getEntity(), event.getSource()));
+        NeoForge.EVENT_BUS.addListener((ServerStartedEvent event) -> MobLootBagsEvents.onServerStarted(event.getServer()));
+        NeoForge.EVENT_BUS.addListener((ServerStoppingEvent event) -> MobLootBagsEvents.onServerStopping(event.getServer()));
+        NeoForge.EVENT_BUS.addListener((ServerTickEvent.Post event) -> MobLootBagsEvents.onServerTick(event.getServer()));
+        NeoForge.EVENT_BUS.addListener((RegisterCommandsEvent event) ->
+                MobLootBagsEvents.registerCommands(event.getDispatcher(), event.getBuildContext()));
+        NeoForge.EVENT_BUS.addListener((OnDatapackSyncEvent event) -> {
+            if (event.getPlayer() == null) {
+                MobLootBagsEvents.onDataReloaded(event.getPlayerList().getServer());
+            } else {
+                MobLootBagsEvents.onPlayerSync(event.getPlayer());
+            }
         });
     }
 
-    private void onLivingDeath(LivingDeathEvent event) {
-        MobLootBagsLogic.onMobDeath(event.getEntity(), event.getSource());
+    @SuppressWarnings("unchecked")
+    private <R> DeferredRegister<R> register(ResourceKey<? extends Registry<R>> registry) {
+        return (DeferredRegister<R>) registers.computeIfAbsent(registry, key -> DeferredRegister.create(registry, MobLootBagsCommon.MOD_ID));
+    }
+
+    private void registerPayloads(RegisterPayloadHandlersEvent event) {
+        event.registrar("2")
+                .playToClient(SyncPayload.TYPE, SyncPayload.CODEC)
+                .playToClient(RevealPayload.TYPE, RevealPayload.CODEC);
+    }
+
+    private void registerCapabilities(RegisterCapabilitiesEvent event) {
+        event.registerBlockEntity(Capabilities.Item.BLOCK, ModContent.BAG_OPENER_ENTITY.get(), WorldlyContainerWrapper::new);
+        event.registerBlockEntity(Capabilities.Item.BLOCK, ModContent.LOOT_RECYCLER_ENTITY.get(), WorldlyContainerWrapper::new);
+    }
+
+    private final class NeoForgeRegistrar implements Registrar {
+        @Override
+        public <R, T extends R> Supplier<T> register(ResourceKey<? extends Registry<R>> registry, String path, Function<Identifier, T> factory) {
+            return MobLootBagsNeoForge.this.register(registry).register(path, factory);
+        }
+    }
+
+    private static final class NeoForgePlatform implements Platform {
+        @Override
+        public Path configDir() {
+            return FMLPaths.CONFIGDIR.get();
+        }
+
+        @Override
+        public void sendToPlayer(ServerPlayer player, CustomPacketPayload payload) {
+            PacketDistributor.sendToPlayer(player, payload);
+        }
+
+        @Override
+        public boolean isFakePlayer(ServerPlayer player) {
+            return player instanceof FakePlayer;
+        }
+
+        @Override
+        public boolean isClient() {
+            return FMLEnvironment.getDist() == Dist.CLIENT;
+        }
     }
 }

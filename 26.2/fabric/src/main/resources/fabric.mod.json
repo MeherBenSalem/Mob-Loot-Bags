@@ -7,16 +7,25 @@
     "authors": [
         "${mod_author}"
     ],
-    "contact": {},
+    "contact": {
+        "homepage": "https://www.curseforge.com/minecraft/mc-mods/mob-loot-bags",
+        "sources": "https://github.com/MeherBenSalem/Mob-Loot-Bags",
+        "issues": "https://github.com/MeherBenSalem/Mob-Loot-Bags/issues"
+    },
     "license": "${license}",
     "icon": "assets/mob_loot_bags/textures/logo.png",
     "environment": "*",
     "entrypoints": {
         "main": [
             "tn.naizo.moblootbags.fabric.MobLootBagsFabric"
+        ],
+        "client": [
+            "tn.naizo.moblootbags.fabric.MobLootBagsFabricClient"
         ]
     },
-    "mixins": [],
+    "mixins": [
+        "mob_loot_bags.mixins.json"
+    ],
     "depends": {
         "fabricloader": ">=${fabric_loader_version}",
         "fabric-api": "*",

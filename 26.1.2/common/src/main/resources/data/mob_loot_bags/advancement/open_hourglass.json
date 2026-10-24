@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "mob_loot_bags:timed_loot_bag"
+    },
+    "title": {
+      "translate": "advancements.mob_loot_bags.open_hourglass.title"
+    },
+    "description": {
+      "translate": "advancements.mob_loot_bags.open_hourglass.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "mob_loot_bags:timed_loot_bag"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get"
+    ]
+  ],
+  "parent": "mob_loot_bags:open_bag"
+}

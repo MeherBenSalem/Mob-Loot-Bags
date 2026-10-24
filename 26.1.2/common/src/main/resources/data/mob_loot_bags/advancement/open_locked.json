@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "mob_loot_bags:locked_lootbags"
+    },
+    "title": {
+      "translate": "advancements.mob_loot_bags.open_locked.title"
+    },
+    "description": {
+      "translate": "advancements.mob_loot_bags.open_locked.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "mob_loot_bags:locked_lootbags"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get"
+    ]
+  ],
+  "parent": "mob_loot_bags:open_bag"
+}

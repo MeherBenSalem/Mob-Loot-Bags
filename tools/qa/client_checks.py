@@ -45,13 +45,16 @@ def main():
     # Look up at the sky, so holding Use never hits a block (a machine would open its screen instead).
     here = re.findall(r'-?\d+\.\d+', c(f'data get entity {PLAYER} Pos'))
     c(f'tp {PLAYER} {here[0]} {here[1]} {here[2]} 0 -60')
+    # A freshly joined client spends its first click on grabbing the mouse.
+    s.click(1)
     s.wait(2)
 
     # Hold Use on a Rare bag.
     c(f'item replace entity {PLAYER} hotbar.0 with mob_loot_bags:rarelootbag 3')
     s.key('1')
     s.wait(1)
-    s.hold(3, 1.5)
+    # 16 ticks open one bag; stay well short of the 36 a second one needs, even when a busy machine lags the client.
+    s.hold(3, 1.1)
     s.wait(0.7)
     s.shot(out / 'check-open-rare.png')
     i = inv()

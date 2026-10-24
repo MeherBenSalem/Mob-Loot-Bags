@@ -1,0 +1,14 @@
+{
+  "values": [
+    "mob_loot_bags:commonlootbag",
+    "mob_loot_bags:uncommonlootbag",
+    "mob_loot_bags:rarelootbag",
+    "mob_loot_bags:epiclootbag",
+    "mob_loot_bags:legendarylootbag",
+    "mob_loot_bags:mythiclootbag",
+    "mob_loot_bags:cursed_lootbag",
+    "mob_loot_bags:timed_loot_bag",
+    "mob_loot_bags:locked_lootbags",
+    "mob_loot_bags:summoning_lootbags"
+  ]
+}

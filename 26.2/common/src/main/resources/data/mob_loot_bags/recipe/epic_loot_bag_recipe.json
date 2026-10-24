@@ -8,7 +8,6 @@
     "mob_loot_bags:rarelootbag"
   ],
   "result": {
-    "id": "mob_loot_bags:epiclootbag",
-    "count": 1
+    "id": "mob_loot_bags:epiclootbag"
   }
 }

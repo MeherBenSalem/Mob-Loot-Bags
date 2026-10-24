@@ -2,12 +2,20 @@
 # Start or stop dev servers/clients for QA under Xvfb with software rendering.
 #   tools/qa/devrun.sh start-server <workspace> <loader>
 #   tools/qa/devrun.sh start-client <workspace> <loader>
-#   tools/qa/devrun.sh stop-client | stop-server
+#   tools/qa/devrun.sh stop-client | stop-server [<workspace>]
+# Logs go to $QA_LOGS (default /tmp/mlb-qa). Give each workspace its own QA_LOGS, server-port and rcon.port when
+# several dev servers run at once; stop-server <workspace> then stops only that workspace's server.
 set -u
 LOGS=${QA_LOGS:-/tmp/mlb-qa}
 mkdir -p "$LOGS"
 ROOT=$(cd "$(dirname "$0")/../.." && pwd)
-JAVA_HOME=${JAVA25_HOME:-/opt/jdks/jdk-25.0.5+8}
+# Gradle runs on the workspace's Java: 17 for 1.20.1, 21 for 1.21.1, 25 for 26.x (override with QA_JAVA_HOME).
+case "${2:-}" in
+  1.20.1) default_java=$(ls -d /opt/jdks/jdk-17* 2>/dev/null | head -1) ;;
+  1.21.1) default_java=$(ls -d /usr/lib/jvm/java-21-openjdk-amd64 /opt/jdks/jdk-21* 2>/dev/null | head -1) ;;
+  *) default_java=$(ls -d /opt/jdks/jdk-25* 2>/dev/null | head -1) ;;
+esac
+JAVA_HOME=${QA_JAVA_HOME:-$default_java}
 export JAVA_HOME
 case "$1" in
   start-server)
@@ -20,9 +28,10 @@ case "$1" in
     ;;
   stop-client|stop-server)
     # Only java processes are considered, so this never matches the calling shell.
-    want=$([ "$1" = stop-client ] && echo 'KnotClient|clientQaClient|runQaClient|--quickPlayMultiplayer' || echo 'KnotServer|runServer')
+    want=$([ "$1" = stop-client ] && echo 'KnotClient|clientQaClient|runQaClient|--quickPlayMultiplayer' || echo 'KnotServer|runServer|forgeserver|serverData|neoforgeserver')
     for pid in $(pgrep -x java); do
-      if tr '\0' ' ' < "/proc/$pid/cmdline" | grep -qE "$want"; then kill "$pid"; fi
+      cmd=$(tr '\0' ' ' < "/proc/$pid/cmdline")
+      if echo "$cmd" | grep -qE "$want" && { [ -z "${2:-}" ] || echo "$cmd $(readlink "/proc/$pid/cwd")" | grep -q "/$2/"; }; then kill "$pid"; fi
     done
     ;;
 esac

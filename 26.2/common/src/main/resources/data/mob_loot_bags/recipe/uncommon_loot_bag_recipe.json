@@ -8,7 +8,6 @@
     "mob_loot_bags:commonlootbag"
   ],
   "result": {
-    "id": "mob_loot_bags:uncommonlootbag",
-    "count": 1
+    "id": "mob_loot_bags:uncommonlootbag"
   }
 }

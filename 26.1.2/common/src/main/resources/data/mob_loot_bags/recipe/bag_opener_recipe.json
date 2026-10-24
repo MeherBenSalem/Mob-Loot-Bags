@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "category": "redstone",
   "pattern": [
-    "aba",
-    "cdc",
-    "aaa"
+    "IHI",
+    "RER",
+    "ICI"
   ],
   "key": {
-    "a": "minecraft:smooth_stone",
-    "b": "minecraft:iron_pickaxe",
-    "c": "minecraft:redstone",
-    "d": "minecraft:emerald"
+    "I": "minecraft:iron_ingot",
+    "H": "minecraft:hopper",
+    "R": "minecraft:redstone",
+    "E": "minecraft:emerald",
+    "C": "minecraft:chest"
   },
   "result": {
-    "id": "mob_loot_bags:loot_bag_opener_block",
-    "count": 1
+    "id": "mob_loot_bags:loot_bag_opener_block"
   }
 }

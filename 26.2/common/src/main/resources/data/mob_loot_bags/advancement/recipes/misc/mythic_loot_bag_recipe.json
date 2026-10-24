@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bag": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "#mob_loot_bags:loot_bags"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mob_loot_bags:mythic_loot_bag_recipe"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_bag",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mob_loot_bags:mythic_loot_bag_recipe"
+    ]
+  }
+}

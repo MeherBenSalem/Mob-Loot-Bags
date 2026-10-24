@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "id": "mob_loot_bags:legendarylootbag"
+    },
+    "title": {
+      "translate": "advancements.mob_loot_bags.open_legendary.title"
+    },
+    "description": {
+      "translate": "advancements.mob_loot_bags.open_legendary.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "mob_loot_bags:legendarylootbag"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get"
+    ]
+  ],
+  "parent": "mob_loot_bags:open_epic",
+  "rewards": {
+    "experience": 100
+  }
+}

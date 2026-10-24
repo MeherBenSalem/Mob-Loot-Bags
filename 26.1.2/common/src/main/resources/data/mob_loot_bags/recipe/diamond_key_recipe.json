@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:diamond",
   "result": {
-    "id": "mob_loot_bags:diamond_key",
-    "count": 1
+    "id": "mob_loot_bags:diamond_key"
   }
 }
