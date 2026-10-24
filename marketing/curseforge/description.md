@@ -146,4 +146,4 @@ hold time, toasts, titles and announcements in `bags.json` and `drops.json`.
 
 ![Divider](https://raw.githubusercontent.com/MeherBenSalem/Mob-Loot-Bags/main/marketing/images/divider.png)
 
-[Discord](https://discord.gg/SAmd9fhNhr) · [Source and issues](https://github.com/MeherBenSalem/Mob-Loot-Bags) · [Ko-fi](https://ko-fi.com/nightbeamstudio) · Made by NightBeam Studio
+[Discord](https://discord.gg/SAmd9fhNhr) · [Source and issues](https://github.com/MeherBenSalem/Mob-Loot-Bags) · [Support the project](https://nightbeam.dev/support) · Made by NightBeam Studio

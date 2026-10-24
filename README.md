@@ -121,7 +121,7 @@ verify it. Release notes for a version live in `patchnotes/<version>.md`.
 - [Modrinth](https://modrinth.com/mod/mob-loot-bags/versions)
 - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/mob-loot-bags)
 - [Docs](https://meherbensalem.github.io/pages/mods.html)
-- [Ko-fi](https://ko-fi.com/nightbeamstudio)
+- [Support the project](https://nightbeam.dev/support)
 
 ## Contributing
 
