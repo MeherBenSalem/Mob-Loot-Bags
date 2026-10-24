@@ -16,7 +16,6 @@
     }
   ],
   "result": {
-    "item": "mob_loot_bags:legendarylootbag",
-    "count": 1
+    "item": "mob_loot_bags:legendarylootbag"
   }
 }

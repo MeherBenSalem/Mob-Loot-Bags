@@ -25,8 +25,24 @@ def check(name, ok, detail=''):
 
 
 def count_in(inventory, item):
-    return sum(int(n) for n in re.findall(r'count: (\d+), Slot: \d+b, id: "' + re.escape(item) + '"', inventory)) + \
-        sum(int(n) for n in re.findall(r'id: "' + re.escape(item) + r'", count: (\d+)', inventory))
+    """Total count of `item` in a `data get ... Inventory` reply, whatever the key order (it differs per version)."""
+    total, depth, start = 0, 0, 0
+    for i, ch in enumerate(inventory):
+        if ch == '{':
+            depth += 1
+            if depth == 1:
+                start = i + 1
+        elif ch == '}':
+            depth -= 1
+            if depth == 0:
+                entry = inventory[start:i]
+                while re.search(r'\{[^{}]*\}', entry):
+                    entry = re.sub(r'\{[^{}]*\}', '', entry)  # keep only the stack's own keys
+                found = re.search(r'\bid: "([^"]+)"', entry)
+                count = re.search(r'\b[Cc]ount: (\d+)', entry)
+                if found and found.group(1) == item:
+                    total += int(count.group(1)) if count else 1
+    return total
 
 
 def main():
@@ -38,7 +54,9 @@ def main():
     c = s.cmd
     inv = lambda: c(f'data get entity {PLAYER} Inventory')
 
-    for cmd in ('gamerule advance_time false', 'time set 6000', 'weather clear', f'gamemode survival {PLAYER}',
+    # Item components (item[custom_data=...]) arrived with 1.20.5 (data version 3837); 1.20.1 takes item{nbt}.
+    components = int(re.findall(r'\d+', c(f'data get entity {PLAYER} DataVersion'))[-1]) >= 3837
+    for cmd in ('gamerule advance_time false', 'gamerule doDaylightCycle false', 'time set 6000', 'weather clear', f'gamemode survival {PLAYER}',
                 f'effect give {PLAYER} minecraft:resistance infinite 5 true', f'effect give {PLAYER} minecraft:saturation infinite 1 true',
                 f'clear {PLAYER}', 'kill @e[type=!minecraft:player]'):
         c(cmd)
@@ -91,7 +109,8 @@ def main():
     check('one key used', count_in(i, 'mob_loot_bags:diamond_key') == 1, i)
     check('locked bag gives netherite gear', 'netherite_' in i, i)
     # Use was still held when the last bag in the hand opened: the loot must not land in that hand (and get used).
-    equipment = c(f'data get entity {PLAYER} equipment')
+    # Armour sits in "equipment" on 26.x and in "ArmorItems" before 1.21.5.
+    equipment = c(f'data get entity {PLAYER} equipment') + c(f'data get entity {PLAYER} ArmorItems')
     check('loot skips the emptied hand', 'Slot: 0b' not in i and 'netherite' not in equipment, i + equipment)
 
     # Hourglass: an unripe bag refuses; a ripe one opens into bags.
@@ -103,7 +122,9 @@ def main():
     s.hold(3, 1.5)
     s.wait(0.5)
     check('unripe hourglass refuses', count_in(inv(), 'mob_loot_bags:timed_loot_bag') == 1)
-    c(f'item replace entity {PLAYER} hotbar.0 with mob_loot_bags:timed_loot_bag[custom_data={{mob_loot_bags:{{ripe_at:0L,ripen_ticks:100L}}}}] 1')
+    ripe = ('[custom_data={mob_loot_bags:{ripe_at:0L,ripen_ticks:100L}}]' if components
+            else '{mob_loot_bags:{ripe_at:0L,ripen_ticks:100L}}')
+    c(f'item replace entity {PLAYER} hotbar.0 with mob_loot_bags:timed_loot_bag{ripe} 1')
     s.wait(1)
     s.hold(3, 1.5)
     s.wait(0.8)
@@ -112,8 +133,9 @@ def main():
 
     # 1.x Timed bags (lb_timer + Unbreaking) convert to ripe Hourglass bags.
     c(f'clear {PLAYER}')
-    c(f'item replace entity {PLAYER} hotbar.0 with mob_loot_bags:timed_loot_bag[custom_data={{is_active:1b,lb_timer:0}},'
-      f'enchantments={{"minecraft:unbreaking":1}}] 1')
+    legacy = ('[custom_data={is_active:1b,lb_timer:0},enchantments={"minecraft:unbreaking":1}]' if components
+              else '{is_active:1b,lb_timer:0,Enchantments:[{id:"minecraft:unbreaking",lvl:1s}]}')
+    c(f'item replace entity {PLAYER} hotbar.0 with mob_loot_bags:timed_loot_bag{legacy} 1')
     s.wait(1.5)
     i = inv()
     check('1.x ripe timed bag migrates', 'ripe_at' in i and 'unbreaking' not in i and 'lb_timer' not in i, i)
@@ -157,18 +179,20 @@ def main():
     s.shot(out / 'check-recycler-gui.png')
     s.key('Escape')
 
-    # Spawners: their mobs carry the spawner tag (a player must be in range).
-    c(f'setblock {x - 2} {y} {z - 5} minecraft:spawner{{SpawnData:{{entity:{{id:"minecraft:zombie"}}}},Delay:0s,'
-      'MinSpawnDelay:20s,MaxSpawnDelay:40s,RequiredPlayerRange:32s}')
-    c('time set midnight')
+    # Spawners: their mobs carry the spawner tag (a player must be in range). custom_spawn_rules lets the zombie spawn in
+    # daylight, and only tagged zombies count, since natural night spawns wander in too.
+    c(f'setblock {x - 2} {y} {z - 5} minecraft:spawner{{SpawnData:{{entity:{{id:"minecraft:zombie"}},'
+      'custom_spawn_rules:{block_light_limit:[0,15],sky_light_limit:[0,15]}},Delay:0s,MinSpawnDelay:20s,MaxSpawnDelay:40s,SpawnCount:2s,MaxNearbyEntities:6s,'
+      'RequiredPlayerRange:32s}')
     tagged = False
     for _ in range(15):
         s.wait(2)
-        o = c(f'data get entity @e[type=minecraft:zombie,limit=1,sort=nearest,x={x},y={y},z={z}] Tags')
-        if 'mob_loot_bags.spawner' in o:
+        o = c(f'execute if entity @e[type=minecraft:zombie,tag=mob_loot_bags.spawner,x={x},y={y},z={z},distance=..16]')
+        if 'passed' in o.lower():
             tagged = True
             break
-    check('spawner mobs are tagged', tagged, o)
+    check('spawner mobs are tagged', tagged, c(f'execute as @e[type=minecraft:zombie,x={x},y={y},z={z},distance=..16] '
+                                              'run data get entity @s Tags'))
     c(f'setblock {x - 2} {y} {z - 5} minecraft:air')
     c('kill @e[type=minecraft:zombie]')
     c('time set 6000')

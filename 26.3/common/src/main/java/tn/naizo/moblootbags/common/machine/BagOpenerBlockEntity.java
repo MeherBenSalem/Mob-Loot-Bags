@@ -210,10 +210,13 @@ public class BagOpenerBlockEntity extends MachineBlockEntity {
             return;
         }
         items = NonNullList.withSize(INPUTS + OUTPUTS, ItemStack.EMPTY);
-        int next = 0;
+        int nextInput = 0;
+        int nextOutput = INPUTS;
         for (ItemStack stack : stacks) {
-            if (next < items.size()) {
-                items.set(next++, stack);
+            if (stack.getItem() instanceof LootBagItem && nextInput < INPUTS) {
+                items.set(nextInput++, stack);
+            } else if (nextOutput < items.size()) {
+                items.set(nextOutput++, stack);
             } else {
                 pending.add(stack);
             }

@@ -198,9 +198,9 @@ public class LootRecyclerBlockEntity extends MachineBlockEntity {
             loadLegacy(input);
         } else {
             super.loadAdditional(input);
+            storedXp = Math.max(0, input.getIntOr("xp", 0));
         }
         points = input.getIntOr("points", 0);
-        storedXp = Math.max(0, input.getIntOr("xp", input.getIntOr(LEGACY_XP_KEY, 0)));
         progress = input.getIntOr("progress", 0);
     }
 

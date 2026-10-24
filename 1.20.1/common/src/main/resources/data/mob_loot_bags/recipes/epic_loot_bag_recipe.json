@@ -16,7 +16,6 @@
     }
   ],
   "result": {
-    "item": "mob_loot_bags:epiclootbag",
-    "count": 1
+    "item": "mob_loot_bags:epiclootbag"
   }
 }

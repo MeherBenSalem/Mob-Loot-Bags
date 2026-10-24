@@ -1,6 +1,138 @@
 {
+  "bag.open": {
+    "subtitle": "subtitles.mob_loot_bags.bag_open",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:bag_open_1",
+        "stream": false
+      },
+      {
+        "name": "mob_loot_bags:bag_open_2",
+        "stream": false
+      },
+      {
+        "name": "mob_loot_bags:bag_open_3",
+        "stream": false
+      }
+    ]
+  },
+  "bag.rustle": {
+    "subtitle": "subtitles.mob_loot_bags.bag_rustle",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:bag_rustle_1",
+        "stream": false
+      },
+      {
+        "name": "mob_loot_bags:bag_rustle_2",
+        "stream": false
+      },
+      {
+        "name": "mob_loot_bags:bag_rustle_3",
+        "stream": false
+      }
+    ]
+  },
+  "bag.drop": {
+    "subtitle": "subtitles.mob_loot_bags.bag_drop",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:bag_drop",
+        "stream": false
+      }
+    ]
+  },
+  "bag.reveal.rare": {
+    "subtitle": "subtitles.mob_loot_bags.reveal",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:reveal_rare",
+        "stream": false
+      }
+    ]
+  },
+  "bag.reveal.epic": {
+    "subtitle": "subtitles.mob_loot_bags.reveal",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:reveal_epic",
+        "stream": false
+      }
+    ]
+  },
+  "bag.reveal.legendary": {
+    "subtitle": "subtitles.mob_loot_bags.reveal_legendary",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:reveal_legendary",
+        "stream": false
+      }
+    ]
+  },
+  "bag.reveal.mythic": {
+    "subtitle": "subtitles.mob_loot_bags.reveal_mythic",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:reveal_mythic",
+        "stream": false
+      }
+    ]
+  },
+  "bag.cursed": {
+    "subtitle": "subtitles.mob_loot_bags.cursed",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:cursed",
+        "stream": false
+      }
+    ]
+  },
+  "bag.unlock": {
+    "subtitle": "subtitles.mob_loot_bags.unlock",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:unlock",
+        "stream": false
+      }
+    ]
+  },
+  "bag.hourglass_ripe": {
+    "subtitle": "subtitles.mob_loot_bags.hourglass_ripe",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:hourglass_ripe",
+        "stream": false
+      }
+    ]
+  },
+  "machine.opener": {
+    "subtitle": "subtitles.mob_loot_bags.machine_opener",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:machine_opener_1",
+        "stream": false
+      },
+      {
+        "name": "mob_loot_bags:machine_opener_2",
+        "stream": false
+      }
+    ]
+  },
+  "machine.recycler": {
+    "subtitle": "subtitles.mob_loot_bags.machine_recycler",
+    "sounds": [
+      {
+        "name": "mob_loot_bags:machine_recycler_1",
+        "stream": false
+      },
+      {
+        "name": "mob_loot_bags:machine_recycler_2",
+        "stream": false
+      }
+    ]
+  },
   "dramatic": {
-    "subtitle": "subtitles.dramatic",
+    "subtitle": "subtitles.mob_loot_bags.cursed",
     "sounds": [
       {
         "name": "mob_loot_bags:dramatic-sound-effect",
@@ -9,7 +141,7 @@
     ]
   },
   "lootbag_sfx_1": {
-    "subtitle": "subtitles.lootbag_sfx_1",
+    "subtitle": "subtitles.mob_loot_bags.cursed",
     "sounds": [
       {
         "name": "mob_loot_bags:lootbag_1",
@@ -18,7 +150,7 @@
     ]
   },
   "lootbag_sfx_2": {
-    "subtitle": "subtitles.lootbag_sfx_2",
+    "subtitle": "subtitles.mob_loot_bags.cursed",
     "sounds": [
       {
         "name": "mob_loot_bags:lootbag_2",

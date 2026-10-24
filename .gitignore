@@ -43,3 +43,6 @@ mcreator.gradle
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Logs written by unit-test runs
+logs/

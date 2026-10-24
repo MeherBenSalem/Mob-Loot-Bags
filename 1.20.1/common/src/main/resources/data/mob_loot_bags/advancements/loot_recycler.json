@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "mob_loot_bags:loot_bag_recycle_block"
+    },
+    "title": {
+      "translate": "advancements.mob_loot_bags.loot_recycler.title"
+    },
+    "description": {
+      "translate": "advancements.mob_loot_bags.loot_recycler.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mob_loot_bags:loot_bag_recycle_block"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get"
+    ]
+  ],
+  "parent": "mob_loot_bags:bag_opener"
+}

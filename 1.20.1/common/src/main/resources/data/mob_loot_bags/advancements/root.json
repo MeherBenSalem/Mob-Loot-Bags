@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "mob_loot_bags:legendarylootbag"
+    },
+    "title": {
+      "translate": "advancements.mob_loot_bags.root.title"
+    },
+    "description": {
+      "translate": "advancements.mob_loot_bags.root.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "mob_loot_bags:textures/gui/advancements/backgrounds/loot_bags.png"
+  },
+  "criteria": {
+    "get": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "mob_loot_bags:loot_bags"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get"
+    ]
+  ]
+}

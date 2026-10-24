@@ -13,6 +13,14 @@ java {
     withJavadocJar()
 }
 
+// Java 17 still reads sources in the platform charset (US-ASCII on a POSIX locale); the sources and resources are UTF-8.
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+tasks.withType(Javadoc).configureEach {
+    options.encoding = 'UTF-8'
+}
+
 repositories {
     mavenCentral()
     // https://docs.gradle.org/current/userguide/declaring_repositories.html#declaring_content_exclusively_found_in_one_repository
@@ -89,6 +97,7 @@ jar {
 }
 
 processResources {
+    filteringCharset = 'UTF-8'
     var expandProps = [
             'version'                      : version,
             'group'                        : project.group, //Else we target the task's group.

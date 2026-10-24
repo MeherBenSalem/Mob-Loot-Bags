@@ -7,8 +7,8 @@ Checks: every bag table rolls loot (/lootbags simulate), /lootbags odds, the Bag
 their own (fed with /item), mob and boss drops (with player credit temporarily disabled in drops.json), the spawner
 tag from the mixin, and config reloads. Restores drops.json afterwards. Exits non-zero if any check failed.
 
-The checks run around x 0-20, z 0-20. With --with-player, a connected player must be in survival or creative within
-32 blocks of that area: spawners ignore spectators, and the test chunks must be loaded.
+The checks run around x 0-20, z 0-20. --with-player also tests spawners: a QA client must be online, and it is moved
+next to the test spawner in creative mode.
 """
 from __future__ import annotations
 
@@ -35,7 +35,10 @@ def main():
     ap.add_argument('--run-dir', required=True)
     ap.add_argument('--port', type=int, default=25575)
     ap.add_argument('--with-player', action='store_true', help='a QA client is online: also test spawners')
+    ap.add_argument('--mc', default='26', help='server version: 1.20.1 prints and addresses item NBT its own way')
     args = ap.parse_args()
+    # 1.20.1 prints item NBT as {Slot: 0b, id: "...", Count: 5b} (byte count) and the count path is Item.Count.
+    legacy = args.mc == '1.20.1'
     run = Path(args.run_dir)
     r = wait_for(args.port)
     c = r.command
@@ -75,7 +78,8 @@ def main():
     c('item replace block 4 121 4 container.0 with mob_loot_bags:rarelootbag 5')
     wait(8)
     out = c('data get block 4 121 4 Items')
-    remaining = re.search(r'count: (\d+), Slot: 0b', out) or re.search(r'Slot: 0b, count: (\d+)', out)
+    remaining = (re.search(r'Slot: 0b, id: "[^"]+", Count: (\d+)b', out) if legacy
+                 else re.search(r'count: (\d+), Slot: 0b', out) or re.search(r'Slot: 0b, count: (\d+)', out))
     check('opener consumed bags', remaining is None or int(remaining.group(1)) < 5, out[:300])
     check('opener produced loot', re.search(r'Slot: (9|1\d|2\d)b', out) is not None, out[:300])
 
@@ -85,13 +89,14 @@ def main():
     c('item replace block 8 121 4 container.0 with mob_loot_bags:commonlootbag 4')
     wait(3)
     out = c('data get block 8 121 4 Items')
-    check('pulse mode waits for redstone', 'count: 4' in out, out[:200])
+    check('pulse mode waits for redstone', ('Count: 4b' if legacy else 'count: 4') in out, out[:200])
     c('setblock 9 121 4 minecraft:redstone_block')
     wait(3)
     c('setblock 9 121 4 minecraft:air')
     wait(1)
     out = c('data get block 8 121 4 Items')
-    check('pulse mode opens one bag', re.search(r'count: 3, Slot: 0b|Slot: 0b, count: 3', out) is not None, out[:200])
+    check('pulse mode opens one bag', re.search(r'Slot: 0b, id: "[^"]+", Count: 3b' if legacy else r'count: 3, Slot: 0b|Slot: 0b, count: 3', out)
+          is not None, out[:200])
 
     # Loot Recycler: junk to salvage points to a Common bag; bags to stored experience.
     c('setblock 12 121 4 mob_loot_bags:loot_bag_recycle_block[facing=north]')
@@ -137,7 +142,7 @@ def main():
         bags = 0
         for tier in ('commonlootbag', 'uncommonlootbag', 'rarelootbag', 'epiclootbag', 'legendarylootbag', 'mythiclootbag'):
             out = c(f'execute as @e[type=item,x=20,y=121,z=12,distance=..8,nbt={{Item:{{id:"mob_loot_bags:{tier}"}}}}] '
-                    f'run data get entity @s Item.count')
+                    f'run data get entity @s Item.{"Count" if legacy else "count"}')
             count = sum(int(n) for n in re.findall(r'entity data: (\d+)', out))
             if tier in ('commonlootbag', 'uncommonlootbag', 'rarelootbag'):
                 check(f'boss drops no {tier}', count == 0, out)
@@ -152,16 +157,19 @@ def main():
         r.close()
         print(f'\n{len(FAILURES)} failure(s)' + (': ' + ', '.join(FAILURES) if FAILURES else ''))
         sys.exit(1 if FAILURES else 0)
-    c('setblock 4 121 16 minecraft:spawner{SpawnData:{entity:{id:"minecraft:zombie"}},Delay:0s,MinSpawnDelay:20s,MaxSpawnDelay:40s,RequiredPlayerRange:64s}')
-    c('time set midnight')
+    # The QA player goes next to the spawner (spectators don't activate spawners).
+    c('gamemode creative @a')
+    c('tp @a 8 122 12')
+    # custom_spawn_rules lets the zombie spawn in any light; only tagged zombies count, since natural spawns wander in too.
+    c('setblock 4 121 16 minecraft:spawner{SpawnData:{entity:{id:"minecraft:zombie"},custom_spawn_rules:{block_light_limit:[0,15],'
+      'sky_light_limit:[0,15]}},Delay:0s,MinSpawnDelay:20s,MaxSpawnDelay:40s,SpawnCount:2s,MaxNearbyEntities:6s,RequiredPlayerRange:64s}')
     tagged = False
     for _ in range(10):
         wait(3)
-        out = c('data get entity @e[type=minecraft:zombie,limit=1,sort=nearest,x=4,y=121,z=16] Tags')
-        if 'mob_loot_bags.spawner' in out:
+        if 'passed' in c('execute if entity @e[type=minecraft:zombie,tag=mob_loot_bags.spawner,x=4,y=121,z=16,distance=..16]').lower():
             tagged = True
             break
-    check('spawner mobs are tagged', tagged, out if not tagged else '')
+    check('spawner mobs are tagged', tagged, c('execute as @e[type=minecraft:zombie,x=4,y=121,z=16,distance=..16] run data get entity @s Tags'))
     c('setblock 4 121 16 minecraft:air')
     c('kill @e[type=minecraft:zombie]')
     c('time set day')

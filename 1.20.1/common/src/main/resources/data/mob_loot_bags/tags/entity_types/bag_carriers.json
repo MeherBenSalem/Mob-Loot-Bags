@@ -1,0 +1,13 @@
+{
+  "values": [
+    "minecraft:zombie",
+    "minecraft:husk",
+    "minecraft:skeleton",
+    "minecraft:stray",
+    "minecraft:piglin",
+    "minecraft:zombified_piglin",
+    "minecraft:pillager",
+    "minecraft:vindicator",
+    "minecraft:wither_skeleton"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "mob_loot_bags:legendarylootbag"
+    },
+    {
+      "item": "mob_loot_bags:legendarylootbag"
+    },
+    {
+      "item": "mob_loot_bags:legendarylootbag"
+    },
+    {
+      "item": "mob_loot_bags:legendarylootbag"
+    },
+    {
+      "item": "minecraft:nether_star"
+    }
+  ],
+  "result": {
+    "id": "mob_loot_bags:mythiclootbag"
+  }
+}

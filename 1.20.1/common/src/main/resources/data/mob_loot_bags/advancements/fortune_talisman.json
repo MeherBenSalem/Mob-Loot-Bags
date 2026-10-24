@@ -1,0 +1,37 @@
+{
+  "display": {
+    "icon": {
+      "item": "mob_loot_bags:fortune_talisman"
+    },
+    "title": {
+      "translate": "advancements.mob_loot_bags.fortune_talisman.title"
+    },
+    "description": {
+      "translate": "advancements.mob_loot_bags.fortune_talisman.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mob_loot_bags:fortune_talisman"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get"
+    ]
+  ],
+  "parent": "mob_loot_bags:open_bag"
+}

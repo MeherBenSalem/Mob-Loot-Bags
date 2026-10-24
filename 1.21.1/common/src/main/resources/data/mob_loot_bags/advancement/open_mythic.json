@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "id": "mob_loot_bags:mythiclootbag"
+    },
+    "title": {
+      "translate": "advancements.mob_loot_bags.open_mythic.title"
+    },
+    "description": {
+      "translate": "advancements.mob_loot_bags.open_mythic.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "get": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "mob_loot_bags:mythiclootbag"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get"
+    ]
+  ],
+  "parent": "mob_loot_bags:open_legendary",
+  "rewards": {
+    "experience": 250
+  }
+}

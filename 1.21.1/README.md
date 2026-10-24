@@ -4,11 +4,11 @@ Fabric and NeoForge workspace for Minecraft 1.21.1. Shared product docs live in 
 
 ## Features (this workspace)
 
-- Custom loot bags with configurable drop rates
-- Tiered bags: Common, Uncommon, Rare, Epic, Legendary
-- Special bags: Cursed, Timed, Locked, Summoning
-- Loot Bag Opener and Recycler blocks
-- JSON configs under `config/mlb/`
+- Mob Loot Bags 2.0: six tiers (Common to Mythic) with Bag Luck, bad-luck protection, boss drops and bag carriers
+- Special bags: Cursed, Hourglass (migrates 1.x Timed bags), Locked (Diamond Key) and Summoning; Fortune Talisman
+- Bag Opener and Loot Recycler machines, reveal toasts, loot previews and loot beams
+- `/lootbags` (alias `/mlb`): give, simulate, odds, stats, reload
+- Commented JSON configs under `config/mob_loot_bags/` (1.x `config/mlb/` settings are migrated once)
 
 ## Requirements
 
@@ -19,19 +19,19 @@ Fabric and NeoForge workspace for Minecraft 1.21.1. Shared product docs live in 
 
 ```bash
 ./gradlew build
+./gradlew :common:test
 ./gradlew :fabric:runClient
 ./gradlew :neoforge:runClient
 ```
 
 ## Configuration
 
-Generated on first launch in `config/mlb/`:
+Generated on first launch in `config/mob_loot_bags/`:
 
-- `drop_rates.json`
-- `loot_tables.json`
-- `special_bags.json`
-- `whitelist.json` / `blacklist.json`
-- `bag_recycler.json`
+- `drops.json`: who drops bags, how often and how good
+- `bags.json`: opening bags, loot table overrides and the special bags
+- `machines.json`: the Bag Opener and the Loot Recycler
+- `client.json`: client-side visuals
 
 ## License
 
