@@ -11,6 +11,7 @@ Fabric and NeoForge workspace for Minecraft 26.1.2. Shared product docs live in 
 
 ```bash
 ./gradlew build
+./gradlew :common:test
 ./gradlew :fabric:runClient
 ./gradlew :neoforge:runClient
 ```

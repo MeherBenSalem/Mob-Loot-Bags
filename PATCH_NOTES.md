@@ -1,5 +1,14 @@
 # Mob Loot Bags — Patch Notes
 
+## 2.0.0 — Spoils of the Hunt
+
+A full rework: new Mythic tier, Bag Luck, bad-luck protection, boss drops, bag carriers, themed Nether/End loot,
+hold-to-open with reveal toasts, Shift loot previews, loot beams, rebuilt Bag Opener and Loot Recycler, the new
+Hourglass bag and Fortune Talisman, 13 advancements, four commented config files and `/lootbags` commands. Every
+texture and screen is new, with new sounds throughout. 1.x worlds and customised `config/mlb/` settings carry over.
+
+Full notes: [patchnotes/2.0.0.md](patchnotes/2.0.0.md).
+
 ## 1.11.3
 
 ### Additions

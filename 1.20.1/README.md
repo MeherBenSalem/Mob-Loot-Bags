@@ -1,6 +1,6 @@
 # Mob Loot Bags — Minecraft 1.20.1
 
-Fabric and NeoForge workspace for Minecraft 1.20.1. Shared product docs live in the [repository root README](../README.md).
+Fabric and Forge workspace for Minecraft 1.20.1 (the Forge 47 project lives in the `neoforge/` folder). Shared product docs live in the [repository root README](../README.md).
 
 ## Requirements
 
@@ -11,6 +11,7 @@ Fabric and NeoForge workspace for Minecraft 1.20.1. Shared product docs live in 
 
 ```bash
 ./gradlew build
+./gradlew :common:test
 ./gradlew :fabric:runClient
 ./gradlew :neoforge:runClient
 ```

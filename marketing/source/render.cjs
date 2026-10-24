@@ -197,27 +197,27 @@ const assets = {
     points: ['Tougher mobs drop more often, and better bags', '<b class="hi">Bag carriers</b>: some mobs spawn holding a bag. Take it from them',
       'Bags drop with a chime and a beam of their tier’s colour', 'Spawner mobs drop a quarter as often, so farms stay fair',
       'Nether and End kills roll <b class="hi">themed loot</b>'],
-    art: framed(region('battle.jpg', 120, 140, 1680, 945, 960)) + stats([['Bag Luck', 'Looting · Luck · Health'], ['Nether', '+0.5'], ['End', '+1'], ['Hard', '+0.25']]) }),
+    art: framed(region('battle.jpg', 120, 40, 1680, 945, 960)) + stats([['Bag Luck', 'Looting · Luck · Health'], ['Nether', '+0.5'], ['End', '+1'], ['Hard', '+0.25']]) }),
 
   'card-opening': () => card({
     kicker: 'Opening bags', title: 'Hold, rustle,<br>reveal',
     points: ['Hold Use to tug a bag open, with sound and particles', 'Sneak to open the whole stack at once',
       'Loot goes straight to your inventory', 'A reveal toast shows what you got', 'Legendary and Mythic bags flash a title and play a fanfare'],
-    art: `<div style="position:relative">${framed(region('open-legendary.jpg', 0, 0, 1920, 1080, 960))}
-      <div class="frame" style="position:absolute;right:-26px;top:-36px;width:420px">${region('open-legendary.jpg', 1428, 108, 492, 112, 420)}</div></div>` }),
+    art: `<div style="position:relative">${framed(region('open.jpg', 0, 0, 1920, 1080, 960))}
+      <div class="frame" style="position:absolute;right:-26px;top:-40px;width:440px">${region('open.jpg', 1382, 0, 538, 128, 440)}</div></div>` }),
 
   'card-preview': () => card({
     kicker: 'Loot preview', title: 'Know what’s<br>inside',
     points: ['Hold Shift over a bag to see what it can give', 'Chances come from the server’s real loot tables',
       'Datapack and modded tables show up too', 'Themed bags preview their themed loot'],
-    art: framed(region('tooltip.jpg', 520, 120, 1000, 760, 960)) }),
+    art: framed(region('tooltip.jpg', 560, 270, 1000, 680, 960)) }),
 
   'card-specials': () => card({
     kicker: 'Special bags', title: 'High risk,<br>high reward',
     points: SPECIALS.map((s) => `<b class="hi" style="color:${s.color}">${s.name}</b>: ${s.line}`)
       .concat(['A <b class="hi">Fortune Talisman</b> makes every bag likelier and better']),
     art: `<div style="position:relative">${framed(region('cursed.jpg', 0, 60, 1920, 1000, 960))}
-      <div style="position:absolute;left:24px;bottom:24px;display:flex;gap:14px;background:rgba(14,10,22,.85);border:2px solid rgba(255,194,58,.7);border-radius:14px;padding:14px 18px">
+      <div style="position:absolute;left:24px;top:24px;display:flex;gap:14px;background:rgba(14,10,22,.85);border:2px solid rgba(255,194,58,.7);border-radius:14px;padding:14px 18px">
         ${SPECIALS.map((s) => bag(s.file, 88, s.color)).join('')}</div>
       ${label('Cursed ambush', 'right:20px;top:20px', 'kill them for bags')}</div>` }),
 
@@ -225,15 +225,15 @@ const assets = {
     kicker: 'Automation', title: 'Bag<br>Opener',
     points: ['9 input slots, 18 output slots', 'Four redstone modes: always, on, off and one bag per pulse',
       'Hoppers and pipes feed the sides and empty the bottom', 'Waits for Hourglass bags to ripen', 'Comparator output'],
-    art: `<div style="position:relative">${framed(region('opener-gui.jpg', 600, 230, 720, 620, 600), 'width:600px')}
-      <div class="frame" style="position:absolute;right:0;top:120px;width:470px">${region('workshop.jpg', 0, 0, 1920, 1080, 470)}</div></div>` }),
+    art: `<div style="position:relative;height:540px">${framed(region('opener-gui.jpg', 668, 240, 584, 600, 540), 'width:540px')}
+      <div class="frame" style="position:absolute;right:0;top:150px;width:400px">${region('workshop.jpg', 0, 0, 1920, 1080, 400)}</div></div>` }),
 
   'card-recycler': () => card({
     kicker: 'Automation', title: 'Loot<br>Recycler',
     points: ['Grinds mob-farm junk into salvage points', 'Every 64 points becomes a fresh loot bag',
       'Bags you do not want become stored experience', 'Take the experience with a button or a sneak-click', 'Every value is in machines.json'],
-    art: `<div style="position:relative">${framed(region('recycler-gui.jpg', 600, 260, 720, 560, 600), 'width:600px')}
-      <div class="frame" style="position:absolute;right:0;top:120px;width:470px">${region('workshop.jpg', 0, 0, 1920, 1080, 470)}</div></div>` }),
+    art: `<div style="position:relative;height:500px">${framed(region('recycler-gui.jpg', 668, 266, 584, 550, 540), 'width:540px')}
+      <div class="frame" style="position:absolute;right:0;top:130px;width:400px">${region('workshop.jpg', 0, 0, 1920, 1080, 400)}</div></div>` }),
 
   'card-luck': () => card({
     kicker: 'Bag Luck, pity and bosses', title: 'Fortune favours<br>the bold',
@@ -245,15 +245,15 @@ const assets = {
   'card-config': () => card({
     kicker: 'Made for modpacks', title: 'Tune<br>everything',
     points: ['Four commented config files, reloaded with /lootbags reload', 'Every loot table can be overridden by a datapack',
-      'Add items to <b class="hi">#mob_loot_bags:bonus/&lt;tier&gt;</b> without touching JSON', '/lootbags simulate rolls a bag 10,000 times in a second',
+      'Add items to <b class="hi">#mob_loot_bags:bonus/&lt;tier&gt;</b> without touching JSON', '/lootbags simulate opens any bag thousands of times and lists the odds',
       '1.x configs migrate on first start'],
-    art: framed(region('commands.jpg', 0, 430, 1240, 650, 960)) }),
+    art: framed(region('commands.jpg', 0, 410, 1060, 560, 960)) }),
 
   'card-advancements': () => card({
     kicker: 'Progression', title: 'Thirteen<br>advancements',
     points: ['From Loot Goblin to Myth Made Real', 'Stats for bags found and bags opened', 'Recipes unlock as you find your first bag',
       '/lootbags stats shows your history and pity counters'],
-    art: framed(region('advancements.jpg', 340, 150, 1240, 780, 960)) }),
+    art: framed(region('advancements.jpg', 540, 236, 840, 530, 960)) }),
 };
 
 const HEADERS = {

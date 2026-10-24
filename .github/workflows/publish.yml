@@ -190,7 +190,11 @@ jobs:
           const jars = process.env.JAR_LIST.split(/\n/).map(s => s.trim()).filter(Boolean);
           if (!jars.length) throw new Error('No jars to upload');
           let changelog = `Release ${version}`;
-          if (process.env.CHANGELOG_FILE && fs.existsSync(process.env.CHANGELOG_FILE)) {
+          // Prefer this version's own notes (patchnotes/<version>.md) over the full history.
+          const versionNotes = path.join('patchnotes', `${version}.md`);
+          if (fs.existsSync(versionNotes)) {
+            changelog = fs.readFileSync(versionNotes, 'utf8');
+          } else if (process.env.CHANGELOG_FILE && fs.existsSync(process.env.CHANGELOG_FILE)) {
             changelog = fs.readFileSync(process.env.CHANGELOG_FILE, 'utf8');
           }
 
