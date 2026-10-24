@@ -14,7 +14,7 @@ Jar names are `mob_loot_bags-{loader}-{minecraft}-{modVersion}.jar`. Match **bot
 
 | Minecraft | Java | Fabric jar (needs Fabric API) | NeoForge / Forge jar |
 |-----------|------|-------------------------------|----------------------|
-| 1.20.1 | 17+ | `…-fabric-1.20.1-….jar` | `…-neoforge-1.20.1-….jar` (a **Forge** 47 jar despite the name) |
+| 1.20.1 | 17+ | `…-fabric-1.20.1-….jar` | `…-forge-1.20.1-….jar` (Forge 47; releases before 2.0.0 named it `…-neoforge-1.20.1-…`) |
 | 1.21.1 | 21+ | `…-fabric-1.21.1-….jar` | `…-neoforge-1.21.1-….jar` |
 | 26.1.2 | 25+ | `…-fabric-26.1.2-….jar` | `…-neoforge-26.1.2-….jar` |
 | 26.2 | 25+ | `…-fabric-26.2-….jar` | `…-neoforge-26.2-….jar` |
