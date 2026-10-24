@@ -1,0 +1,150 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_sword",
+          "modifier": {
+            "type": "minecraft:enchant_with_levels",
+            "levels": 39,
+            "options": "#minecraft:on_random_loot"
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_pickaxe",
+          "modifier": {
+            "type": "minecraft:enchant_with_levels",
+            "levels": 39,
+            "options": "#minecraft:on_random_loot"
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_axe",
+          "modifier": {
+            "type": "minecraft:enchant_with_levels",
+            "levels": 39,
+            "options": "#minecraft:on_random_loot"
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_helmet",
+          "modifier": {
+            "type": "minecraft:enchant_with_levels",
+            "levels": 39,
+            "options": "#minecraft:on_random_loot"
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_chestplate",
+          "modifier": {
+            "type": "minecraft:enchant_with_levels",
+            "levels": 39,
+            "options": "#minecraft:on_random_loot"
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_leggings",
+          "modifier": {
+            "type": "minecraft:enchant_with_levels",
+            "levels": 39,
+            "options": "#minecraft:on_random_loot"
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_boots",
+          "modifier": {
+            "type": "minecraft:enchant_with_levels",
+            "levels": 39,
+            "options": "#minecraft:on_random_loot"
+          }
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 3
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_ingot",
+          "weight": 4,
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 1,
+              "max": 2
+            }
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond",
+          "weight": 6,
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 4,
+              "max": 8
+            }
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald_block",
+          "weight": 4,
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 1,
+              "max": 3
+            }
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:ancient_debris",
+          "weight": 4,
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 2,
+              "max": 4
+            }
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_upgrade_smithing_template",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_golden_apple",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:totem_of_undying",
+          "weight": 3
+        }
+      ]
+    }
+  ],
+  "random_sequence": "mob_loot_bags:bags/locked"
+}

@@ -1,20 +1,29 @@
 modLoader = "javafml"
 loaderVersion = "${neoforge_loader_version_range}"
 license = "${license}"
+issueTrackerURL = "https://github.com/MeherBenSalem/Mob-Loot-Bags/issues"
+
 [[mods]]
 modId = "${mod_id}"
 version = "${version}"
 displayName = "${mod_name}"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/mob-loot-bags"
+logoFile = "logo.png"
 iconFile = "assets/mob_loot_bags/textures/logo.png"
 credits = "${credits}"
 authors = "${mod_author}"
 description = '''${description}'''
+
+[[mixins]]
+config = "mob_loot_bags.mixins.json"
+
 [[dependencies.${mod_id}]]
 modId = "neoforge"
 type = "required"
 versionRange = "[${neoforge_version},)"
 ordering = "NONE"
 side = "BOTH"
+
 [[dependencies.${mod_id}]]
 modId = "minecraft"
 type = "required"

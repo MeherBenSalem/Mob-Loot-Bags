@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "top": "mob_loot_bags:block/bag_opener_top",
+    "bottom": "mob_loot_bags:block/bag_opener_bottom",
+    "side": "mob_loot_bags:block/bag_opener_side",
+    "front": "mob_loot_bags:block/bag_opener_front",
+    "particle": "mob_loot_bags:block/bag_opener_side"
+  }
+}

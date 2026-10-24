@@ -1,18 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "category": "redstone",
   "pattern": [
-    "aba",
-    "cdc"
+    "IGI",
+    "SCS",
+    "IRI"
   ],
   "key": {
-    "a": "minecraft:redstone_torch",
-    "b": "minecraft:comparator",
-    "c": "minecraft:bucket",
-    "d": "mob_loot_bags:loot_bag_opener_block"
+    "I": "minecraft:iron_ingot",
+    "G": "minecraft:grindstone",
+    "S": "minecraft:smooth_stone",
+    "C": "minecraft:composter",
+    "R": "minecraft:redstone"
   },
   "result": {
-    "id": "mob_loot_bags:loot_bag_recycle_block",
-    "count": 1
+    "id": "mob_loot_bags:loot_bag_recycle_block"
   }
 }

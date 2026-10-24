@@ -1,0 +1,1 @@
+Mobs drop loot bags in six tiers, from Common to Mythic. Hold to open, preview the loot, automate with the Bag Opener, grind junk into bags with the Loot Recycler, and gamble on Cursed, Hourglass and Locked bags. All data-driven.
