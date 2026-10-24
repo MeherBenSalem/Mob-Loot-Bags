@@ -10,6 +10,8 @@ body:
         - "1.20.1"
         - "1.21.1"
         - "26.1.2"
+        - "26.2"
+        - "26.3"
         - Other
     validations:
       required: true
@@ -20,6 +22,7 @@ body:
       options:
         - Fabric
         - NeoForge
+        - Forge (1.20.1)
         - Other
     validations:
       required: true
@@ -27,7 +30,7 @@ body:
     id: mod_version
     attributes:
       label: Mod version
-      placeholder: e.g. 1.11.1
+      placeholder: e.g. 2.0.0
     validations:
       required: true
   - type: textarea
