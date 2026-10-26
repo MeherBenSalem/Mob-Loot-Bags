@@ -1,0 +1,32 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.nightbeam.reel.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "AbstractContainerScreenAccessor",
+    "CameraMixin",
+    "EntityRenderDispatcherMixin",
+    "GameRendererMixin",
+    "GuiMixin",
+    "ItemInHandRendererMixin",
+    "LevelRendererMixin",
+    "MinecraftInvoker",
+    "MinecraftMixin",
+    "MinecraftServerMixin",
+    "MouseHandlerAccessor",
+    "ParticleEngineMixin",
+    "RenderStateShardMixin",
+    "ScreenMixin",
+    "SectionOcclusionGraphMixin",
+    "SoundEngineMixin",
+    "TimerMixin",
+    "ToastComponentMixin",
+    "ToastInstanceMixin",
+    "WindowMixin",
+    "WorldOpenFlowsMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
