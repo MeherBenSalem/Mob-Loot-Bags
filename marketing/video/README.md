@@ -41,13 +41,41 @@ a beat, and the drop lands on the first bag of the tier line.
 
 ## Posting copy
 
-**Caption (TikTok / Reels / Shorts)**
+Only the first line of a caption shows before "more", so it carries the hook; the question at the end asks for comments,
+which push a short video to more people. Keep three to five hashtags: one broad, the rest about Minecraft mods.
 
-> Every kill could be a jackpot 💰 Six tiers of loot bags, from Common to Mythic.
-> Mob Loot Bags is free on CurseForge & Modrinth (Fabric, Forge, NeoForge · 1.20.1 to 26.3).
-> What's your best pull? 👇
+**TikTok** (first line visible; "Minecraft but…" is a format people search for)
 
-**Hashtags:** #minecraft #minecraftmods #moddedminecraft #minecraftjava #loot #lootbox #gaming
+> Minecraft but every kill could drop a MYTHIC loot bag 💰
+> 6 tiers, cursed bags, boss drops and machines that open them for you.
+> What's the best thing you'd pull? 👇
+> Mob Loot Bags · free on CurseForge & Modrinth
+>
+> #minecraft #minecraftmods #moddedminecraft #minecraftjava #lootbags
 
-**Pinned comment:** Download: search "Mob Loot Bags" on CurseForge or Modrinth. Common, Uncommon, Rare, Epic, Legendary
-or Mythic: what's the best bag you've pulled?
+**Instagram Reels** (the first ~125 characters show; the words people search for go there)
+
+> Every kill could be a jackpot 💰 This Minecraft mod makes mobs drop loot bags, from Common to MYTHIC ⚡
+> Hold to open, Shift to see the odds, bosses drop 3 bags, and a cursed bag might be a trap 👀
+> Free on CurseForge & Modrinth (Fabric · Forge · NeoForge, 1.20.1 to 26.3)
+> Comment your best pull 👇
+>
+> #minecraft #minecraftmods #moddedminecraft #minecraftjava #gaming
+
+**YouTube Shorts**
+
+- Title (100 characters at most): `Minecraft, But Every Mob Drops Loot Bags 💰 #minecraft #shorts`
+- Description: `Mob Loot Bags 2.0: six tiers from Common to Mythic, boss drops, cursed ambushes, a Bag Opener and a Loot Recycler. Free on CurseForge & Modrinth. What's your best pull?`
+
+**First lines to A/B test** (post the same video with a different hook a few days apart)
+
+1. `Minecraft but every kill could drop a MYTHIC loot bag 💰`
+2. `This zombie just dropped a MYTHIC loot bag ⚡`
+3. `Rate my pull: Common → Mythic 👇`
+4. `Would you open the cursed bag? 👀`
+
+**Pinned comment:** Common, Rare, Legendary or Mythic: what's the best bag you've pulled? 👇 Download: search "Mob Loot
+Bags" on CurseForge or Modrinth.
+
+**After posting:** reply to the first comments within the hour, and answer the best questions with a short video reply
+(TikTok's "reply with video"), which shows the mod to the same audience again.
