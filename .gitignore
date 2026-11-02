@@ -51,3 +51,6 @@ logs/
 /dist/
 /ci-jars/
 __pycache__/
+build/
+out/
+target/
