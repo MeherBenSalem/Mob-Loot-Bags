@@ -3,6 +3,12 @@ plugins {
     id 'net.neoforged.moddev.legacyforge'
 }
 
+// This module builds the Forge 47 jar (ModDevGradle legacyforge); the folder keeps its MultiLoader name. Name the
+// jar for its real loader so the publish workflow tags it Forge, not NeoForge, on Modrinth and CurseForge.
+base {
+    archivesName = "${mod_id}-forge-${minecraft_version}"
+}
+
 legacyForge {
     version = "${minecraft_version}-${forge_version}"
 
