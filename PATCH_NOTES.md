@@ -1,5 +1,13 @@
 # Mob Loot Bags — Patch Notes
 
+## 2.0.1
+
+### Fixes
+- **World-load crash with Apotheosis** — a loot hook that throws while the Shift loot previews are built (All the Mods 9: "Failed to locate any affixes for fishing_rod") is skipped and logged instead of stopping the world from loading.
+- **Bag opening** — a roll that throws is retried up to five times instead of crashing the server; if every attempt fails, the error is logged and the bag gives nothing.
+
+Full notes: [patchnotes/2.0.1.md](patchnotes/2.0.1.md).
+
 ## 2.0.0 — Spoils of the Hunt
 
 A full rework: new Mythic tier, Bag Luck, bad-luck protection, boss drops, bag carriers, themed Nether/End loot,
