@@ -31,6 +31,8 @@ import tn.naizo.moblootbags.common.content.BagType;
 public final class LootService {
     /** Preview key ("rare", "rare/the_nether") to sampled entries, rebuilt on server start and every reload. */
     private static Map<String, List<PreviewEntry>> previews = Map.of();
+    /** Rolls tried before a bag gives up on a table that keeps throwing. */
+    private static final int ROLL_ATTEMPTS = 5;
 
     private LootService() {
     }
@@ -89,7 +91,17 @@ public final class LootService {
         if (player != null) {
             params.withParameter(LootContextParams.THIS_ENTITY, player).withLuck(player.getLuck());
         }
-        return table.getRandomItems(params.create(LootContextParamSets.CHEST));
+        RuntimeException failure = null;
+        for (int attempt = 0; attempt < ROLL_ATTEMPTS; attempt++) {
+            try {
+                return table.getRandomItems(params.create(LootContextParamSets.CHEST));
+            } catch (RuntimeException e) {
+                // A loot hook from another mod threw for this roll; a fresh roll usually picks other items.
+                failure = e;
+            }
+        }
+        MobLootBagsCommon.LOG.error("Loot table {} for {} bags failed {} times in a row", id, type.key(), ROLL_ATTEMPTS, failure);
+        return List.of();
     }
 
     public static Map<String, List<PreviewEntry>> previews() {
@@ -102,6 +114,15 @@ public final class LootService {
 
     /** Samples every bag table (and every themed table that exists) to estimate what each bag can give. */
     public static void rebuildPreviews(MinecraftServer server) {
+        try {
+            buildPreviews(server);
+        } catch (RuntimeException e) {
+            MobLootBagsCommon.LOG.error("Could not build loot bag previews; Shift-tooltips will be empty", e);
+            previews = Map.of();
+        }
+    }
+
+    private static void buildPreviews(MinecraftServer server) {
         if (!LootBagsConfig.bags().previewEnabled) {
             previews = Map.of();
             return;
@@ -135,6 +156,7 @@ public final class LootService {
     private static List<PreviewEntry> sample(MinecraftServer server, ServerLevel level, List<String> tables, int samples, RandomSource random) {
         Map<String, int[]> stats = new HashMap<>(); // [bags containing it, min count, max count]
         Map<String, ItemStack> icons = new HashMap<>();
+        java.util.Set<String> failed = new java.util.HashSet<>();
         for (int i = 0; i < samples; i++) {
             Identifier id = Identifier.tryParse(tables.get(i % tables.size()));
             if (id == null) {
@@ -144,7 +166,18 @@ public final class LootService {
             LootParams params = new LootParams.Builder(level).withParameter(LootContextParams.ORIGIN, Vec3.ZERO)
                     .create(LootContextParamSets.CHEST);
             Map<String, Integer> perBag = new HashMap<>();
-            for (ItemStack stack : table.getRandomItems(params, random)) {
+            List<ItemStack> rolled;
+            try {
+                rolled = table.getRandomItems(params, random);
+            } catch (RuntimeException e) {
+                // Another mod's loot hook can throw for one roll (Apotheosis: no affix for an item and
+                // rarity). Previews are cosmetic, so skip that roll instead of failing server start.
+                if (failed.add(id.toString())) {
+                    MobLootBagsCommon.LOG.warn("Skipping a failed preview roll of loot table {}", id, e);
+                }
+                continue;
+            }
+            for (ItemStack stack : rolled) {
                 String key = statKey(stack);
                 perBag.merge(key, stack.getCount(), Integer::sum);
                 icons.putIfAbsent(key, stack.copyWithCount(1));
