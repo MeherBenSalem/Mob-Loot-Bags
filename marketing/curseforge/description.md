@@ -1,5 +1,9 @@
 ![Mob Loot Bags](https://raw.githubusercontent.com/MeherBenSalem/Mob-Loot-Bags/main/marketing/images/banner.png)
 
+**[Discord](https://discord.gg/TJc3CxR4jK) · [The modpack](https://www.curseforge.com/minecraft/modpacks/remnants-ashen-legacy) · [Support NightBeam](https://nightbeam.dev/support) · [NightBeam Pro](https://nightbeam.dev/memberships) · [All projects](https://nightbeam.dev/projects)**
+
+> **Featured in [Remnants: Ashen Legacy](https://www.curseforge.com/minecraft/modpacks/remnants-ashen-legacy)**, NightBeam's story-driven soulslike RPG modpack.
+
 **Every kill could be a jackpot.** Mobs drop loot bags in six tiers, from Common to Mythic. Hold to open them and
 watch the loot roll in, check the odds before you open, automate the grind with the Bag Opener, recycle mob-farm junk
 into new bags, and gamble on Cursed, Hourglass and Locked bags. Every rate, table and machine value is yours to tune.
@@ -103,7 +107,7 @@ bags you don't want and it stores their experience; take it with the button or a
 ![Thirteen advancements](https://raw.githubusercontent.com/MeherBenSalem/Mob-Loot-Bags/main/marketing/images/card-advancements.png)
 
 The mod has its own advancement tab, from *Loot Goblin* to *Myth Made Real*. It also tracks statistics for bags
-found and opened, and unlocks recipes when you find your first bag. `/lootbags stats` shows your history and how
+found and opened, and unlocks recipes the moment you find a bag. `/lootbags stats` shows your history and how
 close your bad-luck protection is.
 
 ![Downloads](https://raw.githubusercontent.com/MeherBenSalem/Mob-Loot-Bags/main/marketing/images/header-compatibility.png)
@@ -146,4 +150,14 @@ hold time, toasts, titles and announcements in `bags.json` and `drops.json`.
 
 ![Divider](https://raw.githubusercontent.com/MeherBenSalem/Mob-Loot-Bags/main/marketing/images/divider.png)
 
-[Discord](https://discord.gg/SAmd9fhNhr) · [Source and issues](https://github.com/MeherBenSalem/Mob-Loot-Bags) · [Support the project](https://nightbeam.dev/support) · Made by NightBeam Studio
+---
+
+### More from NightBeam Studio
+
+- **[Remnants: Ashen Legacy](https://www.curseforge.com/minecraft/modpacks/remnants-ashen-legacy)**: the story-driven soulslike RPG modpack built on NightBeam's mods
+- **[Premium server plugins](https://nightbeam.dev/store)**: anti-cheat, ranked PvP, SMP setups and more on BuiltByBit
+- **[NightBeam Pro](https://nightbeam.dev/memberships)**: the model library and NightBeam Forge credits, from $5 a month
+- **[Discord](https://discord.gg/TJc3CxR4jK)**: support, bug reports, suggestions and early looks
+- **[Support NightBeam](https://nightbeam.dev/support)**: help keep every mod free
+
+**Follow:** [YouTube](https://www.youtube.com/@nightbeamstudio) · [Instagram](https://www.instagram.com/nightbeamstudio/) · [X](https://x.com/NightBeamLLC) · [Facebook](https://www.facebook.com/profile.php?id=61574823331471) · [Source and issues](https://github.com/MeherBenSalem/Mob-Loot-Bags)
