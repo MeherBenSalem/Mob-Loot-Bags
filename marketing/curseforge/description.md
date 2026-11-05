@@ -1,8 +1,6 @@
 ![Mob Loot Bags](https://raw.githubusercontent.com/MeherBenSalem/Mob-Loot-Bags/main/marketing/images/banner.png)
 
-**[Discord](https://discord.gg/TJc3CxR4jK) · [The modpack](https://www.curseforge.com/minecraft/modpacks/remnants-ashen-legacy) · [Support NightBeam](https://nightbeam.dev/support) · [NightBeam Pro](https://nightbeam.dev/memberships) · [All projects](https://nightbeam.dev/projects)**
-
-> **Featured in [Remnants: Ashen Legacy](https://www.curseforge.com/minecraft/modpacks/remnants-ashen-legacy)**, NightBeam's story-driven soulslike RPG modpack.
+**[Discord](https://discord.gg/TJc3CxR4jK) · [Source and issues](https://github.com/MeherBenSalem/Mob-Loot-Bags)**
 
 **Every kill could be a jackpot.** Mobs drop loot bags in six tiers, from Common to Mythic. Hold to open them and
 watch the loot roll in, check the odds before you open, automate the grind with the Bag Opener, recycle mob-farm junk
@@ -100,7 +98,7 @@ bags you don't want and it stores their experience; take it with the button or a
 - Use per-mob or per-tag drop multipliers, a whitelist or blacklist, and switches for passive mobs, pets and fake
   players.
 - `/lootbags simulate` opens a bag thousands of times and lists the odds, and `/lootbags give` hands out any bag.
-- [Starter datapack for every version](https://github.com/MeherBenSalem/Mob-Loot-Bags/raw/main/templates/loot_tables_template.zip)
+- [Starter datapack for every version](https://github.com/MeherBenSalem/Mob-Loot-Bags/tree/main/templates)
 
 ![Progression](https://raw.githubusercontent.com/MeherBenSalem/Mob-Loot-Bags/main/marketing/images/header-progression.png)
 
@@ -152,6 +150,10 @@ hold time, toasts, titles and announcements in `bags.json` and `drops.json`.
 
 ---
 
+> **Featured in [Remnants: Ashen Legacy](https://www.curseforge.com/minecraft/modpacks/remnants-ashen-legacy)**, NightBeam's story-driven soulslike RPG modpack.
+
+---
+
 ### More from NightBeam Studio
 
 - **[Remnants: Ashen Legacy](https://www.curseforge.com/minecraft/modpacks/remnants-ashen-legacy)**: the story-driven soulslike RPG modpack built on NightBeam's mods
@@ -160,4 +162,4 @@ hold time, toasts, titles and announcements in `bags.json` and `drops.json`.
 - **[Discord](https://discord.gg/TJc3CxR4jK)**: support, bug reports, suggestions and early looks
 - **[Support NightBeam](https://nightbeam.dev/support)**: help keep every mod free
 
-**Follow:** [YouTube](https://www.youtube.com/@nightbeamstudio) · [Instagram](https://www.instagram.com/nightbeamstudio/) · [X](https://x.com/NightBeamLLC) · [Facebook](https://www.facebook.com/profile.php?id=61574823331471) · [Source and issues](https://github.com/MeherBenSalem/Mob-Loot-Bags)
+**Follow:** [YouTube](https://www.youtube.com/@nightbeamstudio) · [Instagram](https://www.instagram.com/nightbeamstudio/) · [X](https://x.com/NightBeamLLC) · [Facebook](https://www.facebook.com/profile.php?id=61574823331471)
