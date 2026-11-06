@@ -46,3 +46,7 @@ desktop.ini
 
 # Logs written by unit-test runs
 logs/
+
+build/
+out/
+target/
