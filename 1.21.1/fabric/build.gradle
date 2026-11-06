@@ -40,3 +40,33 @@ loom {
         }
     }
 }
+
+// Development-only reel capture client (tools/reel): ./gradlew :fabric:runReelClient -PreelDirector
+if (providers.gradleProperty('reelDirector').isPresent()) {
+    sourceSets {
+        reelDirector {
+            java.srcDir(rootProject.file('../tools/reel/src/v1211/java'))
+            resources.srcDir(rootProject.file('../tools/reel/src/v1211/resources'))
+            compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+            runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+        }
+    }
+    loom {
+        mods {
+            mob_loot_bags { sourceSet sourceSets.main }
+            reel_director { sourceSet sourceSets.reelDirector }
+        }
+        runs {
+            reelClient {
+                client()
+                source sourceSets.reelDirector
+                setConfigName('Mob Loot Bags Reel Director')
+                ideConfigGenerated(false)
+                runDir('runs/reel')
+                programArgs '--width', providers.gradleProperty('reelWidth').getOrElse('1080'),
+                        '--height', providers.gradleProperty('reelHeight').getOrElse('1920'), '--username', 'LootGoblin'
+                vmArgs '-Xmx6G'
+            }
+        }
+    }
+}
