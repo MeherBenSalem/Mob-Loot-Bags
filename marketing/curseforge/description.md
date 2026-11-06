@@ -1,6 +1,6 @@
 ![Mob Loot Bags](https://raw.githubusercontent.com/MeherBenSalem/Mob-Loot-Bags/main/marketing/images/banner.png)
 
-**[Discord](https://discord.gg/TJc3CxR4jK) · [Source and issues](https://github.com/MeherBenSalem/Mob-Loot-Bags)**
+**[Docs](https://nightbeam.dev/docs/mob-loot-bags) · [Discord](https://discord.gg/TJc3CxR4jK) · [Source and issues](https://github.com/MeherBenSalem/Mob-Loot-Bags)**
 
 **Every kill could be a jackpot.** Mobs drop loot bags in six tiers, from Common to Mythic. Hold to open them and
 watch the loot roll in, check the odds before you open, automate the grind with the Bag Opener, recycle mob-farm junk
