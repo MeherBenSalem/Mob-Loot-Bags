@@ -20,6 +20,6 @@ public abstract class MobMixin {
     private void mobLootBags$onFinalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType reason,
                                             @Nullable SpawnGroupData groupData, @Nullable CompoundTag dataTag,
                                             CallbackInfoReturnable<SpawnGroupData> cir) {
-        DropEngine.onFinalizeSpawn((Mob) (Object) this, level.getLevel(), reason);
+        DropEngine.onFinalizeSpawn((Mob) (Object) this, level.getLevel(), reason, level.getRandom());
     }
 }

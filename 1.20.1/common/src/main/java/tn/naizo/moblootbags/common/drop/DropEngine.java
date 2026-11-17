@@ -262,7 +262,9 @@ public final class DropEngine {
      * Called from {@code MobMixin} when a mob finishes spawning. 1.20.1 has no trial spawners, so nothing sets
      * {@link #TRIAL_SPAWNER_TAG} here; the tag (and its multiplier) still works on mobs tagged by commands or datapacks.
      */
-    public static void onFinalizeSpawn(Mob mob, ServerLevel level, MobSpawnType reason) {
+    public static void onFinalizeSpawn(Mob mob, ServerLevel level, MobSpawnType reason, RandomSource random) {
+        // Structure and chunk-generation spawns run on worldgen threads: use the random from the spawn's own level
+        // accessor, never level.getRandom(), which is main-thread only ("Accessing LegacyRandomSource from multiple threads").
         if (reason == MobSpawnType.SPAWNER) {
             mob.addTag(SPAWNER_TAG);
             return;
@@ -271,11 +273,11 @@ public final class DropEngine {
                 || reason == MobSpawnType.STRUCTURE || reason == MobSpawnType.PATROL;
         DropsConfig config = LootBagsConfig.drops();
         if (!natural || !config.enabled || config.carrierChance <= 0.0 || !ModTags.is(mob.getType(), ModTags.BAG_CARRIERS)
-                || !mob.getItemBySlot(EquipmentSlot.OFFHAND).isEmpty() || level.getRandom().nextDouble() >= config.carrierChance) {
+                || !mob.getItemBySlot(EquipmentSlot.OFFHAND).isEmpty() || random.nextDouble() >= config.carrierChance) {
             return;
         }
         double luck = config.carrierLuck + luck(null, mob, level, config);
-        BagType tier = BagType.tier(rollTierRank(level.getRandom(), config, luck, 0));
+        BagType tier = BagType.tier(rollTierRank(random, config, luck, 0));
         mob.setItemSlot(EquipmentSlot.OFFHAND, createBag(level, tier));
         mob.setGuaranteedDrop(EquipmentSlot.OFFHAND);
     }

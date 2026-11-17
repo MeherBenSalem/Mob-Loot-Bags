@@ -264,7 +264,9 @@ public final class DropEngine {
     }
 
     /** Called from {@code MobMixin} when a mob finishes spawning. */
-    public static void onFinalizeSpawn(Mob mob, ServerLevel level, EntitySpawnReason reason) {
+    public static void onFinalizeSpawn(Mob mob, ServerLevel level, EntitySpawnReason reason, RandomSource random) {
+        // Structure and chunk-generation spawns run on worldgen threads: use the random from the spawn's own level
+        // accessor, never level.getRandom(), which is main-thread only ("Accessing LegacyRandomSource from multiple threads").
         if (reason == EntitySpawnReason.SPAWNER) {
             mob.addTag(SPAWNER_TAG);
             return;
@@ -277,11 +279,11 @@ public final class DropEngine {
                 || reason == EntitySpawnReason.STRUCTURE || reason == EntitySpawnReason.PATROL;
         DropsConfig config = LootBagsConfig.drops();
         if (!natural || !config.enabled || config.carrierChance <= 0.0 || !mob.is(ModTags.BAG_CARRIERS)
-                || !mob.getItemBySlot(EquipmentSlot.OFFHAND).isEmpty() || level.getRandom().nextDouble() >= config.carrierChance) {
+                || !mob.getItemBySlot(EquipmentSlot.OFFHAND).isEmpty() || random.nextDouble() >= config.carrierChance) {
             return;
         }
         double luck = config.carrierLuck + luck(null, mob, level, config);
-        BagType tier = BagType.tier(rollTierRank(level.getRandom(), config, luck, 0));
+        BagType tier = BagType.tier(rollTierRank(random, config, luck, 0));
         mob.setItemSlot(EquipmentSlot.OFFHAND, createBag(level, tier));
         mob.setGuaranteedDrop(EquipmentSlot.OFFHAND);
     }
