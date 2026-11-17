@@ -78,7 +78,7 @@ public class LootRecyclerScreen extends AbstractContainerScreen<LootRecyclerMenu
 
     @Override
     public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
-        if (event.button() == 0 && overButton(event.x(), event.y()) && menu.storedXp() > 0 && minecraft != null && minecraft.gameMode != null) {
+        if (MouseButtons.of(event) == MouseButtons.LEFT && overButton(event.x(), event.y()) && menu.storedXp() > 0 && minecraft != null && minecraft.gameMode != null) {
             minecraft.gameMode.handleInventoryButtonClick(menu.containerId, LootRecyclerMenu.BUTTON_COLLECT);
             Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             return true;
