@@ -1,5 +1,12 @@
 # Mob Loot Bags — Patch Notes
 
+## 2.0.2
+
+### Fixes
+- **Structure-generation crash** — a mob picked to carry a bag while a structure generated (for example an illager camp) rolled with the world's main random from a world-generation thread and crashed the game ("Accessing LegacyRandomSource from multiple threads"). It now rolls with the spawn's own random.
+
+Full notes: [patchnotes/2.0.2.md](patchnotes/2.0.2.md).
+
 ## 2.0.1
 
 ### Fixes
