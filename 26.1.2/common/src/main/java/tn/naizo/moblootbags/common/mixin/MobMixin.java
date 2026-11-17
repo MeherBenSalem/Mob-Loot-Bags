@@ -18,6 +18,6 @@ public abstract class MobMixin {
     @Inject(method = "finalizeSpawn", at = @At("RETURN"))
     private void mobLootBags$onFinalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason reason,
                                             @Nullable SpawnGroupData groupData, CallbackInfoReturnable<SpawnGroupData> cir) {
-        DropEngine.onFinalizeSpawn((Mob) (Object) this, level.getLevel(), reason);
+        DropEngine.onFinalizeSpawn((Mob) (Object) this, level.getLevel(), reason, level.getRandom());
     }
 }
