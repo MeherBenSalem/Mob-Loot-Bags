@@ -75,7 +75,7 @@ public class BagOpenerScreen extends AbstractContainerScreen<BagOpenerMenu> {
 
     @Override
     public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
-        if (event.button() == 0 && overButton(event.x(), event.y()) && minecraft != null && minecraft.gameMode != null) {
+        if (MouseButtons.of(event) == MouseButtons.LEFT && overButton(event.x(), event.y()) && minecraft != null && minecraft.gameMode != null) {
             minecraft.gameMode.handleInventoryButtonClick(menu.containerId, BagOpenerMenu.BUTTON_MODE);
             Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             return true;

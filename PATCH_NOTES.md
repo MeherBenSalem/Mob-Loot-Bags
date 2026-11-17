@@ -1,5 +1,12 @@
 # Mob Loot Bags — Patch Notes
 
+## 2.0.3
+
+### Fixes
+- **Machine buttons on Minecraft 26.3** — the Loot Recycler's Take button and the Bag Opener's redstone mode button ignored left clicks, because 26.3 numbers mouse buttons differently. Both now read the button the way vanilla does.
+
+Full notes: [patchnotes/2.0.3.md](patchnotes/2.0.3.md).
+
 ## 2.0.2
 
 ### Fixes
