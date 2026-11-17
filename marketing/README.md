@@ -15,6 +15,13 @@ Listing copy and artwork for CurseForge and Modrinth.
 | `source/backdrop.jpg` | Blurred background for the cards (a downscaled `battle.jpg`). |
 | `source/fonts/` | Lilita One and Nunito, both under the SIL Open Font License (licence files included). |
 
+## Video
+
+`video/mob_loot_bags_reel.mp4` is a 42 s vertical reel (1080×1920, 30 fps) for TikTok, Instagram Reels and YouTube
+Shorts, with `video/cover.jpg` as its cover. Its running order, voice-over script and posting copy are in
+[`video/README.md`](video/README.md). Every shot is gameplay rendered frame by frame by the 1.21.1 dev client; the
+capture client, voice-over, music and edit are in [`tools/reel/`](../tools/reel/README.md).
+
 ## Regenerating the images
 
 Needs Node.js and Playwright with Chromium:
