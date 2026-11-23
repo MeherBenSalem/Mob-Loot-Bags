@@ -10,18 +10,18 @@ Locked bags. Every drop rate, loot table and machine value is data-driven.
 
 ## Which jar do I download?
 
-Jar names are `mob_loot_bags-{loader}-{minecraft}-{modVersion}.jar`. Match **both** the Minecraft version and the loader.
+Mob Loot Bags supports exactly these Minecraft versions and loaders (8 jars per release). Jar names are
+`mob_loot_bags-{loader}-{minecraft}-{modVersion}.jar`. Match **both** the Minecraft version and the loader.
 
-| Minecraft | Java | Fabric jar (needs Fabric API) | NeoForge / Forge jar |
-|-----------|------|-------------------------------|----------------------|
-| 1.20.1 | 17+ | `…-fabric-1.20.1-….jar` | `…-forge-1.20.1-….jar` (Forge 47; releases before 2.0.0 named it `…-neoforge-1.20.1-…`) |
-| 1.21.1 | 21+ | `…-fabric-1.21.1-….jar` | `…-neoforge-1.21.1-….jar` |
-| 26.1.2 | 25+ | `…-fabric-26.1.2-….jar` | `…-neoforge-26.1.2-….jar` |
-| 26.2 | 25+ | `…-fabric-26.2-….jar` | `…-neoforge-26.2-….jar` |
-| 26.3 | 25+ | `…-fabric-26.3-….jar` | `…-neoforge-26.3-….jar` |
+| Minecraft | Loaders | Java | Fabric jar (needs Fabric API) | Forge / NeoForge jar |
+|-----------|---------|------|-------------------------------|----------------------|
+| 1.20.1 | Fabric, Forge | 17+ | `…-fabric-1.20.1-….jar` | `…-forge-1.20.1-….jar` (Forge 47.2.30 or newer) |
+| 1.21.1 | Fabric, NeoForge | 21+ | `…-fabric-1.21.1-….jar` | `…-neoforge-1.21.1-….jar` |
+| 26.2 | Fabric, NeoForge | 25+ | `…-fabric-26.2-….jar` | `…-neoforge-26.2-….jar` |
+| 26.3 | Fabric, NeoForge | 25+ | `…-fabric-26.3-….jar` | `…-neoforge-26.3-….jar` |
 
-`26.1.2`, `26.2` and `26.3` are separate game versions from 1.21.1 and need Java 25+. If a download page lists a
-`*-26.1.2-*.jar` under a 1.21.1 filter, that file still needs Minecraft 26.1.2: check the file name before installing.
+There is no NeoForge jar for 1.20.1: on 1.20.1 use the Forge jar (releases before 2.0.0 named it
+`…-neoforge-1.20.1-…`). `26.2` and `26.3` are separate game versions from 1.21.1 and need Java 25+.
 
 The mod is needed on both the server and the client.
 
@@ -45,7 +45,7 @@ The mod is needed on both the server and the client.
 
 ## Installation
 
-1. Install Fabric (with Fabric API) or NeoForge (Forge on 1.20.1) for your Minecraft version.
+1. Install Fabric (with Fabric API) for any supported version, Forge for 1.20.1, or NeoForge for 1.21.1, 26.2 or 26.3.
 2. Download the matching jar from [Modrinth](https://modrinth.com/mod/mob-loot-bags/versions) or
    [CurseForge](https://www.curseforge.com/minecraft/mc-mods/mob-loot-bags) using the table above.
 3. Put it in your `mods` folder (on the server and on every client).
@@ -92,18 +92,26 @@ whitelist/blacklist, cursed events, custom loot tables, recycler values) are cop
 
 ## Building
 
-Each Minecraft version is a separate MultiLoader Gradle workspace (`common/`, `fabric/` and a NeoForge/Forge
-project in `neoforge/`). Gradle needs the workspace's Java version: 17 for 1.20.1, 21 for 1.21.1, 25 for 26.x.
+Each Minecraft version folder (`1.20.1/`, `1.21.1/`, `26.2/`, `26.3/`) is a separate MultiLoader Gradle workspace
+with `common/` and its two loaders: `fabric/` + `forge/` on 1.20.1, `fabric/` + `neoforge/` elsewhere. Every
+workspace's `gradle.properties` carries the same `version=`. The root Gradle build drives all four:
 
 ```bash
-cd 1.21.1
-./gradlew build          # jars in fabric/build/libs and neoforge/build/libs
-./gradlew :common:test   # tier-odds and config-file unit tests
+./gradlew buildAll        # build every workspace (unit tests included) and copy the 8 jars into releases/
+./gradlew build263        # one workspace (keys: 1201, 1211, 262, 263)
+./gradlew checkVersions   # fail unless every workspace has the same version=
+./gradlew syncVersion -PmodVersion=x.y.z
 ```
 
-Prebuilt release jars go in `releases/` for the publish workflow. Publish metadata is derived from the jar
-**filename** (see `.github/scripts/detect-jar-meta.js`); run `node .github/scripts/detect-jar-meta.test.js` to
-verify it. Release notes for a version live in `patchnotes/<version>.md`.
+Gradle for 1.20.1 and 1.21.1 runs on Java 21 (1.20.1 compiles to Java 17 bytecode with a JDK 17 toolchain); 26.x
+needs Gradle itself on Java 25. Pass `-Pjava21Home=<jdk>` / `-Pjava25Home=<jdk>` or set `JAVA_HOME_21_X64` /
+`JAVA_HOME_25_X64`. A single workspace still builds on its own with `./gradlew build` from its folder.
+
+CI (`.github/workflows/ci.yml`) builds all 8 jars on every push to `main`, runs the unit and publisher-script tests
+and checks the targets with `python3 scripts/check_targets.py workspaces`. Publishing
+(`.github/workflows/publish.yml`) runs only by hand or on a `v*.*.*` tag, refuses a second release of the mod on the
+same day (`scripts/same_day_guard.mjs`), and uploads exactly the 8 jars, each tagged with its own Minecraft version
+and loader. Release notes for a version live in `patchnotes/<version>.md`.
 
 ## Tools
 

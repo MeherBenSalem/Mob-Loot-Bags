@@ -1,6 +1,6 @@
 """Recipes, tags, advancements, models, blockstates, sounds.json and translations, per version profile.
 
-Profiles (see loot.py): v3 = 26.3, v2 = 1.21.1 / 26.1.2 / 26.2, v1 = 1.20.1. `recipes_v` and `items_json` differ inside v2:
+Profiles (see loot.py): v3 = 26.3, v2 = 1.21.1 / 26.2, v1 = 1.20.1. `recipes_v` and `items_json` differ inside v2:
 1.21.1 recipes use ingredient objects and has no items/ client definitions; 26.x use plain ingredient strings and items/.
 """
 from __future__ import annotations
@@ -34,7 +34,6 @@ class Profile:
 PROFILES = {
     '26.3': Profile('v3', 'string', True, False, 'id', f'{NS}:gui/advancements/backgrounds/loot_bags'),
     '26.2': Profile('v2', 'string', True, False, 'id', f'{NS}:gui/advancements/backgrounds/loot_bags'),
-    '26.1.2': Profile('v2', 'string', True, False, 'id', f'{NS}:gui/advancements/backgrounds/loot_bags'),
     '1.21.1': Profile('v2', 'object', False, False, 'id', f'{NS}:textures/gui/advancements/backgrounds/loot_bags.png'),
     '1.20.1': Profile('v1', 'object', False, True, 'item', f'{NS}:textures/gui/advancements/backgrounds/loot_bags.png'),
 }

@@ -5,9 +5,11 @@ Thanks for helping improve Mob Loot Bags.
 ## How to contribute
 
 1. Fork the repository and create a feature branch from `main`.
-2. Make focused changes in the relevant Minecraft version workspace (`1.20.1/`, `1.21.1/`, `26.1.2/`, `26.2/`, or `26.3/`).
-3. Build the workspace you changed (`./gradlew build` from that folder, with Java 17 for 1.20.1, 21 for 1.21.1 and
-   25 for 26.x). This also runs the unit tests.
+2. Make focused changes in the relevant Minecraft version workspace (`1.20.1/` Fabric + Forge, or `1.21.1/`,
+   `26.2/`, `26.3/` Fabric + NeoForge). These are the only supported targets (8 jars per release).
+3. Build the workspace you changed (`./gradlew build` from that folder; Gradle on Java 21 for 1.20.1 and 1.21.1, with
+   a JDK 17 toolchain for 1.20.1, and on Java 25 for 26.x), or all four with `./gradlew buildAll` from the root.
+   This also runs the unit tests.
 4. Open a pull request describing the change and how you tested it.
 
 ## Assets and data
@@ -38,7 +40,7 @@ tools/qa/devrun.sh stop-client; tools/qa/devrun.sh stop-server 26.3
 
 The dev server's `server.properties` needs `enable-rcon=true`, `rcon.password=qa`, `rcon.port=25575`,
 `online-mode=false` and `white-list=false`, and the QA client must be an operator (`/op LootGoblin`). If you change
-gameplay, run both scripts on every workspace you touched, for Fabric and NeoForge/Forge.
+gameplay, run both scripts on every workspace you touched, for Fabric and Forge (1.20.1) or NeoForge.
 
 ## Coding expectations
 

@@ -22,7 +22,6 @@ OUT = ROOT / 'templates' / 'loot_tables_template.zip'
 PACK = {
     '1.20.1': {'pack_format': 15},
     '1.21.1': {'pack_format': 48},
-    '26.1.2': {'min_format': 101, 'max_format': 101},
     '26.2': {'min_format': 107, 'max_format': 107},
     '26.3': {'min_format': 121, 'max_format': 121},
 }

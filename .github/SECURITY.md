@@ -6,9 +6,10 @@ Security fixes are prioritized for the latest published release of each supporte
 
 | Minecraft | Loaders |
 |-----------|---------|
-| 1.20.1 | Fabric, NeoForge |
+| 1.20.1 | Fabric, Forge |
 | 1.21.1 | Fabric, NeoForge |
-| 26.1.2 | Fabric, NeoForge |
+| 26.2 | Fabric, NeoForge |
+| 26.3 | Fabric, NeoForge |
 
 Older mod versions may not receive patches.
 

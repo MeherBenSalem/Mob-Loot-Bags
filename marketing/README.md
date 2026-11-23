@@ -5,7 +5,9 @@ Listing copy and artwork for CurseForge and Modrinth.
 | Path | What it is |
 |------|------------|
 | `curseforge/description.md` | The project description (Markdown; also works on Modrinth). Images load from this repo's `main` branch. |
-| `curseforge/summary.txt` | The one-line summary (under 250 characters). |
+| `curseforge/summary.txt` | The one-line summary (151 characters). |
+| `modrinth/description.md` | Modrinth description, made from the CurseForge copy by `python3 tools/make_modrinth_md.py .` (screenshots go in the Gallery tab). |
+| `modrinth/summary.txt` | Modrinth summary (same text). |
 | `images/banner.png` | 1800×600 header banner. |
 | `images/icon.png` | 512×512 project icon. |
 | `images/card-*.png` | 1600×900 feature cards used in the description and as gallery images. |
@@ -26,8 +28,14 @@ NODE_PATH="$(npm root -g)" node marketing/source/render.cjs card-tiers # one ass
 
 The release name, version and the list of supported Minecraft versions and loaders are at the top of
 `render.cjs`. Supporting a new Minecraft version means adding one line there, plus one row to the table in
-`description.md`. Bag icons are read from `26.3/common/src/main/resources/assets/mob_loot_bags/textures/item/`, so
-regenerated textures (see `tools/assets/`) show up in the next render.
+`curseforge/description.md`, then running `python3 tools/make_modrinth_md.py .` to refresh `modrinth/description.md`.
+
+Only the NightBeam convention's targets are listed: 1.20.1 (Fabric, Forge) and 1.21.1, 26.2, 26.3 (Fabric,
+NeoForge). `images/banner.png` was rendered before 26.1.2 was dropped and still shows it in its version line;
+rerun the script for `banner` to refresh it.
+
+Bag icons are read from `26.3/common/src/main/resources/assets/mob_loot_bags/textures/item/`, so regenerated
+textures (see `tools/assets/`) show up in the next render.
 
 ## Retaking the screenshots
 

@@ -9,7 +9,9 @@
  * Legacy convention:
  *   mob_loot_bags-{modVersion}-{loader}-{mcVersion}.jar
  *
- * Minecraft versions may be classic (1.21.1) or calendar-style (26.1.2, 26.2, 26.3).
+ * Minecraft versions may be classic (1.20.1, 1.21.1) or calendar-style (26.2, 26.3, and patch releases such as 26.2.1).
+ * The publish workflow only ever passes the 8 NightBeam convention jars (scripts/check_targets.py):
+ * 1.20.1 Fabric + Forge; 1.21.1, 26.2 and 26.3 Fabric + NeoForge.
  */
 
 const path = require('path');

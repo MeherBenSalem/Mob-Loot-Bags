@@ -6,7 +6,7 @@
 watch the loot roll in, check the odds before you open, automate the grind with the Bag Opener, recycle mob-farm junk
 into new bags, and gamble on Cursed, Hourglass and Locked bags. Every rate, table and machine value is yours to tune.
 
-Fabric and NeoForge (Forge on 1.20.1) · Minecraft 1.20.1, 1.21.1, 26.1.2, 26.2 and 26.3 · install on server and client
+Fabric, Forge and NeoForge (versions and loaders in the Downloads table below) · install on server and client
 
 ![What's new in 2.0](https://raw.githubusercontent.com/MeherBenSalem/Mob-Loot-Bags/main/marketing/images/header-whats-new.png)
 
@@ -114,11 +114,10 @@ close your bad-luck protection is.
 |-----------|--------|------------------|------|
 | 26.3 | ✔ (Fabric API) | ✔ NeoForge | 25 |
 | 26.2 | ✔ (Fabric API) | ✔ NeoForge | 25 |
-| 26.1.2 | ✔ (Fabric API) | ✔ NeoForge | 25 |
 | 1.21.1 | ✔ (Fabric API) | ✔ NeoForge | 21 |
 | 1.20.1 | ✔ (Fabric API) | ✔ Forge | 17 |
 
-Pick the file whose name has your Minecraft version and loader, for example `mob_loot_bags-fabric-1.21.1-2.0.0.jar`.
+Pick the file whose name has your Minecraft version and loader, for example `mob_loot_bags-fabric-1.21.1-2.0.3.jar` or `mob_loot_bags-forge-1.20.1-2.0.3.jar`. There is no NeoForge jar for 1.20.1: use the Forge one.
 
 ![FAQ](https://raw.githubusercontent.com/MeherBenSalem/Mob-Loot-Bags/main/marketing/images/header-faq.png)
 

@@ -46,3 +46,8 @@ desktop.ini
 
 # Logs written by unit-test runs
 logs/
+
+# Publish/CI scratch folders and Python bytecode
+/dist/
+/ci-jars/
+__pycache__/
