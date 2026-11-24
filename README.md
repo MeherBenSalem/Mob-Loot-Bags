@@ -46,8 +46,8 @@ The mod is needed on both the server and the client.
 ## Installation
 
 1. Install Fabric (with Fabric API) for any supported version, Forge for 1.20.1, or NeoForge for 1.21.1, 26.2 or 26.3.
-2. Download the matching jar from [Modrinth](https://modrinth.com/mod/mob-loot-bags/versions) or
-   [CurseForge](https://www.curseforge.com/minecraft/mc-mods/mob-loot-bags) using the table above.
+2. Download the matching jar from [CurseForge](https://www.curseforge.com/minecraft/mc-mods/mob-loot-bags)
+   using the table above.
 3. Put it in your `mods` folder (on the server and on every client).
 
 ## Configuration
@@ -110,8 +110,10 @@ needs Gradle itself on Java 25. Pass `-Pjava21Home=<jdk>` / `-Pjava25Home=<jdk>`
 CI (`.github/workflows/ci.yml`) builds all 8 jars on every push to `main`, runs the unit and publisher-script tests
 and checks the targets with `python3 scripts/check_targets.py workspaces`. Publishing
 (`.github/workflows/publish.yml`) runs only by hand or on a `v*.*.*` tag, refuses a second release of the mod on the
-same day (`scripts/same_day_guard.mjs`), and uploads exactly the 8 jars, each tagged with its own Minecraft version
-and loader. Release notes for a version live in `patchnotes/<version>.md`.
+same day (`scripts/same_day_guard.mjs`), and uploads exactly the 8 jars to CurseForge, each tagged with its own
+Minecraft version and loader. It needs the secrets `CURSEFORGE_TOKEN` (upload token) and `CURSEFORGE_API_KEY` (Core API
+key) and the variable `CURSEFORGE_ID`. NightBeam publishes to CurseForge only; the Modrinth page stays up but gets
+no new versions. Release notes for a version live in `patchnotes/<version>.md`.
 
 ## Tools
 
@@ -121,12 +123,11 @@ and loader. Release notes for a version live in `patchnotes/<version>.md`.
 - [`tools/qa/`](tools/qa): runs dev servers and a real game client under Xvfb. `server_smoke.py` checks drops,
   loot tables, machines, commands and reloads over RCON; `client_checks.py` checks opening, special bags,
   migration, machine screens and spawner tagging in game.
-- [`marketing/`](marketing): the CurseForge/Modrinth description, listing images and how to regenerate them.
+- [`marketing/`](marketing): the CurseForge description, listing images and how to regenerate them.
 
 ## Links
 
 - [Discord](https://discord.gg/SAmd9fhNhr)
-- [Modrinth](https://modrinth.com/mod/mob-loot-bags/versions)
 - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/mob-loot-bags)
 - [Docs](https://meherbensalem.github.io/pages/mods.html)
 - [Support the project](https://nightbeam.dev/support)

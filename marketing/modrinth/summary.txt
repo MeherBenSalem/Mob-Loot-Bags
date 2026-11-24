@@ -1,1 +1,0 @@
-Mobs drop loot bags in six tiers from Common to Mythic, with loot previews, a Bag Opener, a Loot Recycler and risky Cursed, Hourglass and Locked bags.
